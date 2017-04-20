@@ -1,0 +1,22 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '10.3'
+
+target 'Music Sync' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Music Sync
+
+  pod "youtube-ios-player-helper", "~> 0.1.1"
+
+  target 'Music SyncTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'Music SyncUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

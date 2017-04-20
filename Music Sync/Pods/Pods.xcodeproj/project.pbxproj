@@ -1,0 +1,885 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0846CA9171B4D767FC5C2C2902DFC77A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		2EF1E70818224D281943FC532D056F56 /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29DEDEC20D350B168BF7B7FFDF4EB1E3 /* YTPlayerView.m */; };
+		337325FA18B4FAD8D3119BA54201C27D /* Pods-Music Sync-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A0B2265B5AB01D69EB270A5CD9738562 /* Pods-Music Sync-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4024CD07A9C05654449AC78B872C1ED7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		639EC30BE5AEBEBB55EA7EFC74DFF2C9 /* Pods-Music Sync-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2496B85C30A843F0EBF5EE01C6E3B6C0 /* Pods-Music Sync-dummy.m */; };
+		86F517DA8105BCA4BE7EF546A51C5CC6 /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 79376D247D489773D7E24EAC9B159283 /* Assets.bundle */; };
+		878EFC9D5BACFD130A815367FEB5A95F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		8BAB29F0F6C55F425BFD0E11C74E2952 /* youtube-ios-player-helper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A26821F8DC21FE3436AFC4BCB09D61 /* youtube-ios-player-helper-dummy.m */; };
+		9ED14AE0350C03EB920DE3134E04283A /* Pods-Music SyncTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2F692C3424A2A6187B4BA48ECBD43B3A /* Pods-Music SyncTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A469A25668CEF6DBDE81ED431FA85981 /* Pods-Music SyncTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D69A0B4245BD90B3C3942271C9B2472B /* Pods-Music SyncTests-dummy.m */; };
+		B06A9C8EE34BEBC3C491C89B64796C07 /* YTPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = A972B15E9D285B9B1A36315DF29B4E77 /* YTPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B6D0747D88F7657B4EEC3C728487A73B /* Pods-Music SyncUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0EC7C149B218A02C97D66F1B15928BC4 /* Pods-Music SyncUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C475F9E362E518EB7C307ABD42C4EB32 /* youtube-ios-player-helper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D4799393EAD678EAE1DA6486B3965A0F /* youtube-ios-player-helper-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D29D3BDB93E560F4FF90E2B5D96B1A44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		EEAA6CF1C8C25709DCB67125D7D87D9F /* Pods-Music SyncUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5841FFA0E8FC67BFB64C3219F7FB0D36 /* Pods-Music SyncUITests-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CDD205A25346BD94EDF06B531508AE63 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94EAF8B1D60AC49BB890512C3A5B7E29;
+			remoteInfo = "youtube-ios-player-helper";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0848FADE4206087B91F2E7C231C1181B /* Pods_Music_Sync.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Music_Sync.framework; path = "Pods-Music Sync.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		093BB8BC9866D8F7EF8EAE220489EF55 /* youtube_ios_player_helper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = youtube_ios_player_helper.framework; path = "youtube-ios-player-helper.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		09528A51E117AC35B62D4237E04927CE /* Pods-Music Sync.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Music Sync.release.xcconfig"; sourceTree = "<group>"; };
+		0EC7C149B218A02C97D66F1B15928BC4 /* Pods-Music SyncUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Music SyncUITests-umbrella.h"; sourceTree = "<group>"; };
+		1E711D8C8F29E6347F409F2F70E5EFE9 /* Pods-Music Sync-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Music Sync-resources.sh"; sourceTree = "<group>"; };
+		2496B85C30A843F0EBF5EE01C6E3B6C0 /* Pods-Music Sync-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Music Sync-dummy.m"; sourceTree = "<group>"; };
+		24A38A95D36669FE2DBEFD5C1F8CD83C /* Pods-Music SyncUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Music SyncUITests-frameworks.sh"; sourceTree = "<group>"; };
+		29DEDEC20D350B168BF7B7FFDF4EB1E3 /* YTPlayerView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = YTPlayerView.m; path = Classes/YTPlayerView.m; sourceTree = "<group>"; };
+		2F692C3424A2A6187B4BA48ECBD43B3A /* Pods-Music SyncTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Music SyncTests-umbrella.h"; sourceTree = "<group>"; };
+		331251C31B887520632410611068478D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		381C3DC376FEE3D25D292FC6B3EE36CF /* Pods-Music SyncTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Music SyncTests.modulemap"; sourceTree = "<group>"; };
+		424389E077A86F72E5B765C64A97DC7B /* Pods-Music SyncTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Music SyncTests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		494DBFB18C232FE025AF0EF5A4FC2000 /* youtube-ios-player-helper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "youtube-ios-player-helper.modulemap"; sourceTree = "<group>"; };
+		4C9D6F37AB8772713993FFC0A0542C30 /* Pods-Music SyncTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Music SyncTests.release.xcconfig"; sourceTree = "<group>"; };
+		4ED44407C647B9C19FF37378B9044014 /* Pods-Music SyncUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Music SyncUITests-resources.sh"; sourceTree = "<group>"; };
+		5841FFA0E8FC67BFB64C3219F7FB0D36 /* Pods-Music SyncUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Music SyncUITests-dummy.m"; sourceTree = "<group>"; };
+		5E6F955251D4EA7F061492B9D1C06B93 /* youtube-ios-player-helper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "youtube-ios-player-helper-prefix.pch"; sourceTree = "<group>"; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		690B7AEF78C928BEB885D75DF388E947 /* Pods_Music_SyncUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Music_SyncUITests.framework; path = "Pods-Music SyncUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BF076C74F864954C54ABDC890130E54 /* Pods-Music SyncUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Music SyncUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		79376D247D489773D7E24EAC9B159283 /* Assets.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = Assets.bundle; path = "youtube-ios-player-helper/Assets.bundle"; sourceTree = "<group>"; };
+		8DDE197BB480B861B655D2B08D34038A /* Pods-Music SyncUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Music SyncUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D44EF15B80F16608E5D9877876576EA /* Pods-Music Sync-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Music Sync-acknowledgements.plist"; sourceTree = "<group>"; };
+		A0B2265B5AB01D69EB270A5CD9738562 /* Pods-Music Sync-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Music Sync-umbrella.h"; sourceTree = "<group>"; };
+		A7EC547EDE57104D8822189323406DBA /* youtube-ios-player-helper.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "youtube-ios-player-helper.xcconfig"; sourceTree = "<group>"; };
+		A972B15E9D285B9B1A36315DF29B4E77 /* YTPlayerView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YTPlayerView.h; path = Classes/YTPlayerView.h; sourceTree = "<group>"; };
+		AD935F2A3DA07F1CDB74EDD56764176F /* Pods-Music Sync-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Music Sync-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AF4E1D86D0BAAAC5CC81148D69A2663C /* Pods-Music SyncTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Music SyncTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B73C46C4A5ACA3653951F20FC0E4A129 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB6CF54B36C87251067FDE062D0C9C76 /* Pods-Music Sync.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Music Sync.modulemap"; sourceTree = "<group>"; };
+		C0A26821F8DC21FE3436AFC4BCB09D61 /* youtube-ios-player-helper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "youtube-ios-player-helper-dummy.m"; sourceTree = "<group>"; };
+		C1A4C86DFD05205EB182D44D4ED734E7 /* Pods-Music SyncUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Music SyncUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C8BEAD81412A3B64F30239D1216252F8 /* Pods-Music SyncTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Music SyncTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		D4799393EAD678EAE1DA6486B3965A0F /* youtube-ios-player-helper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "youtube-ios-player-helper-umbrella.h"; sourceTree = "<group>"; };
+		D626631CE7A374DDD6D22C9222370A6D /* Pods-Music SyncUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Music SyncUITests.modulemap"; sourceTree = "<group>"; };
+		D69A0B4245BD90B3C3942271C9B2472B /* Pods-Music SyncTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Music SyncTests-dummy.m"; sourceTree = "<group>"; };
+		E4D85588B50B6EDC3D02592EAA7DF861 /* Pods-Music SyncUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Music SyncUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EA7B061365E1FE3E8CAB27FEE75E16C4 /* Pods-Music SyncTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Music SyncTests-frameworks.sh"; sourceTree = "<group>"; };
+		EF7C238B9F358C2100D9597546CB3138 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2BE5644FAE2154AF4E44AD9BC397C0D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F53268890C83C71CFDAE06DA03D4E903 /* Pods-Music Sync.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Music Sync.debug.xcconfig"; sourceTree = "<group>"; };
+		FA057F7D67C34B6982570D5272F22CC3 /* Pods-Music SyncTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Music SyncTests-resources.sh"; sourceTree = "<group>"; };
+		FC9B2DAC882B42A07B49DFAA3BB7C7AD /* Pods_Music_SyncTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Music_SyncTests.framework; path = "Pods-Music SyncTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF5833C84CD200D1C219A815820353B0 /* Pods-Music Sync-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Music Sync-frameworks.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5FD8E44A7E9E7861687B786C2124016D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4024CD07A9C05654449AC78B872C1ED7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3C445FFCF460A6F9F7DE68E02AA8DD1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				878EFC9D5BACFD130A815367FEB5A95F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA9DFEB8BCD46E435148646352020132 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D29D3BDB93E560F4FF90E2B5D96B1A44 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E30BAE2BD1FBE1DA2E2F595FB0F21954 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0846CA9171B4D767FC5C2C2902DFC77A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E68BFF7326A13AE8E8CDE300B4E13BE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				79376D247D489773D7E24EAC9B159283 /* Assets.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				EFBD6D5070879E977E70ED78BBDF7218 /* Pods */,
+				E6564324E9DF69779619DB25EE473764 /* Products */,
+				F100ABB683B5111B65AD3EB888439A04 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		9EC9BF4F3C5E90085C5C7CA98F48FC6B /* Pods-Music SyncTests */ = {
+			isa = PBXGroup;
+			children = (
+				331251C31B887520632410611068478D /* Info.plist */,
+				381C3DC376FEE3D25D292FC6B3EE36CF /* Pods-Music SyncTests.modulemap */,
+				424389E077A86F72E5B765C64A97DC7B /* Pods-Music SyncTests-acknowledgements.markdown */,
+				C8BEAD81412A3B64F30239D1216252F8 /* Pods-Music SyncTests-acknowledgements.plist */,
+				D69A0B4245BD90B3C3942271C9B2472B /* Pods-Music SyncTests-dummy.m */,
+				EA7B061365E1FE3E8CAB27FEE75E16C4 /* Pods-Music SyncTests-frameworks.sh */,
+				FA057F7D67C34B6982570D5272F22CC3 /* Pods-Music SyncTests-resources.sh */,
+				2F692C3424A2A6187B4BA48ECBD43B3A /* Pods-Music SyncTests-umbrella.h */,
+				AF4E1D86D0BAAAC5CC81148D69A2663C /* Pods-Music SyncTests.debug.xcconfig */,
+				4C9D6F37AB8772713993FFC0A0542C30 /* Pods-Music SyncTests.release.xcconfig */,
+			);
+			name = "Pods-Music SyncTests";
+			path = "Target Support Files/Pods-Music SyncTests";
+			sourceTree = "<group>";
+		};
+		9FF5E66EAC472A1CA3FB71D79878C9A0 /* youtube-ios-player-helper */ = {
+			isa = PBXGroup;
+			children = (
+				A972B15E9D285B9B1A36315DF29B4E77 /* YTPlayerView.h */,
+				29DEDEC20D350B168BF7B7FFDF4EB1E3 /* YTPlayerView.m */,
+				5E68BFF7326A13AE8E8CDE300B4E13BE /* Resources */,
+				A1E6C96D25FB9EF512BEC9F2334B8A87 /* Support Files */,
+			);
+			name = "youtube-ios-player-helper";
+			path = "youtube-ios-player-helper";
+			sourceTree = "<group>";
+		};
+		A1E6C96D25FB9EF512BEC9F2334B8A87 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2BE5644FAE2154AF4E44AD9BC397C0D /* Info.plist */,
+				494DBFB18C232FE025AF0EF5A4FC2000 /* youtube-ios-player-helper.modulemap */,
+				A7EC547EDE57104D8822189323406DBA /* youtube-ios-player-helper.xcconfig */,
+				C0A26821F8DC21FE3436AFC4BCB09D61 /* youtube-ios-player-helper-dummy.m */,
+				5E6F955251D4EA7F061492B9D1C06B93 /* youtube-ios-player-helper-prefix.pch */,
+				D4799393EAD678EAE1DA6486B3965A0F /* youtube-ios-player-helper-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/youtube-ios-player-helper";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		DB3FDB9493A212B7E605717E68042EC8 /* Pods-Music Sync */ = {
+			isa = PBXGroup;
+			children = (
+				B73C46C4A5ACA3653951F20FC0E4A129 /* Info.plist */,
+				BB6CF54B36C87251067FDE062D0C9C76 /* Pods-Music Sync.modulemap */,
+				AD935F2A3DA07F1CDB74EDD56764176F /* Pods-Music Sync-acknowledgements.markdown */,
+				9D44EF15B80F16608E5D9877876576EA /* Pods-Music Sync-acknowledgements.plist */,
+				2496B85C30A843F0EBF5EE01C6E3B6C0 /* Pods-Music Sync-dummy.m */,
+				FF5833C84CD200D1C219A815820353B0 /* Pods-Music Sync-frameworks.sh */,
+				1E711D8C8F29E6347F409F2F70E5EFE9 /* Pods-Music Sync-resources.sh */,
+				A0B2265B5AB01D69EB270A5CD9738562 /* Pods-Music Sync-umbrella.h */,
+				F53268890C83C71CFDAE06DA03D4E903 /* Pods-Music Sync.debug.xcconfig */,
+				09528A51E117AC35B62D4237E04927CE /* Pods-Music Sync.release.xcconfig */,
+			);
+			name = "Pods-Music Sync";
+			path = "Target Support Files/Pods-Music Sync";
+			sourceTree = "<group>";
+		};
+		DF9475442ABD3CB8E9C6D0707028A300 /* Pods-Music SyncUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EF7C238B9F358C2100D9597546CB3138 /* Info.plist */,
+				D626631CE7A374DDD6D22C9222370A6D /* Pods-Music SyncUITests.modulemap */,
+				6BF076C74F864954C54ABDC890130E54 /* Pods-Music SyncUITests-acknowledgements.markdown */,
+				8DDE197BB480B861B655D2B08D34038A /* Pods-Music SyncUITests-acknowledgements.plist */,
+				5841FFA0E8FC67BFB64C3219F7FB0D36 /* Pods-Music SyncUITests-dummy.m */,
+				24A38A95D36669FE2DBEFD5C1F8CD83C /* Pods-Music SyncUITests-frameworks.sh */,
+				4ED44407C647B9C19FF37378B9044014 /* Pods-Music SyncUITests-resources.sh */,
+				0EC7C149B218A02C97D66F1B15928BC4 /* Pods-Music SyncUITests-umbrella.h */,
+				C1A4C86DFD05205EB182D44D4ED734E7 /* Pods-Music SyncUITests.debug.xcconfig */,
+				E4D85588B50B6EDC3D02592EAA7DF861 /* Pods-Music SyncUITests.release.xcconfig */,
+			);
+			name = "Pods-Music SyncUITests";
+			path = "Target Support Files/Pods-Music SyncUITests";
+			sourceTree = "<group>";
+		};
+		E6564324E9DF69779619DB25EE473764 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0848FADE4206087B91F2E7C231C1181B /* Pods_Music_Sync.framework */,
+				FC9B2DAC882B42A07B49DFAA3BB7C7AD /* Pods_Music_SyncTests.framework */,
+				690B7AEF78C928BEB885D75DF388E947 /* Pods_Music_SyncUITests.framework */,
+				093BB8BC9866D8F7EF8EAE220489EF55 /* youtube_ios_player_helper.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EFBD6D5070879E977E70ED78BBDF7218 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9FF5E66EAC472A1CA3FB71D79878C9A0 /* youtube-ios-player-helper */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F100ABB683B5111B65AD3EB888439A04 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				DB3FDB9493A212B7E605717E68042EC8 /* Pods-Music Sync */,
+				9EC9BF4F3C5E90085C5C7CA98F48FC6B /* Pods-Music SyncTests */,
+				DF9475442ABD3CB8E9C6D0707028A300 /* Pods-Music SyncUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		362ECB24122F10CE48ECF068EB03080C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C475F9E362E518EB7C307ABD42C4EB32 /* youtube-ios-player-helper-umbrella.h in Headers */,
+				B06A9C8EE34BEBC3C491C89B64796C07 /* YTPlayerView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3D2E50793242C5315A773CF03CB357DE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6D0747D88F7657B4EEC3C728487A73B /* Pods-Music SyncUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53804A33DC37A4EA4F885293CF6285C4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				337325FA18B4FAD8D3119BA54201C27D /* Pods-Music Sync-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C58054172C9440BC0FA5E8196D5DACD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9ED14AE0350C03EB920DE3134E04283A /* Pods-Music SyncTests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5ADD6592499ECAF8D73894D6445A90C2 /* Pods-Music Sync */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82B07FA26071FF579412D17E15D0516D /* Build configuration list for PBXNativeTarget "Pods-Music Sync" */;
+			buildPhases = (
+				4A20F29997FD27DD2BA76FD43A7E3292 /* Sources */,
+				CA9DFEB8BCD46E435148646352020132 /* Frameworks */,
+				53804A33DC37A4EA4F885293CF6285C4 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4FD2EDE37062DCE7637114F87C97567 /* PBXTargetDependency */,
+			);
+			name = "Pods-Music Sync";
+			productName = "Pods-Music Sync";
+			productReference = 0848FADE4206087B91F2E7C231C1181B /* Pods_Music_Sync.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		94EAF8B1D60AC49BB890512C3A5B7E29 /* youtube-ios-player-helper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9DB6A23A47892189EEDCCB33161A975 /* Build configuration list for PBXNativeTarget "youtube-ios-player-helper" */;
+			buildPhases = (
+				6614755E8D37741B4C5077D0B0D6367B /* Sources */,
+				5FD8E44A7E9E7861687B786C2124016D /* Frameworks */,
+				362ECB24122F10CE48ECF068EB03080C /* Headers */,
+				9FDE67C5E31E4BC4A140B28F73A43BC7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "youtube-ios-player-helper";
+			productName = "youtube-ios-player-helper";
+			productReference = 093BB8BC9866D8F7EF8EAE220489EF55 /* youtube_ios_player_helper.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		D4E935355C4D7F8E0AD895A3109C4B81 /* Pods-Music SyncTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6DA875E4CB97A423F41531D7D432379C /* Build configuration list for PBXNativeTarget "Pods-Music SyncTests" */;
+			buildPhases = (
+				CD2E22DD3CA4D035206EFCBCD093F497 /* Sources */,
+				E30BAE2BD1FBE1DA2E2F595FB0F21954 /* Frameworks */,
+				9C58054172C9440BC0FA5E8196D5DACD /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Music SyncTests";
+			productName = "Pods-Music SyncTests";
+			productReference = FC9B2DAC882B42A07B49DFAA3BB7C7AD /* Pods_Music_SyncTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F9A8DD8A35AF763789FE281F945ECFCE /* Pods-Music SyncUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CBC21CF1E2C7E29FD8487D1D1CEC9F5 /* Build configuration list for PBXNativeTarget "Pods-Music SyncUITests" */;
+			buildPhases = (
+				5013ED9A8989556E21578D3AFCE89B59 /* Sources */,
+				B3C445FFCF460A6F9F7DE68E02AA8DD1 /* Frameworks */,
+				3D2E50793242C5315A773CF03CB357DE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-Music SyncUITests";
+			productName = "Pods-Music SyncUITests";
+			productReference = 690B7AEF78C928BEB885D75DF388E947 /* Pods_Music_SyncUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = E6564324E9DF69779619DB25EE473764 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5ADD6592499ECAF8D73894D6445A90C2 /* Pods-Music Sync */,
+				D4E935355C4D7F8E0AD895A3109C4B81 /* Pods-Music SyncTests */,
+				F9A8DD8A35AF763789FE281F945ECFCE /* Pods-Music SyncUITests */,
+				94EAF8B1D60AC49BB890512C3A5B7E29 /* youtube-ios-player-helper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9FDE67C5E31E4BC4A140B28F73A43BC7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86F517DA8105BCA4BE7EF546A51C5CC6 /* Assets.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4A20F29997FD27DD2BA76FD43A7E3292 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				639EC30BE5AEBEBB55EA7EFC74DFF2C9 /* Pods-Music Sync-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5013ED9A8989556E21578D3AFCE89B59 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EEAA6CF1C8C25709DCB67125D7D87D9F /* Pods-Music SyncUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6614755E8D37741B4C5077D0B0D6367B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BAB29F0F6C55F425BFD0E11C74E2952 /* youtube-ios-player-helper-dummy.m in Sources */,
+				2EF1E70818224D281943FC532D056F56 /* YTPlayerView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CD2E22DD3CA4D035206EFCBCD093F497 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A469A25668CEF6DBDE81ED431FA85981 /* Pods-Music SyncTests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B4FD2EDE37062DCE7637114F87C97567 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "youtube-ios-player-helper";
+			target = 94EAF8B1D60AC49BB890512C3A5B7E29 /* youtube-ios-player-helper */;
+			targetProxy = CDD205A25346BD94EDF06B531508AE63 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		02D80BD48D9F28265E1E622B580913E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1A4C86DFD05205EB182D44D4ED734E7 /* Pods-Music SyncUITests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Music SyncUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Music SyncUITests/Pods-Music SyncUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Music_SyncUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		139595F0BF7B92B7F6308F45D6996835 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 09528A51E117AC35B62D4237E04927CE /* Pods-Music Sync.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Music Sync/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Music Sync/Pods-Music Sync.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Music_Sync;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		163D87BE96A63549B0EACF1CC31A2E90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		2FEB28BC0FED7AEA0833DF5A36234E9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4D85588B50B6EDC3D02592EAA7DF861 /* Pods-Music SyncUITests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Music SyncUITests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Music SyncUITests/Pods-Music SyncUITests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Music_SyncUITests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3474571AEBB214E95A7D0D26CFC26083 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F53268890C83C71CFDAE06DA03D4E903 /* Pods-Music Sync.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Music Sync/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Music Sync/Pods-Music Sync.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Music_Sync;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		707B86CFB21B645E37109F39754D4051 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9D9333142091EF7386FF66E99BB6A1B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C9D6F37AB8772713993FFC0A0542C30 /* Pods-Music SyncTests.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Music SyncTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Music SyncTests/Pods-Music SyncTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Music_SyncTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F7A867DEB70F3FC162CFA91B74A8419A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF4E1D86D0BAAAC5CC81148D69A2663C /* Pods-Music SyncTests.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Music SyncTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Music SyncTests/Pods-Music SyncTests.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Music_SyncTests;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		FD40E9543EB80450CF891C2097F72CAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7EC547EDE57104D8822189323406DBA /* youtube-ios-player-helper.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/youtube-ios-player-helper/youtube-ios-player-helper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/youtube-ios-player-helper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/youtube-ios-player-helper/youtube-ios-player-helper.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = youtube_ios_player_helper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FE4E63CA7322F31340370EA7618A2F2E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7EC547EDE57104D8822189323406DBA /* youtube-ios-player-helper.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/youtube-ios-player-helper/youtube-ios-player-helper-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/youtube-ios-player-helper/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/youtube-ios-player-helper/youtube-ios-player-helper.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = youtube_ios_player_helper;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2CBC21CF1E2C7E29FD8487D1D1CEC9F5 /* Build configuration list for PBXNativeTarget "Pods-Music SyncUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02D80BD48D9F28265E1E622B580913E7 /* Debug */,
+				2FEB28BC0FED7AEA0833DF5A36234E9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				163D87BE96A63549B0EACF1CC31A2E90 /* Debug */,
+				707B86CFB21B645E37109F39754D4051 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6DA875E4CB97A423F41531D7D432379C /* Build configuration list for PBXNativeTarget "Pods-Music SyncTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7A867DEB70F3FC162CFA91B74A8419A /* Debug */,
+				9D9333142091EF7386FF66E99BB6A1B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82B07FA26071FF579412D17E15D0516D /* Build configuration list for PBXNativeTarget "Pods-Music Sync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3474571AEBB214E95A7D0D26CFC26083 /* Debug */,
+				139595F0BF7B92B7F6308F45D6996835 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9DB6A23A47892189EEDCCB33161A975 /* Build configuration list for PBXNativeTarget "youtube-ios-player-helper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE4E63CA7322F31340370EA7618A2F2E /* Debug */,
+				FD40E9543EB80450CF891C2097F72CAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}
