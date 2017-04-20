@@ -709,6 +709,7 @@
 				77AE566E1EA83DD500D50089 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77AE566F1EA83DD500D50089 /* Build configuration list for PBXNativeTarget "Music SyncTests" */ = {
 			isa = XCConfigurationList;
@@ -717,6 +718,7 @@
 				77AE56711EA83DD500D50089 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		77AE56721EA83DD500D50089 /* Build configuration list for PBXNativeTarget "Music SyncUITests" */ = {
 			isa = XCConfigurationList;
@@ -725,6 +727,7 @@
 				77AE56741EA83DD500D50089 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
