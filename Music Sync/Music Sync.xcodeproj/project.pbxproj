@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		2586BF6D08473032C0BCFAE6 /* Pods_Music_SyncTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65D184381C30E09F2041726 /* Pods_Music_SyncTests.framework */; };
 		48D2A51A70056425913875D1 /* Pods_Music_Sync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3268B19319B5C1841BD72C /* Pods_Music_Sync.framework */; };
+		772444FA1EA9736200D9D68E /* ViewControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772444F91EA9736200D9D68E /* ViewControllerBase.swift */; };
+		772444FC1EA973EA00D9D68E /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772444FB1EA973EA00D9D68E /* StartViewController.swift */; };
+		772444FE1EA9745B00D9D68E /* RoleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772444FD1EA9745B00D9D68E /* RoleSelectionViewController.swift */; };
+		772445061EA97F8200D9D68E /* HostConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772445051EA97F8200D9D68E /* HostConnectionViewController.swift */; };
+		772445081EA97FAB00D9D68E /* GuestConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772445071EA97FAB00D9D68E /* GuestConnectionViewController.swift */; };
+		7724450A1EA97FDC00D9D68E /* GuestVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772445091EA97FDC00D9D68E /* GuestVideoViewController.swift */; };
+		7724450C1EA9801300D9D68E /* ClipboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7724450B1EA9801300D9D68E /* ClipboardViewController.swift */; };
+		7724450E1EA9805700D9D68E /* ConfigureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7724450D1EA9805700D9D68E /* ConfigureViewController.swift */; };
+		772445101EA981A600D9D68E /* NameSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7724450F1EA981A600D9D68E /* NameSelectionViewController.swift */; };
 		77AE56481EA83DD400D50089 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AE56471EA83DD400D50089 /* AppDelegate.swift */; };
 		77AE564A1EA83DD400D50089 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AE56491EA83DD400D50089 /* ViewController.swift */; };
 		77AE564D1EA83DD400D50089 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77AE564B1EA83DD400D50089 /* Main.storyboard */; };
@@ -41,6 +50,15 @@
 		4789E4C5A49B5CDD3D7261E6 /* Pods-Music Sync.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Sync.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music Sync/Pods-Music Sync.debug.xcconfig"; sourceTree = "<group>"; };
 		543ED86D8C3B7CFA01282161 /* Pods-Music Sync.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Sync.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music Sync/Pods-Music Sync.release.xcconfig"; sourceTree = "<group>"; };
 		5A3CF2852028AD14C73E9BA9 /* Pods-Music SyncTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music SyncTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music SyncTests/Pods-Music SyncTests.release.xcconfig"; sourceTree = "<group>"; };
+		772444F91EA9736200D9D68E /* ViewControllerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerBase.swift; sourceTree = "<group>"; };
+		772444FB1EA973EA00D9D68E /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		772444FD1EA9745B00D9D68E /* RoleSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleSelectionViewController.swift; sourceTree = "<group>"; };
+		772445051EA97F8200D9D68E /* HostConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostConnectionViewController.swift; sourceTree = "<group>"; };
+		772445071EA97FAB00D9D68E /* GuestConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestConnectionViewController.swift; sourceTree = "<group>"; };
+		772445091EA97FDC00D9D68E /* GuestVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestVideoViewController.swift; sourceTree = "<group>"; };
+		7724450B1EA9801300D9D68E /* ClipboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipboardViewController.swift; sourceTree = "<group>"; };
+		7724450D1EA9805700D9D68E /* ConfigureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureViewController.swift; sourceTree = "<group>"; };
+		7724450F1EA981A600D9D68E /* NameSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameSelectionViewController.swift; sourceTree = "<group>"; };
 		77AE56441EA83DD400D50089 /* Music Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Sync.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77AE56471EA83DD400D50089 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77AE56491EA83DD400D50089 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +130,29 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		772444F71EA9733000D9D68E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7724450D1EA9805700D9D68E /* ConfigureViewController.swift */,
+				7724450B1EA9801300D9D68E /* ClipboardViewController.swift */,
+				772445091EA97FDC00D9D68E /* GuestVideoViewController.swift */,
+				772445071EA97FAB00D9D68E /* GuestConnectionViewController.swift */,
+				772445051EA97F8200D9D68E /* HostConnectionViewController.swift */,
+				7724450F1EA981A600D9D68E /* NameSelectionViewController.swift */,
+				772444FD1EA9745B00D9D68E /* RoleSelectionViewController.swift */,
+				772444F91EA9736200D9D68E /* ViewControllerBase.swift */,
+				772444FB1EA973EA00D9D68E /* StartViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		772444F81EA9734000D9D68E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		77AE563B1EA83DD400D50089 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +178,8 @@
 		77AE56461EA83DD400D50089 /* Music Sync */ = {
 			isa = PBXGroup;
 			children = (
+				772444F81EA9734000D9D68E /* Models */,
+				772444F71EA9733000D9D68E /* Controllers */,
 				77AE56471EA83DD400D50089 /* AppDelegate.swift */,
 				77AE56491EA83DD400D50089 /* ViewController.swift */,
 				77AE564B1EA83DD400D50089 /* Main.storyboard */,
@@ -449,8 +492,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				772445081EA97FAB00D9D68E /* GuestConnectionViewController.swift in Sources */,
+				7724450C1EA9801300D9D68E /* ClipboardViewController.swift in Sources */,
+				772444FA1EA9736200D9D68E /* ViewControllerBase.swift in Sources */,
+				772445061EA97F8200D9D68E /* HostConnectionViewController.swift in Sources */,
+				7724450E1EA9805700D9D68E /* ConfigureViewController.swift in Sources */,
+				772444FC1EA973EA00D9D68E /* StartViewController.swift in Sources */,
 				77AE564A1EA83DD400D50089 /* ViewController.swift in Sources */,
+				772445101EA981A600D9D68E /* NameSelectionViewController.swift in Sources */,
 				77AE56481EA83DD400D50089 /* AppDelegate.swift in Sources */,
+				772444FE1EA9745B00D9D68E /* RoleSelectionViewController.swift in Sources */,
+				7724450A1EA97FDC00D9D68E /* GuestVideoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

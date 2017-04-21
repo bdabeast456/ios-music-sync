@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Unknown constraint types" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Start View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Music_Sync" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="StartViewController" customModule="Music_Sync" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -59,10 +59,10 @@
             </objects>
             <point key="canvasLocation" x="72.799999999999997" y="138.98050974512745"/>
         </scene>
-        <!--View Controller-->
+        <!--Role Selection View Controller-->
         <scene sceneID="mnr-kX-cK0">
             <objects>
-                <viewController id="p46-cP-IvA" sceneMemberID="viewController">
+                <viewController id="p46-cP-IvA" customClass="RoleSelectionViewController" customModule="Music_Sync" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rlN-bZ-tLa"/>
                         <viewControllerLayoutGuide type="bottom" id="yXP-LB-D8s"/>
@@ -76,7 +76,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Host"/>
                                 <connections>
-                                    <segue destination="OTc-M7-HCm" kind="show" identifier="RoleSelectionToHostSegue" id="8AC-Vo-yjT"/>
+                                    <segue destination="OTc-M7-HCm" kind="show" identifier="RoleSelectionHostToNameSegue" id="8AC-Vo-yjT"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4l-14-COH">
@@ -84,7 +84,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Guest"/>
                                 <connections>
-                                    <segue destination="VqN-YV-U6F" kind="show" identifier="RoleSelectionToGuestSegue" id="QlR-SY-a20"/>
+                                    <segue destination="OTc-M7-HCm" kind="show" identifier="RoleSelectionGuestToNameSegue" id="LuJ-QA-dlF"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ySS-RB-TYb">
@@ -113,10 +113,10 @@
             </objects>
             <point key="canvasLocation" x="1812" y="139"/>
         </scene>
-        <!--View Controller-->
+        <!--Name Selection View Controller-->
         <scene sceneID="uhg-cR-f5V">
             <objects>
-                <viewController id="OTc-M7-HCm" sceneMemberID="viewController">
+                <viewController id="OTc-M7-HCm" customClass="NameSelectionViewController" customModule="Music_Sync" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J37-do-yio"/>
                         <viewControllerLayoutGuide type="bottom" id="UvT-Yz-QVU"/>
@@ -133,8 +133,11 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="didEnterName:" destination="OTc-M7-HCm" eventType="editingDidEnd" id="TSU-yk-3Qa"/>
+                                </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Your Host Name" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="UUU-UJ-S8G">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Your ____ Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="UUU-UJ-S8G">
                                 <rect key="frame" x="36" y="84" width="303" height="204.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
@@ -161,17 +164,20 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="zo8-qX-pAn" kind="show" identifier="HostToConnectionSegue" id="DRT-Ni-1UB"/>
+                        <outlet property="namePrompt" destination="UUU-UJ-S8G" id="wWj-xA-tfX"/>
+                        <outlet property="textField" destination="REH-Ux-7tg" id="znO-Dh-7Wd"/>
+                        <segue destination="zo8-qX-pAn" kind="show" identifier="NameHostToConnectionSegue" id="DRT-Ni-1UB"/>
+                        <segue destination="soq-xJ-9OH" kind="show" identifier="NameGuestToConnectionSegue" id="fER-Eo-DY5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mak-LL-fco" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2612" y="138.98050974512745"/>
         </scene>
-        <!--View Controller-->
+        <!--Host Connection View Controller-->
         <scene sceneID="VCf-Xe-TD9">
             <objects>
-                <viewController id="zo8-qX-pAn" sceneMemberID="viewController">
+                <viewController id="zo8-qX-pAn" customClass="HostConnectionViewController" customModule="Music_Sync" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X1k-gg-QTZ"/>
                         <viewControllerLayoutGuide type="bottom" id="6rZ-yj-Uy9"/>
@@ -192,18 +198,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6I-1X-TeC">
-                                                    <rect key="frame" x="28" y="8" width="319" height="27.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6I-1X-TeC">
+                                                    <rect key="frame" x="28" y="8" width="271" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wT1-oL-8p9">
+                                                    <rect key="frame" x="319" y="8" width="28" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="wT1-oL-8p9" secondAttribute="height" multiplier="1:1" id="fPt-m0-3l9"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <state key="normal" title="Kick">
+                                                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="wT1-oL-8p9" firstAttribute="leading" secondItem="n6I-1X-TeC" secondAttribute="trailing" constant="20" id="5w9-E3-DKf"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="n6I-1X-TeC" secondAttribute="bottom" id="LFO-jr-A6c"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="wT1-oL-8p9" secondAttribute="trailing" constant="20" id="U4x-kH-zIM"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="wT1-oL-8p9" secondAttribute="bottom" id="UD6-TW-UFk"/>
                                                 <constraint firstAttribute="topMargin" secondItem="n6I-1X-TeC" secondAttribute="top" id="Wqd-8E-63J"/>
+                                                <constraint firstItem="wT1-oL-8p9" firstAttribute="top" secondItem="6wu-lR-Sg8" secondAttribute="topMargin" id="fwI-iI-Hc6"/>
                                                 <constraint firstItem="n6I-1X-TeC" firstAttribute="leading" secondItem="6wu-lR-Sg8" secondAttribute="leadingMargin" constant="20" id="jD2-KU-C9I"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="n6I-1X-TeC" secondAttribute="trailing" constant="20" id="kku-bX-vki"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -226,10 +245,10 @@
             </objects>
             <point key="canvasLocation" x="3476" y="138.98050974512745"/>
         </scene>
-        <!--View Controller-->
+        <!--Clipboard View Controller-->
         <scene sceneID="FFm-BI-hWn">
             <objects>
-                <viewController id="g4N-iL-fau" sceneMemberID="viewController">
+                <viewController id="g4N-iL-fau" customClass="ClipboardViewController" customModule="Music_Sync" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZRX-vf-Yvu"/>
                         <viewControllerLayoutGuide type="bottom" id="ZrX-YE-Q07"/>
@@ -272,10 +291,10 @@
             </objects>
             <point key="canvasLocation" x="4345" y="139"/>
         </scene>
-        <!--View Controller-->
+        <!--Configure View Controller-->
         <scene sceneID="Kca-iM-1hv">
             <objects>
-                <viewController id="AFU-M0-Vnc" sceneMemberID="viewController">
+                <viewController id="AFU-M0-Vnc" customClass="ConfigureViewController" customModule="Music_Sync" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="71Z-W6-zGd"/>
                         <viewControllerLayoutGuide type="bottom" id="lLS-CB-ccr"/>
@@ -409,10 +428,10 @@
             </objects>
             <point key="canvasLocation" x="942" y="139"/>
         </scene>
-        <!--View Controller-->
+        <!--Guest Connection View Controller-->
         <scene sceneID="Hra-CL-0yd">
             <objects>
-                <viewController id="soq-xJ-9OH" sceneMemberID="viewController">
+                <viewController id="soq-xJ-9OH" customClass="GuestConnectionViewController" customModule="Music_Sync" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gpw-v8-Bah"/>
                         <viewControllerLayoutGuide type="bottom" id="ynL-zR-wp4"/>
@@ -461,10 +480,10 @@
             </objects>
             <point key="canvasLocation" x="3476" y="994"/>
         </scene>
-        <!--View Controller-->
+        <!--Guest Video View Controller-->
         <scene sceneID="jCF-p7-vvO">
             <objects>
-                <viewController id="YeC-lg-GZb" sceneMemberID="viewController">
+                <viewController id="YeC-lg-GZb" customClass="GuestVideoViewController" customModule="Music_Sync" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wiM-gZ-HR8"/>
                         <viewControllerLayoutGuide type="bottom" id="jkk-Kh-NZJ"/>
@@ -477,7 +496,10 @@
                                 <rect key="frame" x="0.0" y="592" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Proceed"/>
+                                <state key="normal" title="Quit"/>
+                                <connections>
+                                    <action selector="quitToRoleSelection:" destination="YeC-lg-GZb" eventType="touchUpInside" id="W8i-UP-PBk"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ft-a2-YKf" customClass="YTPlayerView">
                                 <rect key="frame" x="35" y="252" width="304" height="162"/>
@@ -494,63 +516,20 @@
                             <constraint firstAttribute="trailingMargin" secondItem="6Ft-a2-YKf" secondAttribute="trailing" constant="20" id="eTT-Tp-W1g"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="youtubeView" destination="6Ft-a2-YKf" id="Uba-Kx-LR1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cvl-LR-xoK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4346" y="994"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="4zc-WQ-yyR">
-            <objects>
-                <viewController id="VqN-YV-U6F" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2xg-Eq-WmL"/>
-                        <viewControllerLayoutGuide type="bottom" id="nSI-iW-oIL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5fK-xb-crJ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hIc-10-qce">
-                                <rect key="frame" x="36" y="308.5" width="303" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="cfc-Au-DWf"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Your Guest Name" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" translatesAutoresizingMaskIntoConstraints="NO" id="Ibu-DI-PkW">
-                                <rect key="frame" x="36" y="84" width="303" height="204.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="hIc-10-qce" firstAttribute="centerX" secondItem="5fK-xb-crJ" secondAttribute="centerX" id="Iaj-zY-FlM"/>
-                            <constraint firstItem="hIc-10-qce" firstAttribute="centerY" secondItem="5fK-xb-crJ" secondAttribute="centerY" id="O5E-XO-sKd"/>
-                            <constraint firstItem="hIc-10-qce" firstAttribute="top" secondItem="Ibu-DI-PkW" secondAttribute="bottom" constant="20" id="WUF-xy-SRe"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hIc-10-qce" secondAttribute="trailing" constant="20" id="cp6-eG-bqW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ibu-DI-PkW" secondAttribute="trailing" constant="20" id="gzR-TX-C2J"/>
-                            <constraint firstItem="Ibu-DI-PkW" firstAttribute="leading" secondItem="5fK-xb-crJ" secondAttribute="leadingMargin" constant="20" id="oKQ-bb-1sz"/>
-                            <constraint firstItem="Ibu-DI-PkW" firstAttribute="top" secondItem="2xg-Eq-WmL" secondAttribute="bottom" constant="20" id="wYe-01-lhG"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <segue destination="soq-xJ-9OH" kind="show" identifier="GuestToHostSelectSegue" id="grP-ym-nF4"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gAt-ex-dQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2612" y="994"/>
         </scene>
     </scenes>
     <resources>
         <image name="partyordie" width="1170" height="815"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="M47-kN-fJW"/>
+        <segue reference="LuJ-QA-dlF"/>
+        <segue reference="DRT-Ni-1UB"/>
     </inferredMetricsTieBreakers>
 </document>
