@@ -10,6 +10,8 @@ import UIKit
 
 class ConfigureViewController: ViewControllerBase {
 
+    var videoURL:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

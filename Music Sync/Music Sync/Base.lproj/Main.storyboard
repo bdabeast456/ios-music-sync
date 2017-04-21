@@ -107,7 +107,9 @@
                             <constraint firstItem="l4l-14-COH" firstAttribute="centerX" secondItem="TGJ-bL-EGC" secondAttribute="centerX" id="yK4-OM-VP2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="dvW-Ch-iI2"/>
+                    <navigationItem key="navigationItem" id="dvW-Ch-iI2">
+                        <barButtonItem key="rightBarButtonItem" title="Back To Start" id="Xiu-Md-csF"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vAk-qt-9cx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -143,14 +145,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kI8-ph-KBW">
-                                <rect key="frame" x="329" y="637" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="zo8-qX-pAn" kind="show" identifier="TEMP" id="M47-kN-fJW"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -228,9 +222,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eD3-bw-Wv0">
-                                <rect key="frame" x="0.0" y="592" width="375" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eD3-bw-Wv0">
+                                <rect key="frame" x="16" y="592" width="343" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="Hrn-rN-mWR"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Proceed"/>
                                 <connections>
@@ -239,6 +235,11 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eD3-bw-Wv0" firstAttribute="leading" secondItem="Rqm-y7-yff" secondAttribute="leadingMargin" id="9Rv-lB-taq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eD3-bw-Wv0" secondAttribute="trailing" id="Ivh-rb-Fgu"/>
+                            <constraint firstItem="6rZ-yj-Uy9" firstAttribute="top" secondItem="eD3-bw-Wv0" secondAttribute="bottom" id="WB4-oc-Pc6"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2M-gk-IGW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -257,17 +258,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaH-pg-KRC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TaH-pg-KRC">
                                 <rect key="frame" x="0.0" y="592" width="375" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="C4d-Gh-ajb"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Proceed"/>
                                 <connections>
                                     <segue destination="AFU-M0-Vnc" kind="show" identifier="ClipboardToConfigureSegue" id="Y5b-9q-k4d"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOO-S3-6fn">
-                                <rect key="frame" x="35" y="321.5" width="304" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOO-S3-6fn">
+                                <rect key="frame" x="35" y="333.5" width="304" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -277,15 +280,24 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Paste From Clipboard"/>
+                                <connections>
+                                    <action selector="didPasteFromClipboard:" destination="g4N-iL-fau" eventType="touchUpInside" id="9wP-bv-Atc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="gOO-S3-6fn" secondAttribute="trailing" constant="20" id="48e-rw-6tT"/>
                             <constraint firstItem="gOO-S3-6fn" firstAttribute="centerY" secondItem="L48-tX-qb2" secondAttribute="centerY" id="Mq1-fq-Tk0"/>
+                            <constraint firstItem="TaH-pg-KRC" firstAttribute="leading" secondItem="L48-tX-qb2" secondAttribute="leading" id="ZMD-q9-x10"/>
+                            <constraint firstAttribute="trailing" secondItem="TaH-pg-KRC" secondAttribute="trailing" id="mPM-Bc-pKL"/>
+                            <constraint firstItem="ZrX-YE-Q07" firstAttribute="top" secondItem="TaH-pg-KRC" secondAttribute="bottom" id="mYo-VO-XSg"/>
                             <constraint firstItem="gOO-S3-6fn" firstAttribute="centerX" secondItem="L48-tX-qb2" secondAttribute="centerX" id="qrI-4y-Sj3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="urlLabel" destination="gOO-S3-6fn" id="laA-vd-b9d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Az6-Tx-Y1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -530,6 +542,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LuJ-QA-dlF"/>
-        <segue reference="DRT-Ni-1UB"/>
     </inferredMetricsTieBreakers>
 </document>
