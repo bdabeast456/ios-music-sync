@@ -107,9 +107,7 @@
                             <constraint firstItem="l4l-14-COH" firstAttribute="centerX" secondItem="TGJ-bL-EGC" secondAttribute="centerX" id="yK4-OM-VP2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="dvW-Ch-iI2">
-                        <barButtonItem key="rightBarButtonItem" title="Back To Start" id="Xiu-Md-csF"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="dvW-Ch-iI2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vAk-qt-9cx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -369,8 +367,8 @@
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pWE-IN-Y42">
                                 <rect key="frame" x="34" y="308" width="307" height="31"/>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59d-G3-fiY">
-                                <rect key="frame" x="166" y="251" width="42" height="37"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global Delay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59d-G3-fiY">
+                                <rect key="frame" x="139" y="251" width="96" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="hRw-Sx-VBV"/>
                                 </constraints>
@@ -385,11 +383,17 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playAndSendConfigs:" destination="AFU-M0-Vnc" eventType="touchUpInside" id="3M5-aQ-e7w"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k6s-71-OT5">
                                 <rect key="frame" x="187.5" y="592" width="171.5" height="75"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Stop"/>
+                                <connections>
+                                    <action selector="stopHostAndGuests:" destination="AFU-M0-Vnc" eventType="touchUpInside" id="9HX-wX-ILi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -419,6 +423,11 @@
                             <constraint firstItem="qUf-Zc-OHG" firstAttribute="bottom" secondItem="lLS-CB-ccr" secondAttribute="top" id="yZb-Lp-K1t"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="globalDelay" destination="pWE-IN-Y42" id="rBu-8M-ogD"/>
+                        <outlet property="guestConfigTable" destination="3O0-wF-6yY" id="HIC-VL-IjV"/>
+                        <outlet property="youtubeWindow" destination="CnE-ha-TPW" id="I5O-af-VG6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KYR-OJ-7Cg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

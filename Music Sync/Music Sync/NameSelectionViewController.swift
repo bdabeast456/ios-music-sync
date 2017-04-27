@@ -42,7 +42,6 @@ class NameSelectionViewController: ViewControllerBase, UITextFieldDelegate {
             let trimmedText = fieldText.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             if trimmedText.characters.count > 0 {
                 nameChosen = trimmedText
-                print(nameChosen!)
                 performSegue(withIdentifier: "Name\(roleChosen!)ToConnectionSegue", sender: self)
             }
         }

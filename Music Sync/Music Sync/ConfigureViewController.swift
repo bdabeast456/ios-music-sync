@@ -7,15 +7,28 @@
 //
 
 import UIKit
+import youtube_ios_player_helper
 
 class ConfigureViewController: ViewControllerBase {
-
-    var videoURL:String?
+    @IBOutlet weak var youtubeWindow: YTPlayerView!
+    @IBOutlet weak var globalDelay: UISlider!
+    @IBOutlet weak var guestConfigTable: UITableView!
+    
+    var videoURL:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let configs = ["playsinline": 1]//,
+                       //"controls": 0]
+        youtubeWindow.load(withPlayerParams: configs)
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //youtubeWindow.loadVideo(byURL: "https://www.youtube.com/watch?v=Sv3fxl6clfo", startSeconds: 0, suggestedQuality: .default)
+        youtubeWindow.cueVideo(byId: "Sv3fxl6clfo", startSeconds: 0, suggestedQuality: .default)
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,15 +36,11 @@ class ConfigureViewController: ViewControllerBase {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func playAndSendConfigs(_ sender: UIButton) {
+        youtubeWindow.playVideo()
     }
-    */
 
+    @IBAction func stopHostAndGuests(_ sender: UIButton) {
+        youtubeWindow.stopVideo()
+    }
 }
