@@ -11,13 +11,16 @@ import UIKit
 class ClipboardViewController: ViewControllerBase {
 
     @IBOutlet weak var urlLabel: UILabel!
-    
+    @IBOutlet weak var pasteButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         if let clipText = UIPasteboard.general.string {
             urlLabel.text = clipText
         }
 
+        self.pasteButton.titleLabel?.adjustsFontSizeToFitWidth = true;
+        self.pasteButton.titleLabel?.minimumScaleFactor = 0.25;
+        
         // Do any additional setup after loading the view.
     }
 

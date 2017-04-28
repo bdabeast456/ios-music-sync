@@ -273,9 +273,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10W-CJ-YF5">
-                                <rect key="frame" x="0.0" y="64" width="375" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10W-CJ-YF5">
+                                <rect key="frame" x="36" y="84" width="303" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Paste From Clipboard"/>
                                 <connections>
@@ -286,20 +285,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="gOO-S3-6fn" secondAttribute="trailing" constant="20" id="48e-rw-6tT"/>
+                            <constraint firstItem="10W-CJ-YF5" firstAttribute="top" secondItem="ZRX-vf-Yvu" secondAttribute="bottom" constant="20" id="INt-QF-7on"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="10W-CJ-YF5" secondAttribute="trailing" constant="20" id="LcF-5A-D0R"/>
                             <constraint firstItem="gOO-S3-6fn" firstAttribute="centerY" secondItem="L48-tX-qb2" secondAttribute="centerY" id="Mq1-fq-Tk0"/>
                             <constraint firstItem="TaH-pg-KRC" firstAttribute="leading" secondItem="L48-tX-qb2" secondAttribute="leading" id="ZMD-q9-x10"/>
+                            <constraint firstItem="10W-CJ-YF5" firstAttribute="leading" secondItem="L48-tX-qb2" secondAttribute="leadingMargin" constant="20" id="cey-sk-suV"/>
                             <constraint firstAttribute="trailing" secondItem="TaH-pg-KRC" secondAttribute="trailing" id="mPM-Bc-pKL"/>
                             <constraint firstItem="ZrX-YE-Q07" firstAttribute="top" secondItem="TaH-pg-KRC" secondAttribute="bottom" id="mYo-VO-XSg"/>
                             <constraint firstItem="gOO-S3-6fn" firstAttribute="centerX" secondItem="L48-tX-qb2" secondAttribute="centerX" id="qrI-4y-Sj3"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="pasteButton" destination="10W-CJ-YF5" id="3M9-4p-VQr"/>
                         <outlet property="urlLabel" destination="gOO-S3-6fn" id="laA-vd-b9d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Az6-Tx-Y1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4345" y="139"/>
+            <point key="canvasLocation" x="4344.8000000000002" y="138.98050974512745"/>
         </scene>
         <!--Configure View Controller-->
         <scene sceneID="Kca-iM-1hv">
@@ -353,9 +356,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5z-ka-eb3" customClass="YTPlayerView">
                                 <rect key="frame" x="36" y="84" width="303" height="145"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CnE-ha-TPW" customClass="YTPlayerView">
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CnE-ha-TPW" customClass="YTPlayerView">
                                         <rect key="frame" x="0.0" y="0.0" width="303" height="147"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="CnE-ha-TPW" secondAttribute="height" multiplier="101:49" id="aVa-Xl-ySk"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -461,9 +467,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hev-B2-3HA">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hev-B2-3HA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rjn-St-Ek5">
@@ -474,7 +479,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSq-a7-u5C">
-                                                    <rect key="frame" x="28" y="8" width="319" height="27.5"/>
+                                                    <rect key="frame" x="28" y="8" width="319" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -490,16 +495,35 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e3J-8R-uY4">
+                                <rect key="frame" x="16" y="627" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="m5H-LU-9K1"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="V3T-dR-HOl" kind="show" identifier="TEMP" id="Glf-vn-0Ac"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Hev-B2-3HA" firstAttribute="top" secondItem="HTw-mY-uQx" secondAttribute="top" id="0WG-uF-rso"/>
+                            <constraint firstItem="e3J-8R-uY4" firstAttribute="top" secondItem="Hev-B2-3HA" secondAttribute="bottom" id="2NA-fT-kbw"/>
+                            <constraint firstItem="ynL-zR-wp4" firstAttribute="top" secondItem="e3J-8R-uY4" secondAttribute="bottom" id="BAM-Vn-Lgm"/>
+                            <constraint firstItem="Hev-B2-3HA" firstAttribute="leading" secondItem="HTw-mY-uQx" secondAttribute="leading" id="Wa0-dg-ERN"/>
+                            <constraint firstItem="e3J-8R-uY4" firstAttribute="leading" secondItem="HTw-mY-uQx" secondAttribute="leadingMargin" id="dbp-70-oc6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="e3J-8R-uY4" secondAttribute="trailing" id="g63-Nd-qPb"/>
+                            <constraint firstItem="Hev-B2-3HA" firstAttribute="centerX" secondItem="e3J-8R-uY4" secondAttribute="centerX" id="ikm-Oa-NKs"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <segue destination="YeC-lg-GZb" kind="show" identifier="GuestToGuestVideoSegue" id="nW3-4I-A13"/>
+                        <segue destination="V3T-dR-HOl" kind="show" identifier="GuestToWaitingSegue" id="wgf-B7-Ebh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pr0-Tm-Mib" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3476" y="994"/>
+            <point key="canvasLocation" x="3476" y="993.55322338830592"/>
         </scene>
         <!--Guest Video View Controller-->
         <scene sceneID="jCF-p7-vvO">
@@ -513,15 +537,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60J-Q4-lkF">
-                                <rect key="frame" x="0.0" y="592" width="375" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Quit"/>
-                                <connections>
-                                    <action selector="quitToRoleSelection:" destination="YeC-lg-GZb" eventType="touchUpInside" id="W8i-UP-PBk"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ft-a2-YKf" customClass="YTPlayerView">
                                 <rect key="frame" x="35" y="252" width="304" height="162"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -543,7 +558,45 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cvl-LR-xoK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4346" y="994"/>
+            <point key="canvasLocation" x="5241" y="994"/>
+        </scene>
+        <!--Waiting View Controller-->
+        <scene sceneID="k2c-Nf-B6u">
+            <objects>
+                <viewController id="V3T-dR-HOl" customClass="WaitingViewController" customModule="Music_Sync" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vyr-7p-prW"/>
+                        <viewControllerLayoutGuide type="bottom" id="JJT-qz-ePw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DXh-Eh-GHZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s7e-y0-RqH">
+                                <rect key="frame" x="0.0" y="619" width="375" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="d2L-Nk-nBM"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="tempButton:" destination="V3T-dR-HOl" eventType="touchUpInside" id="kso-ro-bgz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="s7e-y0-RqH" firstAttribute="leading" secondItem="DXh-Eh-GHZ" secondAttribute="leading" id="kQI-nM-B6Q"/>
+                            <constraint firstAttribute="trailing" secondItem="s7e-y0-RqH" secondAttribute="trailing" id="mBa-sO-4UR"/>
+                            <constraint firstItem="JJT-qz-ePw" firstAttribute="top" secondItem="s7e-y0-RqH" secondAttribute="bottom" constant="8" symbolic="YES" id="zFx-C0-C5G"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="YeC-lg-GZb" kind="show" identifier="WaitingToGuestVideoSegue" id="9J5-fD-Kyc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zZm-du-7kU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4344.8000000000002" y="993.55322338830592"/>
         </scene>
     </scenes>
     <resources>
@@ -551,5 +604,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="LuJ-QA-dlF"/>
+        <segue reference="Glf-vn-0Ac"/>
     </inferredMetricsTieBreakers>
 </document>

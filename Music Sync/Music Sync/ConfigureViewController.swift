@@ -18,17 +18,14 @@ class ConfigureViewController: ViewControllerBase {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let configs = ["playsinline": 1]//,
-                       //"controls": 0]
-        youtubeWindow.load(withPlayerParams: configs)
 
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //youtubeWindow.loadVideo(byURL: "https://www.youtube.com/watch?v=Sv3fxl6clfo", startSeconds: 0, suggestedQuality: .default)
-        youtubeWindow.cueVideo(byId: "Sv3fxl6clfo", startSeconds: 0, suggestedQuality: .default)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let configs = ["playsinline": 1]
+        youtubeWindow.load(withVideoId: "Sv3fxl6clfo", playerVars: configs)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +34,8 @@ class ConfigureViewController: ViewControllerBase {
     }
     
     @IBAction func playAndSendConfigs(_ sender: UIButton) {
-        youtubeWindow.playVideo()
+        youtubeWindow.playVideo(at: 40)
+        //youtubeWindow.playVideo()
     }
 
     @IBAction func stopHostAndGuests(_ sender: UIButton) {

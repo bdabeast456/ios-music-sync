@@ -10,15 +10,25 @@ import UIKit
 import youtube_ios_player_helper
 
 class GuestVideoViewController: ViewControllerBase {
-
+    var youtubeURL:String!
     @IBOutlet weak var youtubeView: YTPlayerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //self.navigationItem.leftBarButtonItem?.target = "goBackTwoControllers"
+        
+        let button:UIBarButtonItem = UIBarButtonItem(title: "To Host Selection", style: .plain, target: self, action: #selector(goBackTwoControllers))
+        self.navigationItem.leftBarButtonItem = button
 
         // Do any additional setup after loading the view.
     }
 
+    func goBackTwoControllers() {
+        let viewControllerList:[UIViewController] = (self.navigationController?.viewControllers)!
+        self.navigationController?.popToViewController(viewControllerList[viewControllerList.count - 3], animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
