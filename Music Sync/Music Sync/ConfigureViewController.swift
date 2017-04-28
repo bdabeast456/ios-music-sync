@@ -24,12 +24,8 @@ class ConfigureViewController: ViewControllerBase {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let configs = ["playsinline": 1,
-                       "autoplay": 1]
-        youtubeWindow.load(withVideoId: "Sv3fxl6clfo", playerVars: configs)
-        //youtubeWindow.
+        youtubeWindow.load(withVideoId: "Sv3fxl6clfo", playerVars: youtubeConfigs)
         //youtubeWindow.playVideo()
-        youtubeWindow.pauseVideo()
     }
 
     override func didReceiveMemoryWarning() {

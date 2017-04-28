@@ -25,6 +25,7 @@
 		77AE56521EA83DD400D50089 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77AE56501EA83DD400D50089 /* LaunchScreen.storyboard */; };
 		77AE565D1EA83DD500D50089 /* Music_SyncTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AE565C1EA83DD500D50089 /* Music_SyncTests.swift */; };
 		77AE56681EA83DD500D50089 /* Music_SyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AE56671EA83DD500D50089 /* Music_SyncUITests.swift */; };
+		77B0F81D1EB3E9740090FE56 /* YoutubeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B0F81C1EB3E9740090FE56 /* YoutubeConstants.swift */; };
 		77C188F41EB322BD00CC43C2 /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C188F31EB322BD00CC43C2 /* WaitingViewController.swift */; };
 		C81D8B09CAA5FC285B2013A5 /* Pods_Music_SyncUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A964F31D42D2E2945E45A7D /* Pods_Music_SyncUITests.framework */; };
 /* End PBXBuildFile section */
@@ -73,6 +74,7 @@
 		77AE56631EA83DD500D50089 /* Music SyncUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Music SyncUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77AE56671EA83DD500D50089 /* Music_SyncUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music_SyncUITests.swift; sourceTree = "<group>"; };
 		77AE56691EA83DD500D50089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		77B0F81C1EB3E9740090FE56 /* YoutubeConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeConstants.swift; sourceTree = "<group>"; };
 		77C188F31EB322BD00CC43C2 /* WaitingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
 		8B3268B19319B5C1841BD72C /* Pods_Music_Sync.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_Sync.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A964F31D42D2E2945E45A7D /* Pods_Music_SyncUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_SyncUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +154,7 @@
 		772444F81EA9734000D9D68E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				77B0F81C1EB3E9740090FE56 /* YoutubeConstants.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				77AE56481EA83DD400D50089 /* AppDelegate.swift in Sources */,
 				772444FE1EA9745B00D9D68E /* RoleSelectionViewController.swift in Sources */,
 				7724450A1EA97FDC00D9D68E /* GuestVideoViewController.swift in Sources */,
+				77B0F81D1EB3E9740090FE56 /* YoutubeConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
