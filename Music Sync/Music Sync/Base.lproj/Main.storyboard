@@ -317,10 +317,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3O0-wF-6yY">
-                                <rect key="frame" x="16" y="358" width="343" height="234"/>
+                                <rect key="frame" x="16" y="392" width="343" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="234" id="kqG-66-NWt"/>
+                                    <constraint firstAttribute="height" constant="200" id="f7Y-u6-fZA"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Aev-RR-OWE">
@@ -354,13 +354,13 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h5z-ka-eb3" customClass="YTPlayerView">
-                                <rect key="frame" x="36" y="84" width="303" height="145"/>
+                                <rect key="frame" x="36" y="84" width="303" height="186"/>
                                 <subviews>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CnE-ha-TPW" customClass="YTPlayerView">
-                                        <rect key="frame" x="0.0" y="0.0" width="303" height="147"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="303" height="188"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="CnE-ha-TPW" secondAttribute="height" multiplier="101:49" id="aVa-Xl-ySk"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="uTP-Iq-Ujt"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -371,12 +371,15 @@
                                 </constraints>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pWE-IN-Y42">
-                                <rect key="frame" x="34" y="308" width="307" height="31"/>
+                                <rect key="frame" x="34" y="342" width="307" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="SI0-Go-gkR"/>
+                                </constraints>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Global Delay" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59d-G3-fiY">
-                                <rect key="frame" x="139" y="251" width="96" height="37"/>
+                                <rect key="frame" x="139" y="292" width="96" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="hRw-Sx-VBV"/>
+                                    <constraint firstAttribute="height" constant="30" id="hRw-Sx-VBV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>

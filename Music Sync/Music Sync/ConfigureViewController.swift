@@ -24,8 +24,12 @@ class ConfigureViewController: ViewControllerBase {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let configs = ["playsinline": 1]
+        let configs = ["playsinline": 1,
+                       "autoplay": 1]
         youtubeWindow.load(withVideoId: "Sv3fxl6clfo", playerVars: configs)
+        //youtubeWindow.
+        //youtubeWindow.playVideo()
+        youtubeWindow.pauseVideo()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +38,7 @@ class ConfigureViewController: ViewControllerBase {
     }
     
     @IBAction func playAndSendConfigs(_ sender: UIButton) {
-        youtubeWindow.playVideo(at: 40)
+        youtubeWindow.playVideo()
         //youtubeWindow.playVideo()
     }
 
