@@ -21,7 +21,16 @@ class RoleSelectionViewController: ViewControllerBase {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let alert = UIAlertController(title: "Bluetooth Required",
+                                      message: "Please turn on Bluetooth.",
+                                      preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Dismiss",
+                                      style: UIAlertActionStyle.default,
+                                      handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     // MARK: - Navigation
 
