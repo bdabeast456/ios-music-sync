@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2586BF6D08473032C0BCFAE6 /* Pods_Music_SyncTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A65D184381C30E09F2041726 /* Pods_Music_SyncTests.framework */; };
 		48D2A51A70056425913875D1 /* Pods_Music_Sync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3268B19319B5C1841BD72C /* Pods_Music_Sync.framework */; };
+		6388808E1EB3C678002D135D /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6388808D1EB3C678002D135D /* Model.swift */; };
+		638880A31EB46C75002D135D /* DataPackets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638880A21EB46C75002D135D /* DataPackets.swift */; };
 		772444FA1EA9736200D9D68E /* ViewControllerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772444F91EA9736200D9D68E /* ViewControllerBase.swift */; };
 		772444FC1EA973EA00D9D68E /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772444FB1EA973EA00D9D68E /* StartViewController.swift */; };
 		772444FE1EA9745B00D9D68E /* RoleSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772444FD1EA9745B00D9D68E /* RoleSelectionViewController.swift */; };
@@ -51,6 +53,8 @@
 		4789E4C5A49B5CDD3D7261E6 /* Pods-Music Sync.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Sync.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Music Sync/Pods-Music Sync.debug.xcconfig"; sourceTree = "<group>"; };
 		543ED86D8C3B7CFA01282161 /* Pods-Music Sync.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music Sync.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music Sync/Pods-Music Sync.release.xcconfig"; sourceTree = "<group>"; };
 		5A3CF2852028AD14C73E9BA9 /* Pods-Music SyncTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music SyncTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Music SyncTests/Pods-Music SyncTests.release.xcconfig"; sourceTree = "<group>"; };
+		6388808D1EB3C678002D135D /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		638880A21EB46C75002D135D /* DataPackets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataPackets.swift; sourceTree = "<group>"; };
 		772444F91EA9736200D9D68E /* ViewControllerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerBase.swift; sourceTree = "<group>"; };
 		772444FB1EA973EA00D9D68E /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		772444FD1EA9745B00D9D68E /* RoleSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoleSelectionViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 		772444F81EA9734000D9D68E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6388808D1EB3C678002D135D /* Model.swift */,
+				638880A21EB46C75002D135D /* DataPackets.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -500,7 +506,9 @@
 				772444FA1EA9736200D9D68E /* ViewControllerBase.swift in Sources */,
 				772445061EA97F8200D9D68E /* HostConnectionViewController.swift in Sources */,
 				7724450E1EA9805700D9D68E /* ConfigureViewController.swift in Sources */,
+				638880A31EB46C75002D135D /* DataPackets.swift in Sources */,
 				772444FC1EA973EA00D9D68E /* StartViewController.swift in Sources */,
+				6388808E1EB3C678002D135D /* Model.swift in Sources */,
 				77AE564A1EA83DD400D50089 /* ViewController.swift in Sources */,
 				772445101EA981A600D9D68E /* NameSelectionViewController.swift in Sources */,
 				77C188F41EB322BD00CC43C2 /* WaitingViewController.swift in Sources */,
