@@ -8,14 +8,16 @@
 
 import UIKit
 import youtube_ios_player_helper
+import Timer
 
-class GuestVideoViewController: ViewControllerBase {
+class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
     var youtubeURL:String!
     @IBOutlet weak var youtubeView: YTPlayerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        youtubeView.delegate = self
         //self.navigationItem.leftBarButtonItem?.target = "goBackTwoControllers"
         
         let button:UIBarButtonItem = UIBarButtonItem(title: "To Host Selection", style: .plain, target: self, action: #selector(goBackTwoControllers))
@@ -23,7 +25,28 @@ class GuestVideoViewController: ViewControllerBase {
 
         // Do any additional setup after loading the view.
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let urlString = youtubeURL {
+            let urlSplit = urlString.components(separatedBy: "=")
+            let videoID = urlSplit[urlSplit.count - 1]
+            if youtubeView.load(withVideoId: videoID, playerVars: youtubeConfigs) {
+                youtubeView.setPlaybackQuality(.small)
+            }
+        }
+    }
+    
+    func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
+        switch(state) {
+        case YTPlayerState.queued:
+            //message model that we're ready
+            break
+        default:
+            break
+        }
+    }
+    
     func goBackTwoControllers() {
         let viewControllerList:[UIViewController] = (self.navigationController?.viewControllers)!
         self.navigationController?.popToViewController(viewControllerList[viewControllerList.count - 3], animated: true)
@@ -34,7 +57,9 @@ class GuestVideoViewController: ViewControllerBase {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func quitToRoleSelection(_ sender: UIButton) {
+    func scheduleVideoAt(_ timeToStart: Date) {
+        let videoTimer = Timer(fireAt: timeToStart, interval: 0, target: self, selector: #selector(youtubeView.playVideo), userInfo: nil, repeats: false)
+        RunLoop.main.add(videoTimer, forMode: RunLoopMode.commonModes)
     }
     
     /*
