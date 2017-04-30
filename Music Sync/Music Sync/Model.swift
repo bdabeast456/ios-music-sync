@@ -32,7 +32,6 @@ class Networker : NSObject {
             serviceType: serviceType);
         serviceBrowser = MCNearbyServiceBrowser(peer: peerID, serviceType: serviceType);
         baseSession = MCSession(peer: peerID);
-        super.init();
     }
     
     deinit {
