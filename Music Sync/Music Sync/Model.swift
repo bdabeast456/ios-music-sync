@@ -23,6 +23,7 @@ class Networker : NSObject {
     let serviceType : String = "music_service";
     
     init (_ displayName: String, _ discoveryInfo: [String:String]) {
+        super.init();
         peerID = MCPeerID(displayName: displayName);
         serviceAdvertiser = MCNearbyServiceAdvertiser(
             peer: peerID,
@@ -32,18 +33,21 @@ class Networker : NSObject {
         baseSession = MCSession(peer: peerID);
     }
     
+    deinit {
+        serviceAdvertiser.stopAdvertisingPeer();
+        serviceBrowser.stopBrowsingForPeers();
+        baseSession.disconnect();
+        super.deinit();
+    }
+    
     func startDiscovery () -> Void {
         serviceAdvertiser.startAdvertisingPeer();
         serviceBrowser.startBrowsingForPeers();
     }
     
-    deinit {
-        serviceAdvertiser.stopAdvertisingPeer();
-        serviceBrowser.stopBrowsingForPeers();
-        baseSession.disconnect();
+    func throwError (_ message: String) -> Void {
+        NSLog(message);
     }
-    
-    
 }
 
 class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
@@ -61,7 +65,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     //MCNearbyServiceAdvertiserDelegate
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
                     didNotStartAdvertisingPeer error: Error) {
-        
+        throwError("Error: Could not start MCNearbyServiceAdvertiser");
     }
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
                     didReceiveInvitationFromPeer peerID: MCPeerID,
@@ -73,7 +77,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     //MCNearbyServiceBrowserDelegate
     func browser(_ browser: MCNearbyServiceBrowser,
                  didNotStartBrowsingForPeers error: Error) {
-        
+        throwError("Error: Could not start MCNearbyServiceBrowser");
     }
     func browser(_ browser: MCNearbyServiceBrowser,
                  foundPeer peerID: MCPeerID,
@@ -109,10 +113,16 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                  didChange state: MCSessionState) {
         
     }
-    func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
+    func session(_ session: MCSession,
+                 didReceive stream: InputStream,
+                 withName streamName: String,
+                 fromPeer peerID: MCPeerID) {
         
     }
-    func session(_ session: MCSession, didReceiveCertificate certificate: [Any]?, fromPeer peerID: MCPeerID, certificateHandler: @escaping (Bool) -> Void) {
+    func session(_ session: MCSession,
+                 didReceiveCertificate certificate: [Any]?,
+                 fromPeer peerID: MCPeerID,
+                 certificateHandler: @escaping (Bool) -> Void) {
         
     }
     
@@ -120,7 +130,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
 
 class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
     
-    var connectedHost : MCPeerID?;
+    var invitations : Set<MCPeerID>;
     
     init (displayName : String) {
         connectedHost = nil;
@@ -131,8 +141,9 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
     }
     
     //MCNearbyServiceAdvertiserDelegate
-    func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didNotStartAdvertisingPeer error: Error) {
-        
+    func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
+                    didNotStartAdvertisingPeer error: Error) {
+        throwError("Error: Could not start MCNearbyServiceAdvertiser");
     }
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
                     didReceiveInvitationFromPeer peerID: MCPeerID,
@@ -144,7 +155,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
     //MCNearbyServiceBrowserDelegate
     func browser(_ browser: MCNearbyServiceBrowser,
                  didNotStartBrowsingForPeers error: Error) {
-        
+        throwError("Error: Could not start MCNearbyServiceBrowser");
     }
     func browser(_ browser: MCNearbyServiceBrowser,
                  foundPeer peerID: MCPeerID,
