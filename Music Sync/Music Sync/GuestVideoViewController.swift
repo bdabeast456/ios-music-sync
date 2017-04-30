@@ -11,8 +11,10 @@ import youtube_ios_player_helper
 import Foundation
 
 class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
-    var youtubeURL:String!
     @IBOutlet weak var youtubeWindow: YTPlayerView!
+    
+    var youtubeURL:String!
+    var videoTimer:Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,8 +60,8 @@ class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
     }
 
     func scheduleVideoAt(_ timeToStart: Date) {
-        let videoTimer = Timer(fireAt: timeToStart, interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false)
-        RunLoop.main.add(videoTimer, forMode: RunLoopMode.commonModes)
+        videoTimer = Timer(fireAt: timeToStart, interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false)
+        RunLoop.main.add(videoTimer!, forMode: RunLoopMode.commonModes)
     }
     
     func playVideoNow() {

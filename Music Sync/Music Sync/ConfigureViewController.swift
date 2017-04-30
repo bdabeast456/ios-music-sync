@@ -17,6 +17,7 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
     @IBOutlet weak var configTable: UITableView!
     
     //var model:Model!
+    //var videoTimer:Timer!
     var isPlaying = false
     var videoURL:String!
     
@@ -91,9 +92,8 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
     @IBAction func playAndSendConfigs(_ sender: UIButton) {
         if !isPlaying {
             /*
-            let timeToStart = model.activate()
-            let videoTimer = Timer(fireAt: timeToStart, interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false)
-            RunLoop.main.add(videoTimer, forMode: RunLoopMode.commonModes)
+            videoTimer = Timer(fireAt: model.activate(), interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false)
+            RunLoop.main.add(videoTimer!, forMode: RunLoopMode.commonModes)
             */
             youtubeWindow.playVideo()
         }

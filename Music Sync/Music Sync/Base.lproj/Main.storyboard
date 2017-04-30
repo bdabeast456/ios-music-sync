@@ -182,7 +182,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="592"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HostCellID" id="BUo-jo-pBa">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HostCellID" id="BUo-jo-pBa" customClass="HostTableViewCell" customModule="Music_Sync" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BUo-jo-pBa" id="6wu-lR-Sg8">
@@ -484,7 +484,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GuestCellID" id="rjn-St-Ek5">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GuestCellID" id="rjn-St-Ek5" customClass="GuestTableViewCell" customModule="Music_Sync" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rjn-St-Ek5" id="Zac-jp-8G1">
@@ -505,6 +505,9 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="kSq-a7-u5C" secondAttribute="trailing" constant="20" id="qLY-M2-5MP"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="hostName" destination="kSq-a7-u5C" id="3r1-xO-QX8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

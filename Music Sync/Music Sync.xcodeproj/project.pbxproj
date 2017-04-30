@@ -30,6 +30,8 @@
 		77AE56681EA83DD500D50089 /* Music_SyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AE56671EA83DD500D50089 /* Music_SyncUITests.swift */; };
 		77B0F81D1EB3E9740090FE56 /* YoutubeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B0F81C1EB3E9740090FE56 /* YoutubeConstants.swift */; };
 		77C188F41EB322BD00CC43C2 /* WaitingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C188F31EB322BD00CC43C2 /* WaitingViewController.swift */; };
+		77CFD7421EB5AB630038E554 /* HostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CFD7411EB5AB630038E554 /* HostTableViewCell.swift */; };
+		77CFD7441EB5AB750038E554 /* GuestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CFD7431EB5AB750038E554 /* GuestTableViewCell.swift */; };
 		C81D8B09CAA5FC285B2013A5 /* Pods_Music_SyncUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A964F31D42D2E2945E45A7D /* Pods_Music_SyncUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,8 @@
 		77AE56691EA83DD500D50089 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		77B0F81C1EB3E9740090FE56 /* YoutubeConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeConstants.swift; sourceTree = "<group>"; };
 		77C188F31EB322BD00CC43C2 /* WaitingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitingViewController.swift; sourceTree = "<group>"; };
+		77CFD7411EB5AB630038E554 /* HostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostTableViewCell.swift; sourceTree = "<group>"; };
+		77CFD7431EB5AB750038E554 /* GuestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuestTableViewCell.swift; sourceTree = "<group>"; };
 		8B3268B19319B5C1841BD72C /* Pods_Music_Sync.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_Sync.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A964F31D42D2E2945E45A7D /* Pods_Music_SyncUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_SyncUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A65D184381C30E09F2041726 /* Pods_Music_SyncTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music_SyncTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +164,8 @@
 		772444F81EA9734000D9D68E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				77CFD7411EB5AB630038E554 /* HostTableViewCell.swift */,
+				77CFD7431EB5AB750038E554 /* GuestTableViewCell.swift */,
 				776882761EB5702E007FD8F4 /* ConfigTableViewCell.swift */,
 				6388808D1EB3C678002D135D /* Model.swift */,
 				638880A21EB46C75002D135D /* DataPackets.swift */,
@@ -511,6 +517,7 @@
 				7724450C1EA9801300D9D68E /* ClipboardViewController.swift in Sources */,
 				772444FA1EA9736200D9D68E /* ViewControllerBase.swift in Sources */,
 				772445061EA97F8200D9D68E /* HostConnectionViewController.swift in Sources */,
+				77CFD7421EB5AB630038E554 /* HostTableViewCell.swift in Sources */,
 				7724450E1EA9805700D9D68E /* ConfigureViewController.swift in Sources */,
 				638880A31EB46C75002D135D /* DataPackets.swift in Sources */,
 				772444FC1EA973EA00D9D68E /* StartViewController.swift in Sources */,
@@ -518,6 +525,7 @@
 				77AE564A1EA83DD400D50089 /* ViewController.swift in Sources */,
 				772445101EA981A600D9D68E /* NameSelectionViewController.swift in Sources */,
 				77C188F41EB322BD00CC43C2 /* WaitingViewController.swift in Sources */,
+				77CFD7441EB5AB750038E554 /* GuestTableViewCell.swift in Sources */,
 				77AE56481EA83DD400D50089 /* AppDelegate.swift in Sources */,
 				772444FE1EA9745B00D9D68E /* RoleSelectionViewController.swift in Sources */,
 				776882771EB5702E007FD8F4 /* ConfigTableViewCell.swift in Sources */,
