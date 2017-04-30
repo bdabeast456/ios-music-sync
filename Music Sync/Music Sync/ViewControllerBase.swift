@@ -15,7 +15,7 @@ class ViewControllerBase: UIViewController, CBPeripheralManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
+        self.view.backgroundColor = UIColor.lightGray
 
         bluetoothManager = CBPeripheralManager(delegate: self, queue: nil, options: nil)
         

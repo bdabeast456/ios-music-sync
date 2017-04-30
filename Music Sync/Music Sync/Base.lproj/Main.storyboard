@@ -31,7 +31,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="Touch to Begin">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="ohc-VY-lgS" kind="show" identifier="StartToRoleSelectionSegue" id="VN2-KO-ERX"/>
@@ -598,9 +598,30 @@
                                     <action selector="tempButton:" destination="V3T-dR-HOl" eventType="touchUpInside" id="kso-ro-bgz"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="partyordie" translatesAutoresizingMaskIntoConstraints="NO" id="Rn4-aa-SUv">
+                                <rect key="frame" x="16" y="226.5" width="343" height="214"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Rn4-aa-SUv" secondAttribute="height" multiplier="80:50" id="zLT-0f-hgN"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Wait..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFF-le-ofd">
+                                <rect key="frame" x="36" y="441" width="303" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="sNB-iz-3o8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Rn4-aa-SUv" firstAttribute="leading" secondItem="DXh-Eh-GHZ" secondAttribute="leadingMargin" id="A3L-Zq-bgw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rn4-aa-SUv" secondAttribute="trailing" id="Abk-wq-hkZ"/>
+                            <constraint firstItem="PFF-le-ofd" firstAttribute="top" secondItem="Rn4-aa-SUv" secondAttribute="bottom" id="GnM-IC-XXZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PFF-le-ofd" secondAttribute="trailing" constant="20" id="Lwm-Bx-fpc"/>
+                            <constraint firstItem="PFF-le-ofd" firstAttribute="leading" secondItem="DXh-Eh-GHZ" secondAttribute="leadingMargin" constant="20" id="N10-9Y-ayn"/>
+                            <constraint firstItem="Rn4-aa-SUv" firstAttribute="centerY" secondItem="DXh-Eh-GHZ" secondAttribute="centerY" id="icz-uu-Bp4"/>
                             <constraint firstItem="s7e-y0-RqH" firstAttribute="leading" secondItem="DXh-Eh-GHZ" secondAttribute="leading" id="kQI-nM-B6Q"/>
                             <constraint firstAttribute="trailing" secondItem="s7e-y0-RqH" secondAttribute="trailing" id="mBa-sO-4UR"/>
                             <constraint firstItem="JJT-qz-ePw" firstAttribute="top" secondItem="s7e-y0-RqH" secondAttribute="bottom" constant="8" symbolic="YES" id="zFx-C0-C5G"/>
