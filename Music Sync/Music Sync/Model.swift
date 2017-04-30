@@ -121,8 +121,10 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     func session(_ session: MCSession,
                  didReceive data: Data,
                  fromPeer peerID: MCPeerID) {
-        
+        //Sending / Receiving Blocks of Data
     }
+    
+    
     
     
     //Unused Delegate Methods
@@ -130,26 +132,22 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                  didStartReceivingResourceWithName resourceName: String,
                  fromPeer peerID: MCPeerID,
                  with progress: Progress) {
-        
     }
     func session(_ session: MCSession,
                  didFinishReceivingResourceWithName resourceName: String,
                  fromPeer peerID: MCPeerID,
                  at localURL: URL,
                  withError error: Error?) {
-        
     }
     func session(_ session: MCSession,
                  didReceiveCertificate certificate: [Any]?,
                  fromPeer peerID: MCPeerID,
                  certificateHandler: @escaping (Bool) -> Void) {
-        
     }
     func session(_ session: MCSession,
                  didReceive stream: InputStream,
                  withName streamName: String,
                  fromPeer peerID: MCPeerID) {
-        
     }
     
 }
@@ -158,6 +156,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
     
     var invitingHosts : Array<MCPeerID> = Array<MCpeerID>();
     var invitationHandlers : Array<@escaping (Bool, MCSession?) -> Void> = Array<@escaping (Bool, MCSession?) -> Void>();
+    var chosenHost : MCPeerID? = nil;
     
     init (displayName : String) {
         super.init(displayName, ["ID":"GUEST"]);
@@ -167,11 +166,15 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
         startDiscovery();
     }
     
+    /* Become Discoverable */
     //MCNearbyServiceAdvertiserDelegate
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
                     didNotStartAdvertisingPeer error: Error) {
         throwError("Error: Could not start MCNearbyServiceAdvertiser");
     }
+    
+    /* Receive Invitations */
+    //MCNearbyServiceAdvertiserDelegate
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
                     didReceiveInvitationFromPeer peerID: MCPeerID,
                     withContext context: Data?,
@@ -188,45 +191,77 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
     func browser(_ browser: MCNearbyServiceBrowser,
                  foundPeer peerID: MCPeerID,
                  withDiscoveryInfo info: [String : String]?) {
+        //Do Nothing
     }
     func browser(_ browser: MCNearbyServiceBrowser,
                  lostPeer peerID: MCPeerID) {
+        //Do Nothing
     }
     
+    /* Accept one invitation */
+    func acceptInvitation (peerID: MCPeerID) {
+        var loc : Int = -1;
+        for i in 0..< invitingHosts.count {
+            if invitingHosts[i].equals(peerID) {
+                loc = i;
+            }
+        }
+        if loc == -1 { throwError("Error: Did not receive invitation from indicated host"); }
+        else {
+            for i in 0..< invitingHosts.count {
+                if i == loc {
+                    invitationHandlers[i](true, nil);
+                }
+                else {
+                    invitationHandlers[i](false, nil);
+                }
+            }
+        }
+    }
+    //MCSessionDelegate Methods
+    func session(_ session: MCSession,
+                 peer peerID: MCPeerID,
+                 didChange state: MCSessionState) {
+        if chosenHost == nil { return; }
+        if chosenHost! != peerID { return; }
+        if state == MCSessionState.notConnected {
+            throwError("Error: Host Disconnected.");
+        }
+    }
+    
+    /* Sending & Receiving Data */
     //MCSessionDelegate Methods
     func session(_ session: MCSession,
                  didReceive data: Data,
                  fromPeer peerID: MCPeerID) {
         
     }
+    
+    
+    
+    
+    
+    
+    //Unused Delegate Methods
     func session(_ session: MCSession,
                  didStartReceivingResourceWithName resourceName: String,
                  fromPeer peerID: MCPeerID,
                  with progress: Progress) {
-        
     }
     func session(_ session: MCSession,
                  didFinishReceivingResourceWithName resourceName: String,
                  fromPeer peerID: MCPeerID,
                  at localURL: URL,
                  withError error: Error?) {
-        
-    }
-    func session(_ session: MCSession,
-                 peer peerID: MCPeerID,
-                 didChange state: MCSessionState) {
-        
     }
     func session(_ session: MCSession,
                  didReceive stream: InputStream,
                  withName streamName: String,
                  fromPeer peerID: MCPeerID) {
-        
     }
     func session(_ session: MCSession,
                  didReceiveCertificate certificate: [Any]?,
                  fromPeer peerID: MCPeerID,
                  certificateHandler: @escaping (Bool) -> Void) {
-        
     }
 }
