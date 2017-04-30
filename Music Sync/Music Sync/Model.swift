@@ -45,6 +45,11 @@ class Networker : NSObject {
         serviceBrowser.startBrowsingForPeers();
     }
     
+    func endDiscovery () -> Void {
+        serviceAdvertiser.stopAdvertisingPeer();
+        serviceBrowser.stopBrowsingForPeers();
+    }
+    
     func throwError (_ message: String) -> Void {
         NSLog(message);
     }
@@ -52,16 +57,18 @@ class Networker : NSObject {
 
 class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
 
-    var connectedGuests : Set<MCPeerID>;
+    var discoveredGuests : Set<MCPeerID> = Set<MCPeerID>();
+    var finalGuests : Set<MCPeerID> = Set<MCPeerID>();
     
     init (displayName : String) {
-        connectedGuests = Set<MCPeerID>();
         super.init(displayName, ["ID":"HOST"]);
         serviceAdvertiser.delegate = self;
         serviceBrowser.delegate = self;
+        baseSession.delegate = self;
         startDiscovery();
     }
     
+    /* Discover Guests */
     //MCNearbyServiceAdvertiserDelegate
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
                     didNotStartAdvertisingPeer error: Error) {
@@ -71,7 +78,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                     didReceiveInvitationFromPeer peerID: MCPeerID,
                     withContext context: Data?,
                     invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        
+        throwError("Error: Host cannot respond to invitations");
     }
     
     //MCNearbyServiceBrowserDelegate
@@ -82,19 +89,43 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     func browser(_ browser: MCNearbyServiceBrowser,
                  foundPeer peerID: MCPeerID,
                  withDiscoveryInfo info: [String : String]?) {
-        
+        if info["ID"] == "HOST" {return;}
+        discoveredGuests.insert(peerID);
     }
     func browser(_ browser: MCNearbyServiceBrowser,
                  lostPeer peerID: MCPeerID) {
-        
+        if info["ID"] == "HOST" {return;}
+        discoveredGuests.remove(peerID);
     }
     
+    /* Invite Guests */
+    func sendInvitations (toGuests guests: Array<MCPeerID>) {
+        for peer in guests {
+            serviceBrowser.invitePeer(peer, to: baseSession, withContext: nil, timeout: 10);
+        }
+    }
+    //MCSessionDelegate Methods
+    func session(_ session: MCSession,
+                 peer peerID: MCPeerID,
+                 didChange state: MCSessionState) {
+        if state == MCSessionState.connected {
+            finalGuests.insert(peerID);
+        }
+        else if state == MCSessionState.notConnected {
+            finalGuests.remove(peerID);
+        }
+    }
+    
+    /* Comunicate with Guests */
     //MCSessionDelegate Methods
     func session(_ session: MCSession,
                  didReceive data: Data,
                  fromPeer peerID: MCPeerID) {
         
     }
+    
+    
+    //Unused Delegate Methods
     func session(_ session: MCSession,
                  didStartReceivingResourceWithName resourceName: String,
                  fromPeer peerID: MCPeerID,
@@ -109,8 +140,9 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
         
     }
     func session(_ session: MCSession,
-                 peer peerID: MCPeerID,
-                 didChange state: MCSessionState) {
+                 didReceiveCertificate certificate: [Any]?,
+                 fromPeer peerID: MCPeerID,
+                 certificateHandler: @escaping (Bool) -> Void) {
         
     }
     func session(_ session: MCSession,
@@ -119,24 +151,19 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                  fromPeer peerID: MCPeerID) {
         
     }
-    func session(_ session: MCSession,
-                 didReceiveCertificate certificate: [Any]?,
-                 fromPeer peerID: MCPeerID,
-                 certificateHandler: @escaping (Bool) -> Void) {
-        
-    }
     
 }
 
 class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
     
-    var invitations : Set<MCPeerID>;
+    var invitingHosts : Array<MCPeerID> = Array<MCpeerID>();
+    var invitationHandlers : Array<@escaping (Bool, MCSession?) -> Void> = Array<@escaping (Bool, MCSession?) -> Void>();
     
     init (displayName : String) {
-        connectedHost = nil;
         super.init(displayName, ["ID":"GUEST"]);
         serviceAdvertiser.delegate = self;
         serviceBrowser.delegate = self;
+        baseSession.delegate = self;
         startDiscovery();
     }
     
@@ -149,7 +176,8 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
                     didReceiveInvitationFromPeer peerID: MCPeerID,
                     withContext context: Data?,
                     invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        
+        invitingHosts.append(peerID);
+        invitationHandlers.append(invitationHandler);
     }
     
     //MCNearbyServiceBrowserDelegate
@@ -160,11 +188,9 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
     func browser(_ browser: MCNearbyServiceBrowser,
                  foundPeer peerID: MCPeerID,
                  withDiscoveryInfo info: [String : String]?) {
-        
     }
     func browser(_ browser: MCNearbyServiceBrowser,
                  lostPeer peerID: MCPeerID) {
-        
     }
     
     //MCSessionDelegate Methods
