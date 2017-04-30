@@ -8,16 +8,16 @@
 
 import UIKit
 import youtube_ios_player_helper
-import Timer
+import Foundation
 
 class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
     var youtubeURL:String!
-    @IBOutlet weak var youtubeView: YTPlayerView!
+    @IBOutlet weak var youtubeWindow: YTPlayerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        youtubeView.delegate = self
+        youtubeWindow.delegate = self
         //self.navigationItem.leftBarButtonItem?.target = "goBackTwoControllers"
         
         let button:UIBarButtonItem = UIBarButtonItem(title: "To Host Selection", style: .plain, target: self, action: #selector(goBackTwoControllers))
@@ -31,8 +31,8 @@ class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
         if let urlString = youtubeURL {
             let urlSplit = urlString.components(separatedBy: "=")
             let videoID = urlSplit[urlSplit.count - 1]
-            if youtubeView.load(withVideoId: videoID, playerVars: youtubeConfigs) {
-                youtubeView.setPlaybackQuality(.small)
+            if youtubeWindow.load(withVideoId: videoID, playerVars: youtubeConfigs) {
+                youtubeWindow.setPlaybackQuality(.small)
             }
         }
     }
@@ -58,8 +58,12 @@ class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
     }
 
     func scheduleVideoAt(_ timeToStart: Date) {
-        let videoTimer = Timer(fireAt: timeToStart, interval: 0, target: self, selector: #selector(youtubeView.playVideo), userInfo: nil, repeats: false)
+        let videoTimer = Timer(fireAt: timeToStart, interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false)
         RunLoop.main.add(videoTimer, forMode: RunLoopMode.commonModes)
+    }
+    
+    func playVideoNow() {
+        youtubeWindow.playVideo()
     }
     
     /*

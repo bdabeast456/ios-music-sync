@@ -178,12 +178,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ne0-VE-I22">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="584"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ne0-VE-I22">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="592"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="BUo-jo-pBa">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HostCellID" id="BUo-jo-pBa">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BUo-jo-pBa" id="6wu-lR-Sg8">
@@ -235,8 +234,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="eD3-bw-Wv0" firstAttribute="leading" secondItem="Rqm-y7-yff" secondAttribute="leadingMargin" id="9Rv-lB-taq"/>
+                            <constraint firstItem="eD3-bw-Wv0" firstAttribute="top" secondItem="Ne0-VE-I22" secondAttribute="bottom" id="CSC-Lw-tHs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eD3-bw-Wv0" secondAttribute="trailing" id="Ivh-rb-Fgu"/>
+                            <constraint firstItem="Ne0-VE-I22" firstAttribute="leading" secondItem="Rqm-y7-yff" secondAttribute="leading" id="RMz-Er-mGe"/>
                             <constraint firstItem="6rZ-yj-Uy9" firstAttribute="top" secondItem="eD3-bw-Wv0" secondAttribute="bottom" id="WB4-oc-Pc6"/>
+                            <constraint firstItem="Ne0-VE-I22" firstAttribute="centerX" secondItem="eD3-bw-Wv0" secondAttribute="centerX" id="YIJ-WF-qLO"/>
+                            <constraint firstItem="Ne0-VE-I22" firstAttribute="top" secondItem="Rqm-y7-yff" secondAttribute="top" id="rS4-V8-X4H"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -267,7 +270,7 @@
                                     <segue destination="AFU-M0-Vnc" kind="show" identifier="ClipboardToConfigureSegue" id="Y5b-9q-k4d"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOO-S3-6fn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOO-S3-6fn">
                                 <rect key="frame" x="35" y="333.5" width="304" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -323,7 +326,7 @@
                                     <constraint firstAttribute="height" constant="200" id="f7Y-u6-fZA"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Aev-RR-OWE">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConfigGuestID" id="Aev-RR-OWE" customClass="ConfigTableViewCell" customModule="Music_Sync" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aev-RR-OWE" id="wd9-6t-XrL">
@@ -332,6 +335,9 @@
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3Je-Vn-Kvb">
                                                     <rect key="frame" x="169.5" y="8" width="147.5" height="31"/>
+                                                    <connections>
+                                                        <action selector="setGuestDelay:" destination="Aev-RR-OWE" eventType="editingDidEnd" id="gjH-Rd-6Rq"/>
+                                                    </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="weT-kI-F9a">
                                                     <rect key="frame" x="28" y="5.5" width="143.5" height="30"/>
@@ -350,6 +356,9 @@
                                                 <constraint firstItem="3Je-Vn-Kvb" firstAttribute="width" secondItem="weT-kI-F9a" secondAttribute="width" id="oO7-FN-6FY"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="guestName" destination="weT-kI-F9a" id="TYF-LF-beH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -366,7 +375,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="leading" secondItem="h5z-ka-eb3" secondAttribute="leadingMargin" constant="-8" id="HGZ-10-hnp"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="h5z-ka-eb3" secondAttribute="trailing" constant="-8" id="oSk-UZ-p0i"/>
                                 </constraints>
                             </view>
@@ -414,6 +422,7 @@
                             <constraint firstItem="k6s-71-OT5" firstAttribute="leading" secondItem="qUf-Zc-OHG" secondAttribute="trailing" id="76k-SU-nXv"/>
                             <constraint firstItem="pWE-IN-Y42" firstAttribute="leading" secondItem="1QO-Sn-cgG" secondAttribute="leadingMargin" constant="20" id="9m4-jk-gq8"/>
                             <constraint firstItem="3O0-wF-6yY" firstAttribute="top" secondItem="pWE-IN-Y42" secondAttribute="bottom" constant="20" id="DfH-ev-nj7"/>
+                            <constraint firstItem="CnE-ha-TPW" firstAttribute="centerX" secondItem="1QO-Sn-cgG" secondAttribute="centerX" id="E3g-42-iim"/>
                             <constraint firstItem="qUf-Zc-OHG" firstAttribute="top" secondItem="3O0-wF-6yY" secondAttribute="bottom" id="ET2-g4-CgO"/>
                             <constraint firstItem="pWE-IN-Y42" firstAttribute="top" secondItem="59d-G3-fiY" secondAttribute="bottom" constant="20" id="Hom-tL-L0o"/>
                             <constraint firstAttribute="leadingMargin" secondItem="3O0-wF-6yY" secondAttribute="leading" id="KCZ-DL-4NE"/>
@@ -433,6 +442,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="configTable" destination="3O0-wF-6yY" id="Mcp-0P-W4a"/>
                         <outlet property="globalDelay" destination="pWE-IN-Y42" id="rBu-8M-ogD"/>
                         <outlet property="guestConfigTable" destination="3O0-wF-6yY" id="HIC-VL-IjV"/>
                         <outlet property="youtubeWindow" destination="CnE-ha-TPW" id="I5O-af-VG6"/>
@@ -474,7 +484,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rjn-St-Ek5">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GuestCellID" id="rjn-St-Ek5">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rjn-St-Ek5" id="Zac-jp-8G1">

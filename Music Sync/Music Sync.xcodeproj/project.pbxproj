@@ -20,6 +20,7 @@
 		7724450C1EA9801300D9D68E /* ClipboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7724450B1EA9801300D9D68E /* ClipboardViewController.swift */; };
 		7724450E1EA9805700D9D68E /* ConfigureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7724450D1EA9805700D9D68E /* ConfigureViewController.swift */; };
 		772445101EA981A600D9D68E /* NameSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7724450F1EA981A600D9D68E /* NameSelectionViewController.swift */; };
+		776882771EB5702E007FD8F4 /* ConfigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776882761EB5702E007FD8F4 /* ConfigTableViewCell.swift */; };
 		77AE56481EA83DD400D50089 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AE56471EA83DD400D50089 /* AppDelegate.swift */; };
 		77AE564A1EA83DD400D50089 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AE56491EA83DD400D50089 /* ViewController.swift */; };
 		77AE564D1EA83DD400D50089 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77AE564B1EA83DD400D50089 /* Main.storyboard */; };
@@ -65,6 +66,7 @@
 		7724450B1EA9801300D9D68E /* ClipboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipboardViewController.swift; sourceTree = "<group>"; };
 		7724450D1EA9805700D9D68E /* ConfigureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureViewController.swift; sourceTree = "<group>"; };
 		7724450F1EA981A600D9D68E /* NameSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameSelectionViewController.swift; sourceTree = "<group>"; };
+		776882761EB5702E007FD8F4 /* ConfigTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigTableViewCell.swift; sourceTree = "<group>"; };
 		77AE56441EA83DD400D50089 /* Music Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Sync.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77AE56471EA83DD400D50089 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77AE56491EA83DD400D50089 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		772444F81EA9734000D9D68E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				776882761EB5702E007FD8F4 /* ConfigTableViewCell.swift */,
 				6388808D1EB3C678002D135D /* Model.swift */,
 				638880A21EB46C75002D135D /* DataPackets.swift */,
 				77B0F81C1EB3E9740090FE56 /* YoutubeConstants.swift */,
@@ -517,6 +520,7 @@
 				77C188F41EB322BD00CC43C2 /* WaitingViewController.swift in Sources */,
 				77AE56481EA83DD400D50089 /* AppDelegate.swift in Sources */,
 				772444FE1EA9745B00D9D68E /* RoleSelectionViewController.swift in Sources */,
+				776882771EB5702E007FD8F4 /* ConfigTableViewCell.swift in Sources */,
 				7724450A1EA97FDC00D9D68E /* GuestVideoViewController.swift in Sources */,
 				77B0F81D1EB3E9740090FE56 /* YoutubeConstants.swift in Sources */,
 			);

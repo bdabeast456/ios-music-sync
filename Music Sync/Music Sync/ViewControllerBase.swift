@@ -7,13 +7,18 @@
 //
 
 import UIKit
+import CoreBluetooth
 
-class ViewControllerBase: UIViewController {
+class ViewControllerBase: UIViewController, CBPeripheralManagerDelegate {
+    
+    var bluetoothManager: CBPeripheralManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
 
+        bluetoothManager = CBPeripheralManager(delegate: self, queue: nil, options: nil)
+        
         // Do any additional setup after loading the view.
     }
 
@@ -22,7 +27,23 @@ class ViewControllerBase: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
+        switch(peripheral.state) {
+        case CBManagerState.poweredOff:
+            let alert = UIAlertController(title: "Bluetooth Required",
+                                          message: "Please turn on Bluetooth",
+                                          preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Dismiss",
+                                          style: UIAlertActionStyle.default,
+                                          handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            break
+        default:
+            break
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 

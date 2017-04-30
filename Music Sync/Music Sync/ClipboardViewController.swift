@@ -48,7 +48,6 @@ class ClipboardViewController: ViewControllerBase {
         // Pass the selected object to the new view controller.
         if let dest = segue.destination as? ConfigureViewController {
             if let urlText = urlLabel.text {
-                print(urlText)
                 dest.videoURL = urlText
             }
         }
