@@ -13,6 +13,8 @@ enum MultipeerError : Error {
     case RuntimeError(String)
 }
 
+
+
 class Networker : NSObject {
     
     var peerID : MCPeerID;
@@ -117,6 +119,9 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     }
     
     /* Comunicate with Guests */
+    func getTimeDelays () {
+        
+    }
     //MCSessionDelegate Methods
     func session(_ session: MCSession,
                  didReceive data: Data,
@@ -210,10 +215,10 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
         else {
             for i in 0..< invitingHosts.count {
                 if i == loc {
-                    invitationHandlers[i](true, nil);
+                    invitationHandlers[i](true, baseSession);
                 }
                 else {
-                    invitationHandlers[i](false, nil);
+                    invitationHandlers[i](false, baseSession);
                 }
             }
         }
