@@ -9,8 +9,10 @@
 import UIKit
 
 class GuestTableViewCell: UITableViewCell {
-
     @IBOutlet weak var hostName: UILabel!
+    
+    //var model:Model!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
