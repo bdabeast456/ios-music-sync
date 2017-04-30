@@ -25,7 +25,6 @@ class Networker : NSObject {
     let serviceType : String = "music_service";
     
     init (_ displayName: String, _ discoveryInfo: [String:String]) {
-        super.init();
         peerID = MCPeerID(displayName: displayName);
         serviceAdvertiser = MCNearbyServiceAdvertiser(
             peer: peerID,
@@ -33,13 +32,14 @@ class Networker : NSObject {
             serviceType: serviceType);
         serviceBrowser = MCNearbyServiceBrowser(peer: peerID, serviceType: serviceType);
         baseSession = MCSession(peer: peerID);
+        super.init();
     }
     
     deinit {
         serviceAdvertiser.stopAdvertisingPeer();
         serviceBrowser.stopBrowsingForPeers();
         baseSession.disconnect();
-        super.deinit();
+        //super.deinit(); LOOK AT THIS
     }
     
     func startDiscovery () -> Void {
@@ -91,12 +91,12 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     func browser(_ browser: MCNearbyServiceBrowser,
                  foundPeer peerID: MCPeerID,
                  withDiscoveryInfo info: [String : String]?) {
-        if info["ID"] == "HOST" {return;}
+        if info!["ID"] == "HOST" {return;}
         discoveredGuests.insert(peerID);
     }
     func browser(_ browser: MCNearbyServiceBrowser,
                  lostPeer peerID: MCPeerID) {
-        if info["ID"] == "HOST" {return;}
+        //if info!["ID"] == "HOST" {return;} LOOK AT THIS
         discoveredGuests.remove(peerID);
     }
     
@@ -159,8 +159,8 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
 
 class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
     
-    var invitingHosts : Array<MCPeerID> = Array<MCpeerID>();
-    var invitationHandlers : Array<@escaping (Bool, MCSession?) -> Void> = Array<@escaping (Bool, MCSession?) -> Void>();
+    var invitingHosts : Array<MCPeerID> = Array<MCPeerID>();
+    var invitationHandlers : Array<(Bool, MCSession?) -> Void> = Array<(Bool, MCSession?) -> Void>();
     var chosenHost : MCPeerID? = nil;
     
     init (displayName : String) {
@@ -206,14 +206,14 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
     /* Accept one invitation */
     func acceptInvitation (peerID: MCPeerID) {
         var loc : Int = -1;
-        for i in 0..< invitingHosts.count {
-            if invitingHosts[i].equals(peerID) {
+        for i in 0..<invitingHosts.count {
+            if invitingHosts[i].isEqual(peerID) {
                 loc = i;
             }
         }
         if loc == -1 { throwError("Error: Did not receive invitation from indicated host"); }
         else {
-            for i in 0..< invitingHosts.count {
+            for i in 0..<invitingHosts.count {
                 if i == loc {
                     invitationHandlers[i](true, baseSession);
                 }
