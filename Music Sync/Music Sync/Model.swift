@@ -13,8 +13,6 @@ enum MultipeerError : Error {
     case RuntimeError(String)
 }
 
-
-
 class Networker : NSObject {
     
     var peerID : MCPeerID;
@@ -22,9 +20,12 @@ class Networker : NSObject {
     var serviceBrowser : MCNearbyServiceBrowser;
     var baseSession : MCSession;
     
+    var baseVC : ViewControllerBase;
+    
     let serviceType : String = "music_service";
     
-    init (_ displayName: String, _ discoveryInfo: [String:String]) {
+    init (_ displayName: String, _ discoveryInfo: [String:String], _ baseVC: ViewControllerBase) {
+        self.baseVC = baseVC;
         peerID = MCPeerID(displayName: displayName);
         serviceAdvertiser = MCNearbyServiceAdvertiser(
             peer: peerID,
@@ -38,7 +39,6 @@ class Networker : NSObject {
         serviceAdvertiser.stopAdvertisingPeer();
         serviceBrowser.stopBrowsingForPeers();
         baseSession.disconnect();
-        //super.deinit(); LOOK AT THIS
     }
     
     func startDiscovery () -> Void {
@@ -58,11 +58,21 @@ class Networker : NSObject {
 
 class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
 
-    var discoveredGuests : Set<MCPeerID> = Set<MCPeerID>();
-    var finalGuests : Set<MCPeerID> = Set<MCPeerID>();
+    var discoveredGuests : Array<MCPeerID> = Array<MCPeerID>();
+    var finalGuests : Array<MCPeerID> = Array<MCPeerID>();
     
-    init (displayName : String) {
-        super.init(displayName, ["ID":"HOST"]);
+    //Time Calibration Data: Array Entries correspond to guests in order of final/discovered guests.
+    private var calibrationPointer: Int = 0;
+    private var calibrationQueries: Array<NSDate> = [];         //Initial times sent to guests.
+    private var calibrationResponses: Array<NSDate> = [];       //Time at which we received guest response.
+    private var calibrationContent: Array<NSDate> = [];         //Guest's clock response.
+    private var calibrationDeltas: Array<TimeInterval> = [];    //Final calculated guest clock deltas.
+    
+    var youTubeLink : String? = nil;
+    var youTubePlayTime : NSDate? = nil;
+    
+    init (displayName : String, baseVC: ViewControllerBase) {
+        super.init(displayName, ["ID":"HOST"], baseVC);
         serviceAdvertiser.delegate = self;
         serviceBrowser.delegate = self;
         baseSession.delegate = self;
@@ -81,7 +91,6 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                     invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         throwError("Error: Host cannot respond to invitations");
     }
-    
     //MCNearbyServiceBrowserDelegate
     func browser(_ browser: MCNearbyServiceBrowser,
                  didNotStartBrowsingForPeers error: Error) {
@@ -90,13 +99,21 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     func browser(_ browser: MCNearbyServiceBrowser,
                  foundPeer peerID: MCPeerID,
                  withDiscoveryInfo info: [String : String]?) {
-        if info!["ID"] == "HOST" {return;}
-        discoveredGuests.insert(peerID);
+        do {
+            if info!["ID"] == "HOST" {return;}
+            discoveredGuests.append(peerID);
+        }
+        catch is NSError {
+            throwError("Invalid Guest Detected: Missing discovery info.");
+        }
     }
     func browser(_ browser: MCNearbyServiceBrowser,
                  lostPeer peerID: MCPeerID) {
-        //if info!["ID"] == "HOST" {return;} LOOK AT THIS
-        discoveredGuests.remove(peerID);
+        for i in 0..<discoveredGuests.count {
+            if discoveredGuests[i].isEqual(peerID) {
+                discoveredGuests.remove(at: i);
+            }
+        }
     }
     
     /* Invite Guests */
@@ -110,23 +127,141 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                  peer peerID: MCPeerID,
                  didChange state: MCSessionState) {
         if state == MCSessionState.connected {
-            finalGuests.insert(peerID);
+            finalGuests.append(peerID);
         }
         else if state == MCSessionState.notConnected {
-            finalGuests.remove(peerID);
+            for i in 0..<finalGuests.count {
+                if finalGuests[i].isEqual(peerID) {
+                    finalGuests.remove(at: i);
+                    if calibrationPointer > i {
+                        calibrationQueries.remove(at: i);
+                        calibrationResponses.remove(at: i);
+                        calibrationContent.remove(at: i);
+                        calibrationDeltas.remove(at: i);
+                        calibrationPointer -= 1;
+                    }
+                }
+            }
         }
     }
     
     /* Comunicate with Guests */
-    func getTimeDelays () {
-        
-    }
     //MCSessionDelegate Methods
     func session(_ session: MCSession,
                  didReceive data: Data,
                  fromPeer peerID: MCPeerID) {
-        //Sending / Receiving Blocks of Data
+        if data.first == nil {
+            throwError("Host received invalid Data object in session.");
+        }
+        else if data.first! == MessageClass.timeCalibration.rawValue {
+            //Time string received from guest in response to getTimeDelays() initial call.
+            do {
+                let received: TimeCalibration = try TimeCalibration(data as NSData);
+                calibrationResponses.append(NSDate());
+                calibrationContent.append(received.date);
+                if calibrationPointer < finalGuests.count - 1 {
+                    calibrationPointer += 1;
+                    let toSend: NSDate = NSDate();
+                    calibrationQueries.append(toSend);
+                    try baseSession.send(TimeCalibration(toSend).export() as Data, toPeers: [finalGuests[calibrationPointer]], with: MCSessionSendDataMode.reliable);
+                }
+                else {
+                    calibrationPointer += 1;
+                    finalizeDeltas();
+                }
+            }
+            catch is NSError {
+                throwError("Error Decoding TimeCalibration Data Packet");
+            }
+        }
+        else if data.first! == MessageClass.youtubeLink.rawValue {
+            //YouTubeLink data received from guests.
+            //  ... should never occur.
+            throwError("Received youtube link from guests - Unexpected Data");
+        }
+        else if data.first! == MessageClass.timePlaying.rawValue {
+            //TimeToPlay data received from guests.
+            //  ... should never occur.
+            throwError("Received TimeToPlay data from guests - Unexpected Data");
+        }
+        else if data.first! == MessageClass.stopMessage.rawValue {
+            //StopMessage data received from guests.
+            //  ... shoudl never occur.
+            throwError("Received StopMessage from guests - Unexpected Data");
+        }
     }
+    /** 
+     * Initiates the time calibration process.
+     *      Sends time data to first guest, initiating a chain reaction in which all guests
+     *      are eventually contacted and their ping times recorded.
+     */
+    func getTimeDelays () {
+        calibrationPointer = 0;
+        do {
+            let toSend: NSDate = NSDate();
+            calibrationQueries.append(toSend);
+            try baseSession.send(TimeCalibration(toSend).export() as Data, toPeers: [finalGuests[0]], with: MCSessionSendDataMode.reliable);
+        }
+        catch is NSError {
+            throwError("Error Sending Time Calibrations.");
+        }
+    }
+    private func finalizeDeltas () {
+        for i in 0..<finalGuests.count {
+            let ping: TimeInterval = calibrationResponses[i].timeIntervalSince(calibrationQueries[i] as Date)/2;
+            calibrationDeltas[i] = calibrationContent[i].timeIntervalSince(calibrationQueries[i] as Date) - ping;
+        }
+    }
+    /**
+     * Sends the youtube video address to all guests.
+     */
+    func sendYouTubeAddress (_ toSend: String) {
+        do {
+            try baseSession.send(YouTubeLink(toSend).export() as Data, toPeers: finalGuests, with: MCSessionSendDataMode.reliable);
+        }
+        catch is NSError {
+            throwError("Error Sending YouTubeAddress Object");
+        }
+    }
+    /**
+     * Returns the mininmum delay required to synchronize the playing of a YouTube video
+     * as a function of maximum ping time among devices.
+     */
+    func getMinDelay () -> TimeInterval {
+        var sum: Double = 0;
+        for i in 0..<finalGuests.count {
+            sum += calibrationDeltas[i]*1.2*2;
+        }
+        return sum;
+    }
+    /**
+     * Sends corrected play times to each guest.
+     * Through this method, guests receive the time at which to play the YouTube Video.
+     * Guests are then expected to play the YouTube video at the specified time.
+     */
+    func sendPlayTimes (_ globalDelay: TimeInterval, _ individualDelays: Array<TimeInterval>) {
+        let globalDelay = getMinDelay();
+        for i in 0..<finalGuests.count {
+            do {
+                try baseSession.send(TimePlaying(NSDate().addingTimeInterval(calibrationDeltas[i]+globalDelay+individualDelays[i])).export() as Data, toPeers: [finalGuests[i]], with: MCSessionSendDataMode.reliable);
+            }
+            catch is NSError {
+                throwError("Error Sending Play Times");
+            }
+        }
+    }
+    /**
+     * Sends the stop message to all guests.
+     */
+    func stopGuests () {
+        do {
+            try baseSession.send(StopMessage().export() as Data, toPeers: finalGuests, with: MCSessionSendDataMode.reliable);
+        }
+        catch is NSError {
+            throwError("Error Sending StopMessage Object");
+        }
+    }
+    
     
     
     
@@ -160,10 +295,14 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
     
     var invitingHosts : Array<MCPeerID> = Array<MCPeerID>();
     var invitationHandlers : Array<(Bool, MCSession?) -> Void> = Array<(Bool, MCSession?) -> Void>();
+    
     var chosenHost : MCPeerID? = nil;
     
-    init (displayName : String) {
-        super.init(displayName, ["ID":"GUEST"]);
+    var youTubeLink : String? = nil;
+    var youTubePlayTime : NSDate? = nil;
+    
+    init (displayName : String, baseVC: ViewControllerBase) {
+        super.init(displayName, ["ID":"GUEST"], baseVC);
         serviceAdvertiser.delegate = self;
         serviceBrowser.delegate = self;
         baseSession.delegate = self;
@@ -238,7 +377,40 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
     func session(_ session: MCSession,
                  didReceive data: Data,
                  fromPeer peerID: MCPeerID) {
-        
+        if data.first == nil {
+            throwError("Host received invalid Data object in session.");
+        }
+        else if data.first! == MessageClass.timeCalibration.rawValue {
+            //Time String Received -- Responds by sending a corresponding timeCalibration.
+            do {
+                try baseSession.send(TimeCalibration(NSDate()).export() as Data, toPeers: [chosenHost!], with: MCSessionSendDataMode.reliable);
+            }
+            catch is NSError {
+                throwError("Guest cannot parse TimeCalibration TimeString");
+            }
+        }
+        else if data.first! == MessageClass.youtubeLink.rawValue {
+            //YouTubeLink Received -- Responds by storing the YouTube video link.
+            do {
+                youTubeLink = try YouTubeLink(data as NSData).link;
+            }
+            catch is NSError {
+                throwError("Guest cannot parse YouTube Link.");
+            }
+        }
+        else if data.first! == MessageClass.timePlaying.rawValue {
+            //YouTube Play Time received
+            do {
+                youTubePlayTime = try TimePlaying(data as NSData).date;
+            }
+            catch is NSError {
+                throwError("Guest cannot parse YouTube Play Time.");
+            }
+        }
+        else if data.first! == MessageClass.stopMessage.rawValue {
+            //Guest stops playing immediately.
+            
+        }
     }
     
     

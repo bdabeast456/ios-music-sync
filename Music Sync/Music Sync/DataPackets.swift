@@ -14,8 +14,10 @@ protocol Communicable {
 }
 
 enum MessageClass : UInt8 {
-    case timeString = 0
-    case youtubeLink = 1
+    case timeCalibration = 0;
+    case timePlaying = 1;
+    case youtubeLink = 2;
+    case stopMessage = 3;
 }
 
 enum DataError : Error {
@@ -24,21 +26,16 @@ enum DataError : Error {
 
 class TimeString : Communicable {
     
-    private var date : NSDate
+    public var date : NSDate
     private static let FORMATTER : DateFormatter = getFormatter();
     
     required init (_ data: NSData) throws {
-        let header : UInt8? = (data as Data).first;
         let substring : String? = String(data: data.subdata(with: NSRange(location: 1, length: data.length - 1)),
                                          encoding: String.Encoding.utf8);
-        if header == nil || substring == nil {
+        if substring == nil {
             throw DataError.RuntimeError("TimeString Constructor Error: Malformatted Data Object: Missing Fields");
         }
-        let headerU : UInt8 = header!;
         let substringU : String = substring!;
-        if headerU != MessageClass.timeString.rawValue {
-            throw DataError.RuntimeError("TimeString Constructor Error: Invalid Data Object: Incompatible Class");
-        }
         let date : Date? = TimeString.FORMATTER.date(from: substringU);
         if date == nil {
             throw DataError.RuntimeError("TimeString Constructor Error: Unparsable Date");
@@ -46,17 +43,17 @@ class TimeString : Communicable {
         self.date = (date!) as NSDate;
     }
     
+    init (_ date: NSDate) {
+        self.date = date;
+    }
+    
     func export () throws -> NSData {
-        var toReturn = Data();
-        let typeRep = MessageClass.timeString.rawValue;
-        toReturn.append(typeRep);
         let contents : String = TimeString.FORMATTER.string(from: date as Date);
-        let toAppend : Data? = contents.data(using: String.Encoding.utf8);
-        if toAppend == nil {
+        let toReturn : Data? = contents.data(using: String.Encoding.utf8);
+        if toReturn == nil {
             throw DataError.RuntimeError("TimeString Export Error: Unparsable Date");
         }
-        toReturn.append(toAppend!);
-        return toReturn as NSData;
+        return toReturn! as NSData;
     }
     
     private static func getFormatter () -> DateFormatter {
@@ -66,9 +63,60 @@ class TimeString : Communicable {
     }
 }
 
+class TimeCalibration : TimeString {
+    required init (_ data: NSData) throws {
+        let header : UInt8? = (data as Data).first;
+        if header == nil {
+            throw DataError.RuntimeError("TimeCalibration Constructor Error: Malformatted Data Object: Missing Fields");
+        }
+        let headerU : UInt8 = header!;
+        if headerU != MessageClass.timeCalibration.rawValue {
+            throw DataError.RuntimeError("TimeString Constructor Error: Invalid Data Object: Incompatible Class");
+        }
+        try super.init(data);
+    }
+    
+    override init (_ date: NSDate) {
+        super.init(date);
+    }
+    
+    override func export () throws -> NSData {
+        var toReturn = Data();
+        let typeRep = MessageClass.timeCalibration.rawValue;
+        toReturn.append(typeRep);
+        toReturn.append(try super.export() as Data);
+        return toReturn as NSData;
+    }
+}
+class TimePlaying : TimeString {
+    required init (_ data: NSData) throws {
+        let header : UInt8? = (data as Data).first;
+        if header == nil {
+            throw DataError.RuntimeError("TimeCalibration Constructor Error: Malformatted Data Object: Missing Fields");
+        }
+        let headerU : UInt8 = header!;
+        if headerU != MessageClass.timePlaying.rawValue {
+            throw DataError.RuntimeError("TimeString Constructor Error: Invalid Data Object: Incompatible Class");
+        }
+        try super.init(data);
+    }
+    
+    override init (_ date: NSDate) {
+        super.init(date);
+    }
+    
+    override func export () throws -> NSData {
+        var toReturn = Data();
+        let typeRep = MessageClass.timePlaying.rawValue;
+        toReturn.append(typeRep);
+        toReturn.append(try super.export() as Data);
+        return toReturn as NSData;
+    }
+}
+
 class YouTubeLink : Communicable {
     
-    private var link : String;
+    var link : String;
     
     required init (_ data: NSData) throws {
         let header : UInt8? = (data as Data).first;
@@ -85,6 +133,10 @@ class YouTubeLink : Communicable {
         link = substringU;
     }
     
+    init (_ link: String) {
+        self.link = link;
+    }
+    
     func export () throws -> NSData {
         var toReturn : Data = Data();
         let typeRep : UInt8 = MessageClass.youtubeLink.rawValue;
@@ -94,6 +146,26 @@ class YouTubeLink : Communicable {
             throw DataError.RuntimeError("YouTubeLink Export Error: Unparsable Data");
         }
         toReturn.append(toAppend!);
+        return toReturn as NSData;
+    }
+}
+
+class StopMessage : Communicable {
+    required init (_ data: NSData) throws {
+        let header: UInt8? = (data as Data).first;
+        if header == nil {
+            throw DataError.RuntimeError("StopMessage Constructor Error: Malformatted Data Object: Missing Fields");
+        }
+        let headerU: UInt8 = header!;
+        if headerU != MessageClass.stopMessage.rawValue {
+            throw DataError.RuntimeError("StopMessage Constructor Error: Invalid Data Object: Incompatible Class");
+        }
+    }
+    init () {}
+    func export () throws -> NSData {
+        var toReturn: Data = Data();
+        let typeRep: UInt8 = MessageClass.stopMessage.rawValue;
+        toReturn.append(typeRep);
         return toReturn as NSData;
     }
 }
