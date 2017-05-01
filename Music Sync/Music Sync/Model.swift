@@ -67,6 +67,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     private var calibrationResponses: Array<NSDate> = [];       //Time at which we received guest response.
     private var calibrationContent: Array<NSDate> = [];         //Guest's clock response.
     private var calibrationDeltas: Array<TimeInterval> = [];    //Final calculated guest clock deltas.
+    private var calibrationFinalized: Bool = false;
     
     var youTubeLink : String? = nil;
     var youTubePlayTime : NSDate? = nil;
@@ -167,6 +168,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                 }
                 else {
                     calibrationPointer += 1;
+                    calibrationFinalized = true;
                     finalizeDeltas();
                 }
             }
@@ -197,6 +199,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
      */
     func getTimeDelays () {
         calibrationPointer = 0;
+        calibrationFinalized = false;
         do {
             let toSend: NSDate = NSDate();
             calibrationQueries.append(toSend);
