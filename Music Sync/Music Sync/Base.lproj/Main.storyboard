@@ -31,7 +31,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="Touch to Begin">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="ohc-VY-lgS" kind="show" identifier="StartToRoleSelectionSegue" id="VN2-KO-ERX"/>
@@ -190,32 +190,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6I-1X-TeC">
-                                                    <rect key="frame" x="28" y="8" width="271" height="28"/>
+                                                    <rect key="frame" x="166.5" y="8" width="42" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wT1-oL-8p9">
-                                                    <rect key="frame" x="319" y="8" width="28" height="28"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="wT1-oL-8p9" secondAttribute="height" multiplier="1:1" id="fPt-m0-3l9"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <state key="normal" title="Kick">
-                                                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="wT1-oL-8p9" firstAttribute="leading" secondItem="n6I-1X-TeC" secondAttribute="trailing" constant="20" id="5w9-E3-DKf"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="n6I-1X-TeC" secondAttribute="bottom" id="LFO-jr-A6c"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="wT1-oL-8p9" secondAttribute="trailing" constant="20" id="U4x-kH-zIM"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="wT1-oL-8p9" secondAttribute="bottom" id="UD6-TW-UFk"/>
+                                                <constraint firstItem="n6I-1X-TeC" firstAttribute="centerX" secondItem="6wu-lR-Sg8" secondAttribute="centerX" id="R8f-wY-39y"/>
                                                 <constraint firstAttribute="topMargin" secondItem="n6I-1X-TeC" secondAttribute="top" id="Wqd-8E-63J"/>
-                                                <constraint firstItem="wT1-oL-8p9" firstAttribute="top" secondItem="6wu-lR-Sg8" secondAttribute="topMargin" id="fwI-iI-Hc6"/>
-                                                <constraint firstItem="n6I-1X-TeC" firstAttribute="leading" secondItem="6wu-lR-Sg8" secondAttribute="leadingMargin" constant="20" id="jD2-KU-C9I"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="guestName" destination="n6I-1X-TeC" id="0kf-pS-8HB"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -242,6 +231,9 @@
                             <constraint firstItem="Ne0-VE-I22" firstAttribute="top" secondItem="Rqm-y7-yff" secondAttribute="top" id="rS4-V8-X4H"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="availableGuestTable" destination="Ne0-VE-I22" id="Rrd-aw-C18"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F2M-gk-IGW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -534,6 +526,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="availableHostTable" destination="Hev-B2-3HA" id="SDa-hX-L0U"/>
                         <segue destination="V3T-dR-HOl" kind="show" identifier="GuestToWaitingSegue" id="wgf-B7-Ebh"/>
                     </connections>
                 </viewController>
@@ -598,9 +591,30 @@
                                     <action selector="tempButton:" destination="V3T-dR-HOl" eventType="touchUpInside" id="kso-ro-bgz"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="partyordie" translatesAutoresizingMaskIntoConstraints="NO" id="Rn4-aa-SUv">
+                                <rect key="frame" x="16" y="226.5" width="343" height="214"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Rn4-aa-SUv" secondAttribute="height" multiplier="80:50" id="zLT-0f-hgN"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Wait..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFF-le-ofd">
+                                <rect key="frame" x="36" y="441" width="303" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="sNB-iz-3o8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Rn4-aa-SUv" firstAttribute="leading" secondItem="DXh-Eh-GHZ" secondAttribute="leadingMargin" id="A3L-Zq-bgw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Rn4-aa-SUv" secondAttribute="trailing" id="Abk-wq-hkZ"/>
+                            <constraint firstItem="PFF-le-ofd" firstAttribute="top" secondItem="Rn4-aa-SUv" secondAttribute="bottom" id="GnM-IC-XXZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PFF-le-ofd" secondAttribute="trailing" constant="20" id="Lwm-Bx-fpc"/>
+                            <constraint firstItem="PFF-le-ofd" firstAttribute="leading" secondItem="DXh-Eh-GHZ" secondAttribute="leadingMargin" constant="20" id="N10-9Y-ayn"/>
+                            <constraint firstItem="Rn4-aa-SUv" firstAttribute="centerY" secondItem="DXh-Eh-GHZ" secondAttribute="centerY" id="icz-uu-Bp4"/>
                             <constraint firstItem="s7e-y0-RqH" firstAttribute="leading" secondItem="DXh-Eh-GHZ" secondAttribute="leading" id="kQI-nM-B6Q"/>
                             <constraint firstAttribute="trailing" secondItem="s7e-y0-RqH" secondAttribute="trailing" id="mBa-sO-4UR"/>
                             <constraint firstItem="JJT-qz-ePw" firstAttribute="top" secondItem="s7e-y0-RqH" secondAttribute="bottom" constant="8" symbolic="YES" id="zFx-C0-C5G"/>

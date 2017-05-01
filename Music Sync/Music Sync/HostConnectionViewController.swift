@@ -8,11 +8,16 @@
 
 import UIKit
 
-class HostConnectionViewController: ViewControllerBase {
+class HostConnectionViewController: ViewControllerBase, UITableViewDelegate, UITableViewDataSource {
+    @IBOutlet weak var availableGuestTable: UITableView!
+    
+    //var model:Model!
     var hostName:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        availableGuestTable.delegate = self
+        availableGuestTable.dataSource = self
 
         // Do any additional setup after loading the view.
     }
@@ -22,6 +27,21 @@ class HostConnectionViewController: ViewControllerBase {
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection: Int) -> Int {
+        //return model.getNumberOfGuests()
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //model.sendInvite(indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellToReturn: HostTableViewCell = availableGuestTable.dequeueReusableCell(withIdentifier: "HostCellID", for: indexPath) as! HostTableViewCell
+        //cellToReturn.model = model!
+        //cellToReturn.guestName.text = model.getGuestName(indexPath.row)
+        return cellToReturn
+    }
 
     /*
     // MARK: - Navigation
