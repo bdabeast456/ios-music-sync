@@ -441,6 +441,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
             do {
                 youTubePlayTime = try TimePlaying(data as NSData).date;
                 (baseVC as! WaitingViewController).advance();
+                (baseVC as! GuestVideoViewController).scheduleVideoAt(youTubePlayTime! as Date);
             }
             catch is NSError {
                 throwError("Guest cannot parse YouTube Play Time.");

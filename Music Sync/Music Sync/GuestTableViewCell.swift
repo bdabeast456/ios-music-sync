@@ -16,6 +16,7 @@ class GuestTableViewCell: UITableViewCell {
     
     func assign(_ peer: MCPeerID) {
         self.peer = peer;
+        hostName.text = peer.displayName;
     }
     
     override func awakeFromNib() {

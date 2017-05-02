@@ -325,7 +325,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="3Je-Vn-Kvb">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="3Je-Vn-Kvb">
                                                     <rect key="frame" x="169.5" y="8" width="147.5" height="31"/>
                                                     <connections>
                                                         <action selector="setGuestDelay:" destination="Aev-RR-OWE" eventType="editingDidEnd" id="gjH-Rd-6Rq"/>
@@ -350,6 +350,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="guestName" destination="weT-kI-F9a" id="TYF-LF-beH"/>
+                                            <outlet property="guestSlider" destination="3Je-Vn-Kvb" id="b5a-jb-DAe"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

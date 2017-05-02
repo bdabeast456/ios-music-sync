@@ -17,7 +17,10 @@ class HostTableViewCell: UITableViewCell {
 
     func assign (_ peer: MCPeerID, _ connected: Bool) {
         self.peer = peer; self.connected = connected;
-        //Configure appropriate cell elements...
+        guestName.text = peer.displayName;
+        if connected {
+            backgroundColor = UIColor.green;
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

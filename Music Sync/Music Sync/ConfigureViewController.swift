@@ -99,18 +99,18 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
     
     @IBAction func playAndSendConfigs(_ sender: UIButton) {
         if !isPlaying {
-            /*
-            videoTimer = Timer(fireAt: model.activate(), interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false)
-            RunLoop.main.add(videoTimer!, forMode: RunLoopMode.commonModes)
-            */
-            youtubeWindow.playVideo()
+            isPlaying = true;
+            model!.sendPlayTimes(Double(globalDelay.value));
+            let videoTimer: Timer = Timer(fireAt: Date().addingTimeInterval(Double(globalDelay.value)), interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false);
+            RunLoop.main.add(videoTimer, forMode: RunLoopMode.commonModes);
         }
     }
 
     @IBAction func stopHostAndGuests(_ sender: UIButton) {
         if isPlaying {
-            isPlaying = false
-            youtubeWindow.stopVideo()
+            isPlaying = false;
+            model!.stopGuests();
+            youtubeWindow.stopVideo();
         }
     }
     

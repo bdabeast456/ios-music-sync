@@ -12,6 +12,7 @@ import MultipeerConnectivity;
 class ConfigTableViewCell: UITableViewCell {
     
     @IBOutlet weak var guestName: UILabel!
+    @IBOutlet weak var guestSlider: UISlider!
     var model: Host?
     var peer: MCPeerID?;
     var cDelay: TimeInterval?;
@@ -26,13 +27,11 @@ class ConfigTableViewCell: UITableViewCell {
     
     func assign(_ model: Host, _ peer: MCPeerID, _ cDelay: TimeInterval) {
         self.model = model; self.peer = peer; self.cDelay = cDelay;
+        guestName.text = peer.displayName;
+        guestSlider.value = Float(cDelay);
     }
 
     @IBAction func setGuestDelay(_ sender: UISlider) {
-        let cell = sender.superview as? ConfigTableViewCell
-        if let table = cell?.superview as? UITableView {
-            let index = table.indexPath(for: cell!)
-            //model.setDelayForIndex(index: index, value: sender.value)
-        }
+        model!.setCDelay(peer!, Double(sender.value));
     }
 }
