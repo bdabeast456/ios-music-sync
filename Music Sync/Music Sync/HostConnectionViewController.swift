@@ -9,10 +9,9 @@
 import UIKit
 
 class HostConnectionViewController: ViewControllerBase, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var availableGuestTable: UITableView!
     
-    //var model:Model!
-    var hostName:String?
+    @IBOutlet weak var availableGuestTable: UITableView!
+    var model: Host?
     
     override func viewDidLoad() {
         super.viewDidLoad()

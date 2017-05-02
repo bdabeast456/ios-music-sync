@@ -11,7 +11,7 @@ import UIKit
 class GuestConnectionViewController: ViewControllerBase, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var availableHostTable: UITableView!
-    var guestName:String?
+    var model: Guest?;
     
     override func viewDidLoad() {
         super.viewDidLoad()

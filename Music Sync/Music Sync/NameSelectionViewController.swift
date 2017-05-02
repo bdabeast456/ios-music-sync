@@ -57,11 +57,13 @@ class NameSelectionViewController: ViewControllerBase, UITextFieldDelegate {
         if let id = segue.identifier {
             if id == "NameGuestToConnectionSegue" {
                 if let dest = segue.destination as? GuestConnectionViewController {
-                    dest.guestName = nameChosen
+                    dest.model = Guest(displayName: nameChosen!, baseVC: dest);
+                    dest.model!.startDiscovery();
                 }
             } else {
                 if let dest = segue.destination as? HostConnectionViewController {
-                    dest.hostName = nameChosen
+                    dest.model = Host(displayName: nameChosen!, baseVC: dest)
+                    dest.model!.startDiscovery();
                 }
             }
         }
