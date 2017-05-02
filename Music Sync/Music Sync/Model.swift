@@ -103,6 +103,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
         do {
             if info!["ID"] == "HOST" {return;}
             discoveredGuests.append(peerID);
+            (baseVC as! HostConnectionViewController).tableUpdated();
         }
         catch is NSError {
             throwError("Invalid Guest Detected: Missing discovery info.");
@@ -113,6 +114,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
         for i in 0..<discoveredGuests.count {
             if discoveredGuests[i].isEqual(peerID) {
                 discoveredGuests.remove(at: i);
+                (baseVC as! HostConnectionViewController).tableUpdated();
             }
         }
     }
@@ -129,11 +131,17 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                  didChange state: MCSessionState) {
         if state == MCSessionState.connected {
             finalGuests.append(peerID);
+            if baseVC is HostConnectionViewController {
+                (baseVC as! HostConnectionViewController).tableUpdated();
+            }
         }
         else if state == MCSessionState.notConnected {
             for i in 0..<finalGuests.count {
                 if finalGuests[i].isEqual(peerID) {
                     finalGuests.remove(at: i);
+                    if baseVC is HostConnectionViewController {
+                        (baseVC as! HostConnectionViewController).tableUpdated();
+                    }
                     if calibrationPointer > i {
                         calibrationQueries.remove(at: i);
                         calibrationResponses.remove(at: i);

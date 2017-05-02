@@ -23,6 +23,4 @@ class RoleSelectionViewController: ViewControllerBase {
         let dest = segue.destination as! NameSelectionViewController;
         dest.roleChosen = bText;
     }
-    
-
 }

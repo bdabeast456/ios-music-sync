@@ -7,21 +7,26 @@
 //
 
 import UIKit
+import MultipeerConnectivity;
 
 class HostTableViewCell: UITableViewCell {
     @IBOutlet weak var guestName: UILabel!
     
-    //var model:Model!
+    var peer: MCPeerID?;
+    var connected: Bool?;
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    func assign (_ peer: MCPeerID, _ connected: Bool) {
+        self.peer = peer; self.connected = connected;
+        //Configure appropriate cell elements...
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
 
 }

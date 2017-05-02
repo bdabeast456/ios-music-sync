@@ -18,8 +18,6 @@ class NameSelectionViewController: ViewControllerBase, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.delegate = self
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +32,6 @@ class NameSelectionViewController: ViewControllerBase, UITextFieldDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func didEnterName(_ sender: UITextField) {
@@ -47,23 +44,17 @@ class NameSelectionViewController: ViewControllerBase, UITextFieldDelegate {
         }
     }
     
-
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let id = segue.identifier {
-            if id == "NameGuestToConnectionSegue" {
-                if let dest = segue.destination as? GuestConnectionViewController {
-                    dest.model = Guest(displayName: nameChosen!, baseVC: dest);
-                    dest.model!.startDiscovery();
-                }
-            }
-            else {
-                if let dest = segue.destination as? HostConnectionViewController {
-                    dest.model = Host(displayName: nameChosen!, baseVC: dest)
-                    dest.model!.startDiscovery();
-                }
-            }
+        let id = segue.identifier!;
+        if id == "NameGuestToConnectionSegue" {
+            let dest = segue.destination as! GuestConnectionViewController;
+            dest.model = Guest(displayName: nameChosen!, baseVC: dest);
+            dest.model!.startDiscovery();
         }
-     }
+        else {
+            let dest = segue.destination as! HostConnectionViewController;
+            dest.model = Host(displayName: nameChosen!, baseVC: dest)
+            dest.model!.startDiscovery();
+        }
+    }
 }

@@ -6,7 +6,8 @@
 //  Copyright © 2017 Brandon Pearl. All rights reserved.
 //
 
-import UIKit
+import UIKit;
+import MultipeerConnectivity;
 
 class HostConnectionViewController: ViewControllerBase, UITableViewDelegate, UITableViewDataSource {
     
@@ -17,34 +18,44 @@ class HostConnectionViewController: ViewControllerBase, UITableViewDelegate, UIT
         super.viewDidLoad()
         availableGuestTable.delegate = self
         availableGuestTable.dataSource = self
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection: Int) -> Int {
-        //return model.getNumberOfGuests()
-        return 0
+    //Get number of rows in the table.
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection: Int) -> Int {
+        return model!.discoveredGuests.count;
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //model.sendInvite(indexPath.row)
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    //Return the UITableViewCell at the given indexPath.
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let currentPeer: MCPeerID = model!.discoveredGuests[indexPath.row];
+        let connected: Bool = model!.finalGuests.contains(currentPeer);
         let cellToReturn: HostTableViewCell = availableGuestTable.dequeueReusableCell(withIdentifier: "HostCellID", for: indexPath) as! HostTableViewCell
-        //cellToReturn.model = model!
-        //cellToReturn.guestName.text = model.getGuestName(indexPath.row)
+        cellToReturn.assign(currentPeer, connected);
         return cellToReturn
     }
+    
+    //Invites the peer represented by the 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let called: HostTableViewCell = tableView.cellForRow(at: indexPath) as! HostTableViewCell;
+        if (!called.connected!) {
+            model!.sendInvitations(toGuests: [called.peer!]);
+        }
+    }
 
+    //Called by model when guests are found / lost.
+    func tableUpdated () -> Void {
+        availableGuestTable.reloadData();
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as! ClipboardViewController).model = model;
+        model!.endDiscovery();
         model!.baseVC = segue.destination as! ClipboardViewController;
     }
 

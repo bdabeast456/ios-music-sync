@@ -17,5 +17,4 @@ class StartViewController: ViewControllerBase {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning();
     }
-
 }
