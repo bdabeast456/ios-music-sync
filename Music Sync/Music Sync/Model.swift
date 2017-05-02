@@ -54,6 +54,7 @@ class Networker : NSObject {
     func throwError (_ message: String) -> Void {
         NSLog(message);
     }
+    
 }
 
 class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate {
