@@ -17,10 +17,11 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
     @IBOutlet weak var guestConfigTable: UITableView!
     @IBOutlet weak var configTable: UITableView!
     
-    //var videoTimer:Timer!
-    var isPlaying = false
-    var videoURL:String!
     
+    var isPlaying = false
+    var videoURL:String?
+    
+    var videoTimer:Timer?
     var model: Host?;
     
     
@@ -37,10 +38,13 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        NSLog("\n\nviewDidAppear Called\(videoURL==nil)\n\n");
         super.viewDidAppear(animated)
         if let urlString = videoURL {
+            NSLog("\n\nEntered Block\n\n");
             let urlSplit = urlString.components(separatedBy: "=")
             let videoID = urlSplit[urlSplit.count - 1]
+            NSLog("\n\nAttempting to load YouTube video.");
             if youtubeWindow.load(withVideoId: videoID, playerVars: youtubeConfigs) {
                 youtubeWindow.setPlaybackQuality(.small)
             }
@@ -100,9 +104,11 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
     @IBAction func playAndSendConfigs(_ sender: UIButton) {
         if !isPlaying {
             isPlaying = true;
+            NSLog("\n\nSending Play Times to Guests\n\n");
             model!.sendPlayTimes(Double(globalDelay.value));
-            let videoTimer: Timer = Timer(fireAt: Date().addingTimeInterval(Double(globalDelay.value)), interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false);
-            RunLoop.main.add(videoTimer, forMode: RunLoopMode.commonModes);
+            NSLog("\n\nStarting YouTube Video\n\n");
+            videoTimer = Timer(fireAt: Date().addingTimeInterval(Double(globalDelay.value)), interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false);
+            //RunLoop.main.add(videoTimer, forMode: RunLoopMode.commonModes);
         }
     }
 

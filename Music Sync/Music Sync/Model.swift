@@ -15,14 +15,14 @@ enum MultipeerError : Error {
 
 class Networker : NSObject {
     
-    var peerID : MCPeerID;
+    let peerID : MCPeerID;
     var serviceAdvertiser : MCNearbyServiceAdvertiser;
     var serviceBrowser : MCNearbyServiceBrowser;
     var baseSession : MCSession;
     
     var baseVC : ViewControllerBase;
     
-    let serviceType : String = "music_service";
+    let serviceType : String = "music-sync";
     
     init (_ displayName: String, _ discoveryInfo: [String:String], _ baseVC: ViewControllerBase) {
         self.baseVC = baseVC;
@@ -32,7 +32,7 @@ class Networker : NSObject {
             discoveryInfo: discoveryInfo,
             serviceType: serviceType);
         serviceBrowser = MCNearbyServiceBrowser(peer: peerID, serviceType: serviceType);
-        baseSession = MCSession(peer: peerID);
+        baseSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: MCEncryptionPreference.none);
     }
     
     deinit {
@@ -107,7 +107,9 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
         do {
             if info!["ID"] == "HOST" {return;}
             discoveredGuests.append(peerID);
-            (baseVC as! HostConnectionViewController).tableUpdated();
+            OperationQueue.main.addOperation {
+                (self.baseVC as! HostConnectionViewController).tableUpdated();
+            }
         }
         catch is NSError {
             baseVC.throwError("Invalid Guest Detected: Missing discovery info.");
@@ -118,7 +120,9 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
         for i in 0..<discoveredGuests.count {
             if discoveredGuests[i].isEqual(peerID) {
                 discoveredGuests.remove(at: i);
-                (baseVC as! HostConnectionViewController).tableUpdated();
+                OperationQueue.main.addOperation {
+                    (self.baseVC as! HostConnectionViewController).tableUpdated();
+                }
             }
         }
     }
@@ -127,29 +131,29 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     func sendInvitations (toGuests guests: Array<MCPeerID>) {
         for peer in guests {
             serviceBrowser.invitePeer(peer, to: baseSession, withContext: nil, timeout: 300);
+            NSLog("\n\nInvited Peer\n\n");
         }
     }
     //MCSessionDelegate Methods
     func session(_ session: MCSession,
                  peer peerID: MCPeerID,
                  didChange state: MCSessionState) {
+        
+        NSLog("\n\nDetected Change In PeerSessionState \(peerID.displayName) \(state.rawValue)\t\(MCSessionState.connected.rawValue),\(MCSessionState.connecting.rawValue),\(MCSessionState.notConnected.rawValue)\n\n");
+        
         if state == MCSessionState.connected {
             finalGuests.append(peerID);
             cDelays.append(0);
-            if baseVC is HostConnectionViewController {
-                (baseVC as! HostConnectionViewController).tableUpdated();
-            }
         }
         else if state == MCSessionState.notConnected {
             for i in 0..<finalGuests.count {
                 if finalGuests[i].isEqual(peerID) {
                     finalGuests.remove(at: i);
                     cDelays.remove(at: i);
-                    if baseVC is HostConnectionViewController {
-                        (baseVC as! HostConnectionViewController).tableUpdated();
-                    }
-                    else if baseVC is ConfigureViewController {
-                        (baseVC as! ConfigureViewController).dropEvent();
+                    if baseVC is ConfigureViewController {
+                        OperationQueue.main.addOperation {
+                            (self.baseVC as! ConfigureViewController).dropEvent();
+                        }
                     }
                     if calibrationPointer > i {
                         calibrationQueries.remove(at: i);
@@ -159,6 +163,11 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                         calibrationPointer -= 1;
                     }
                 }
+            }
+        }
+        if baseVC is HostConnectionViewController {
+            OperationQueue.main.addOperation {
+                (self.baseVC as! HostConnectionViewController).tableUpdated();
             }
         }
     }
@@ -233,7 +242,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     private func finalizeDeltas () {
         for i in 0..<finalGuests.count {
             let ping: TimeInterval = calibrationResponses[i].timeIntervalSince(calibrationQueries[i] as Date)/2;
-            calibrationDeltas[i] = calibrationContent[i].timeIntervalSince(calibrationQueries[i] as Date) - ping;
+            calibrationDeltas.append(calibrationContent[i].timeIntervalSince(calibrationQueries[i] as Date) - ping);
         }
     }
     /**
@@ -317,15 +326,17 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                  withError error: Error?) {
     }
     func session(_ session: MCSession,
-                 didReceiveCertificate certificate: [Any]?,
-                 fromPeer peerID: MCPeerID,
-                 certificateHandler: @escaping (Bool) -> Void) {
-    }
-    func session(_ session: MCSession,
                  didReceive stream: InputStream,
                  withName streamName: String,
                  fromPeer peerID: MCPeerID) {
     }
+    /*
+    func session(_ session: MCSession,
+                 didReceiveCertificate certificate: [Any]?,
+                 fromPeer peerID: MCPeerID,
+                 certificateHandler: @escaping (Bool) -> Void) {
+    }
+    */
     
 }
 
@@ -382,13 +393,14 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
     
     /* Accept one invitation */
     func acceptInvitation (peerID: MCPeerID) {
+        chosenHost = peerID;
         var loc : Int = -1;
         for i in 0..<invitingHosts.count {
             if invitingHosts[i].isEqual(peerID) {
                 loc = i;
             }
         }
-        if loc == -1 { throwError("Error: Did not receive invitation from indicated host"); }
+        if loc == -1 { baseVC.throwError("Error: Did not receive invitation from indicated host"); }
         else {
             for i in 0..<invitingHosts.count {
                 if i == loc {
@@ -399,6 +411,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
                 }
             }
         }
+        NSLog("\n\nAccepted Invitation\n\n");
     }
     //MCSessionDelegate Methods
     func session(_ session: MCSession,
@@ -432,6 +445,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
             //YouTubeLink Received -- Responds by storing the YouTube video link.
             do {
                 youTubeLink = try YouTubeLink(data as NSData).link;
+                NSLog("\n\nReceived YouTube Link\n\n");
             }
             catch is NSError {
                 baseVC.throwError("Guest cannot parse YouTube Link.");
@@ -441,8 +455,13 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
             //YouTube Play Time received
             do {
                 youTubePlayTime = try TimePlaying(data as NSData).date;
-                (baseVC as! WaitingViewController).advance();
-                (baseVC as! GuestVideoViewController).scheduleVideoAt(youTubePlayTime! as Date);
+                NSLog("\n\nReceived YouTube PlayTime \(TimeString.FORMATTER.string(from:youTubePlayTime! as Date))\n\n");
+                if (self.baseVC is WaitingViewController) {
+                    OperationQueue.main.addOperation {
+                        (self.baseVC as! WaitingViewController).advance();
+                        (self.baseVC as! GuestVideoViewController).scheduleVideoAt(self.youTubePlayTime! as Date);
+                    }
+                }
             }
             catch is NSError {
                 baseVC.throwError("Guest cannot parse YouTube Play Time.");
@@ -476,9 +495,11 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
                  withName streamName: String,
                  fromPeer peerID: MCPeerID) {
     }
+    /*
     func session(_ session: MCSession,
                  didReceiveCertificate certificate: [Any]?,
                  fromPeer peerID: MCPeerID,
                  certificateHandler: @escaping (Bool) -> Void) {
     }
+    */
 }

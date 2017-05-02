@@ -36,5 +36,6 @@ class WaitingViewController: ViewControllerBase {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as! GuestVideoViewController).model = model;
         model!.baseVC = segue.destination as! GuestVideoViewController;
+        (segue.destination as! GuestVideoViewController).youtubeURL = model!.youTubeLink;
     }
 }

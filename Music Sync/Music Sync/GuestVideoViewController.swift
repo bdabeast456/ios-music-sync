@@ -11,11 +11,12 @@ import youtube_ios_player_helper
 import Foundation
 
 class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
+    
     @IBOutlet weak var youtubeWindow: YTPlayerView!
     
-    var youtubeURL:String!
-    var videoTimer:Timer!
     var model: Guest?;
+    var youtubeURL:String?
+    var videoTimer:Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,22 +62,14 @@ class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
     }
 
     func scheduleVideoAt(_ timeToStart: Date) {
-        videoTimer = Timer(fireAt: timeToStart, interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false)
-        RunLoop.main.add(videoTimer!, forMode: RunLoopMode.commonModes)
+        NSLog("\n\nSchedule Video Called\n\n");
+        let timeToStart2 = TimeString.FORMATTER.date(from: "2017:05:02:17:00:00:00000000")!;
+        videoTimer = Timer(fireAt: timeToStart2, interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false)
+        //RunLoop.main.add(videoTimer!, forMode: RunLoopMode.commonModes)
     }
     
     func playVideoNow() {
         youtubeWindow.playVideo()
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

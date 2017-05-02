@@ -27,7 +27,7 @@ enum DataError : Error {
 class TimeString : Communicable {
     
     public var date : NSDate
-    private static let FORMATTER : DateFormatter = getFormatter();
+    public static let FORMATTER : DateFormatter = getFormatter();
     
     required init (_ data: NSData) throws {
         let substring : String? = String(data: data.subdata(with: NSRange(location: 1, length: data.length - 1)),

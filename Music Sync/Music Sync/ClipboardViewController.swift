@@ -41,6 +41,7 @@ class ClipboardViewController: ViewControllerBase {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as! ConfigureViewController).model = model;
+        (segue.destination as! ConfigureViewController).videoURL = urlLabel.text!;
         model!.baseVC = segue.destination as! ConfigureViewController;
         model!.sendYouTubeAddress(urlLabel.text!);
     }

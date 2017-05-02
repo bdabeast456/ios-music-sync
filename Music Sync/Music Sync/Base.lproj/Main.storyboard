@@ -563,7 +563,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="youtubeView" destination="6Ft-a2-YKf" id="Uba-Kx-LR1"/>
+                        <outlet property="youtubeWindow" destination="6Ft-a2-YKf" id="Nqg-s1-Gv1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cvl-LR-xoK" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -27,16 +27,21 @@ class HostConnectionViewController: ViewControllerBase, UITableViewDelegate, UIT
     //Get number of rows in the table.
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection: Int) -> Int {
-        return model!.discoveredGuests.count;
+        return model!.discoveredGuests.count + model!.finalGuests.count;
     }
     
     //Return the UITableViewCell at the given indexPath.
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let currentPeer: MCPeerID = model!.discoveredGuests[indexPath.row];
-        let connected: Bool = model!.finalGuests.contains(currentPeer);
         let cellToReturn: HostTableViewCell = availableGuestTable.dequeueReusableCell(withIdentifier: "HostCellID", for: indexPath) as! HostTableViewCell;
-        cellToReturn.assign(currentPeer, connected);
+        if indexPath.row < model!.discoveredGuests.count {
+            let currentPeer: MCPeerID = model!.discoveredGuests[indexPath.row];
+            cellToReturn.assign(currentPeer, false);
+        }
+        else {
+            let currentPeer: MCPeerID = model!.finalGuests[indexPath.row - model!.discoveredGuests.count];
+            cellToReturn.assign(currentPeer, true);
+        }
         return cellToReturn
     }
     
