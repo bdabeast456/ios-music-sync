@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import MultipeerConnectivity;
 
 class GuestTableViewCell: UITableViewCell {
     @IBOutlet weak var hostName: UILabel!
     
-    //var model:Model!
+    var peer: MCPeerID?;
+    
+    func assign(_ peer: MCPeerID) {
+        self.peer = peer;
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

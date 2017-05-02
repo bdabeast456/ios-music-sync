@@ -335,6 +335,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
                     invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         invitingHosts.append(peerID);
         invitationHandlers.append(invitationHandler);
+        (baseVC as! GuestConnectionViewController).tableUpdated();
     }
     
     //MCNearbyServiceBrowserDelegate

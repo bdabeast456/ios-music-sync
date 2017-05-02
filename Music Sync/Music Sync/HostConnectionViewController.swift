@@ -35,12 +35,12 @@ class HostConnectionViewController: ViewControllerBase, UITableViewDelegate, UIT
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let currentPeer: MCPeerID = model!.discoveredGuests[indexPath.row];
         let connected: Bool = model!.finalGuests.contains(currentPeer);
-        let cellToReturn: HostTableViewCell = availableGuestTable.dequeueReusableCell(withIdentifier: "HostCellID", for: indexPath) as! HostTableViewCell
+        let cellToReturn: HostTableViewCell = availableGuestTable.dequeueReusableCell(withIdentifier: "HostCellID", for: indexPath) as! HostTableViewCell;
         cellToReturn.assign(currentPeer, connected);
         return cellToReturn
     }
     
-    //Invites the peer represented by the 
+    //Invites the peer represented by the
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let called: HostTableViewCell = tableView.cellForRow(at: indexPath) as! HostTableViewCell;
         if (!called.connected!) {

@@ -633,7 +633,7 @@
         <image name="partyordie" width="1170" height="815"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="wgf-B7-Ebh"/>
         <segue reference="LuJ-QA-dlF"/>
-        <segue reference="Glf-vn-0Ac"/>
     </inferredMetricsTieBreakers>
 </document>
