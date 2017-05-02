@@ -45,6 +45,7 @@ class HostConnectionViewController: ViewControllerBase, UITableViewDelegate, UIT
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as! ClipboardViewController).model = model;
+        model!.baseVC = segue.destination as! ClipboardViewController;
     }
 
 }

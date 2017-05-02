@@ -45,7 +45,8 @@ class GuestConnectionViewController: ViewControllerBase, UITableViewDelegate, UI
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as! WaitingViewController).model = model;
-        model?.endDiscovery();
+        model!.endDiscovery();
+        model!.baseVC = segue.destination as! WaitingViewController;
     }
     
 

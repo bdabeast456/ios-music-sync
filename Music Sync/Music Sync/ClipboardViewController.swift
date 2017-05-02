@@ -45,7 +45,7 @@ class ClipboardViewController: ViewControllerBase {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as! ConfigureViewController).model = model;
-        
+        model!.baseVC = segue.destination as! ConfigureViewController;
         
         if let dest = segue.destination as? ConfigureViewController {
             if let urlText = urlLabel.text {
