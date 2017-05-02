@@ -87,18 +87,18 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     //MCNearbyServiceAdvertiserDelegate
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
                     didNotStartAdvertisingPeer error: Error) {
-        throwError("Error: Could not start MCNearbyServiceAdvertiser");
+        baseVC.throwError("Error: Could not start MCNearbyServiceAdvertiser");
     }
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
                     didReceiveInvitationFromPeer peerID: MCPeerID,
                     withContext context: Data?,
                     invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-        throwError("Error: Host cannot respond to invitations");
+        baseVC.throwError("Error: Host cannot respond to invitations");
     }
     //MCNearbyServiceBrowserDelegate
     func browser(_ browser: MCNearbyServiceBrowser,
                  didNotStartBrowsingForPeers error: Error) {
-        throwError("Error: Could not start MCNearbyServiceBrowser");
+        baseVC.throwError("Error: Could not start MCNearbyServiceBrowser");
     }
     func browser(_ browser: MCNearbyServiceBrowser,
                  foundPeer peerID: MCPeerID,
@@ -109,7 +109,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
             (baseVC as! HostConnectionViewController).tableUpdated();
         }
         catch is NSError {
-            throwError("Invalid Guest Detected: Missing discovery info.");
+            baseVC.throwError("Invalid Guest Detected: Missing discovery info.");
         }
     }
     func browser(_ browser: MCNearbyServiceBrowser,
