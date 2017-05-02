@@ -147,16 +147,16 @@
 		772444F71EA9733000D9D68E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				77C188F31EB322BD00CC43C2 /* WaitingViewController.swift */,
-				7724450D1EA9805700D9D68E /* ConfigureViewController.swift */,
-				7724450B1EA9801300D9D68E /* ClipboardViewController.swift */,
-				772445091EA97FDC00D9D68E /* GuestVideoViewController.swift */,
-				772445071EA97FAB00D9D68E /* GuestConnectionViewController.swift */,
-				772445051EA97F8200D9D68E /* HostConnectionViewController.swift */,
-				7724450F1EA981A600D9D68E /* NameSelectionViewController.swift */,
-				772444FD1EA9745B00D9D68E /* RoleSelectionViewController.swift */,
 				772444F91EA9736200D9D68E /* ViewControllerBase.swift */,
 				772444FB1EA973EA00D9D68E /* StartViewController.swift */,
+				772444FD1EA9745B00D9D68E /* RoleSelectionViewController.swift */,
+				7724450F1EA981A600D9D68E /* NameSelectionViewController.swift */,
+				772445051EA97F8200D9D68E /* HostConnectionViewController.swift */,
+				7724450B1EA9801300D9D68E /* ClipboardViewController.swift */,
+				7724450D1EA9805700D9D68E /* ConfigureViewController.swift */,
+				772445071EA97FAB00D9D68E /* GuestConnectionViewController.swift */,
+				77C188F31EB322BD00CC43C2 /* WaitingViewController.swift */,
+				772445091EA97FDC00D9D68E /* GuestVideoViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

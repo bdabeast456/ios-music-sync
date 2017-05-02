@@ -12,6 +12,8 @@ class ClipboardViewController: ViewControllerBase {
     @IBOutlet weak var urlLabel: UILabel!
     @IBOutlet weak var pasteButton: UIButton!
     
+    var model: Host?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,12 +42,11 @@ class ClipboardViewController: ViewControllerBase {
         }
     }
 
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        (segue.destination as! ConfigureViewController).model = model;
+        
+        
         if let dest = segue.destination as? ConfigureViewController {
             if let urlText = urlLabel.text {
                 dest.videoURL = urlText

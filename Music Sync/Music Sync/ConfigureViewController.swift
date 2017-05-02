@@ -16,10 +16,12 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
     @IBOutlet weak var guestConfigTable: UITableView!
     @IBOutlet weak var configTable: UITableView!
     
-    //var model:Model!
     //var videoTimer:Timer!
     var isPlaying = false
     var videoURL:String!
+    
+    var model: Host?;
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -15,6 +15,7 @@ class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
     
     var youtubeURL:String!
     var videoTimer:Timer!
+    var model: Guest?;
     
     override func viewDidLoad() {
         super.viewDidLoad()

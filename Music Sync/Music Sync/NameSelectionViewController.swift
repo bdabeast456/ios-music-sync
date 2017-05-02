@@ -48,19 +48,17 @@ class NameSelectionViewController: ViewControllerBase, UITextFieldDelegate {
     }
     
 
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let id = segue.identifier {
             if id == "NameGuestToConnectionSegue" {
                 if let dest = segue.destination as? GuestConnectionViewController {
                     dest.model = Guest(displayName: nameChosen!, baseVC: dest);
                     dest.model!.startDiscovery();
                 }
-            } else {
+            }
+            else {
                 if let dest = segue.destination as? HostConnectionViewController {
                     dest.model = Host(displayName: nameChosen!, baseVC: dest)
                     dest.model!.startDiscovery();
