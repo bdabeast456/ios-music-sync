@@ -43,15 +43,12 @@ class ViewControllerBase: UIViewController, CBPeripheralManagerDelegate {
         }
     }
     
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func noteError (_ message: String) {
+        NSLog(message);
     }
-    */
+    func throwError (_ message: String) {
+        noteError(message);
+        navigationController!.popToRootViewController(animated: true);
+    }
 
 }
