@@ -168,7 +168,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                  didReceive data: Data,
                  fromPeer peerID: MCPeerID) {
         if data.first == nil {
-            throwError("Host received invalid Data object in session.");
+            baseVC.throwError("Host received invalid Data object in session.");
         }
         else if data.first! == MessageClass.timeCalibration.rawValue {
             //Time string received from guest in response to getTimeDelays() initial call.
@@ -189,23 +189,23 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                 }
             }
             catch is NSError {
-                throwError("Error Decoding TimeCalibration Data Packet");
+                baseVC.throwError("Error Decoding TimeCalibration Data Packet");
             }
         }
         else if data.first! == MessageClass.youtubeLink.rawValue {
             //YouTubeLink data received from guests.
             //  ... should never occur.
-            throwError("Received youtube link from guests - Unexpected Data");
+            baseVC.throwError("Received youtube link from guests - Unexpected Data");
         }
         else if data.first! == MessageClass.timePlaying.rawValue {
             //TimeToPlay data received from guests.
             //  ... should never occur.
-            throwError("Received TimeToPlay data from guests - Unexpected Data");
+            baseVC.throwError("Received TimeToPlay data from guests - Unexpected Data");
         }
         else if data.first! == MessageClass.stopMessage.rawValue {
             //StopMessage data received from guests.
             //  ... shoudl never occur.
-            throwError("Received StopMessage from guests - Unexpected Data");
+            baseVC.throwError("Received StopMessage from guests - Unexpected Data");
         }
     }
     /** 
@@ -226,7 +226,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
             try baseSession.send(TimeCalibration(toSend).export() as Data, toPeers: [finalGuests[0]], with: MCSessionSendDataMode.reliable);
         }
         catch is NSError {
-            throwError("Error Sending Time Calibrations.");
+            baseVC.throwError("Error Sending Time Calibrations.");
         }
     }
     private func finalizeDeltas () {
@@ -244,7 +244,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
             try baseSession.send(YouTubeLink(toSend).export() as Data, toPeers: finalGuests, with: MCSessionSendDataMode.reliable);
         }
         catch is NSError {
-            throwError("Error Sending YouTubeAddress Object");
+            baseVC.throwError("Error Sending YouTubeAddress Object");
         }
     }
     /**
@@ -268,7 +268,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                 found = i; break;
             }
         }
-        if (found == nil) { throwError("Setting time delay for guest not in session"); }
+        if (found == nil) { baseVC.throwError("Setting time delay for guest not in session"); }
         else { cDelays[found!] = newValue; }
     }
     /**
@@ -283,7 +283,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                 try baseSession.send(TimePlaying(NSDate().addingTimeInterval(calibrationDeltas[i]+globalDelay+cDelays[i])).export() as Data, toPeers: [finalGuests[i]], with: MCSessionSendDataMode.reliable);
             }
             catch is NSError {
-                throwError("Error Sending Play Times");
+                baseVC.throwError("Error Sending Play Times");
             }
         }
     }
@@ -295,7 +295,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
             try baseSession.send(StopMessage().export() as Data, toPeers: finalGuests, with: MCSessionSendDataMode.reliable);
         }
         catch is NSError {
-            throwError("Error Sending StopMessage Object");
+            baseVC.throwError("Error Sending StopMessage Object");
         }
     }
     
