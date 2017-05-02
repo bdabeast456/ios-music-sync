@@ -351,7 +351,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
     //MCNearbyServiceAdvertiserDelegate
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser,
                     didNotStartAdvertisingPeer error: Error) {
-        throwError("Error: Could not start MCNearbyServiceAdvertiser");
+        baseVC.throwError("Error: Could not start MCNearbyServiceAdvertiser");
     }
     
     /* Receive Invitations */
@@ -368,7 +368,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
     //MCNearbyServiceBrowserDelegate
     func browser(_ browser: MCNearbyServiceBrowser,
                  didNotStartBrowsingForPeers error: Error) {
-        throwError("Error: Could not start MCNearbyServiceBrowser");
+        baseVC.throwError("Error: Could not start MCNearbyServiceBrowser");
     }
     func browser(_ browser: MCNearbyServiceBrowser,
                  foundPeer peerID: MCPeerID,
@@ -407,7 +407,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
         if chosenHost == nil { return; }
         if chosenHost! != peerID { return; }
         if state == MCSessionState.notConnected {
-            throwError("Error: Host Disconnected.");
+            baseVC.throwError("Error: Host Disconnected.");
         }
     }
     
@@ -417,7 +417,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
                  didReceive data: Data,
                  fromPeer peerID: MCPeerID) {
         if data.first == nil {
-            throwError("Host received invalid Data object in session.");
+            baseVC.throwError("Host received invalid Data object in session.");
         }
         else if data.first! == MessageClass.timeCalibration.rawValue {
             //Time String Received -- Responds by sending a corresponding timeCalibration.
@@ -425,7 +425,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
                 try baseSession.send(TimeCalibration(NSDate()).export() as Data, toPeers: [chosenHost!], with: MCSessionSendDataMode.reliable);
             }
             catch is NSError {
-                throwError("Guest cannot parse TimeCalibration TimeString");
+                baseVC.throwError("Guest cannot parse TimeCalibration TimeString");
             }
         }
         else if data.first! == MessageClass.youtubeLink.rawValue {
@@ -434,7 +434,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
                 youTubeLink = try YouTubeLink(data as NSData).link;
             }
             catch is NSError {
-                throwError("Guest cannot parse YouTube Link.");
+                baseVC.throwError("Guest cannot parse YouTube Link.");
             }
         }
         else if data.first! == MessageClass.timePlaying.rawValue {
@@ -445,7 +445,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
                 (baseVC as! GuestVideoViewController).scheduleVideoAt(youTubePlayTime! as Date);
             }
             catch is NSError {
-                throwError("Guest cannot parse YouTube Play Time.");
+                baseVC.throwError("Guest cannot parse YouTube Play Time.");
             }
         }
         else if data.first! == MessageClass.stopMessage.rawValue {
