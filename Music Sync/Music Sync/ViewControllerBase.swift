@@ -43,12 +43,15 @@ class ViewControllerBase: UIViewController, CBPeripheralManagerDelegate {
         }
     }
     
-    func noteError (_ message: String) {
+    func noteError (_ message: String) -> Void {
         NSLog(message);
     }
-    func throwError (_ message: String) {
-        noteError(message);
+    func abort () -> Void {
         navigationController!.popToRootViewController(animated: true);
+    }
+    func throwError (_ message: String) -> Void {
+        noteError(message);
+        abort();
     }
 
 }

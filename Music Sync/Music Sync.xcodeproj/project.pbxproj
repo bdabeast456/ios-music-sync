@@ -164,12 +164,12 @@
 		772444F81EA9734000D9D68E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				77B0F81C1EB3E9740090FE56 /* YoutubeConstants.swift */,
+				638880A21EB46C75002D135D /* DataPackets.swift */,
+				6388808D1EB3C678002D135D /* Model.swift */,
 				77CFD7411EB5AB630038E554 /* HostTableViewCell.swift */,
 				77CFD7431EB5AB750038E554 /* GuestTableViewCell.swift */,
 				776882761EB5702E007FD8F4 /* ConfigTableViewCell.swift */,
-				6388808D1EB3C678002D135D /* Model.swift */,
-				638880A21EB46C75002D135D /* DataPackets.swift */,
-				77B0F81C1EB3E9740090FE56 /* YoutubeConstants.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";

@@ -15,10 +15,7 @@ class ClipboardViewController: ViewControllerBase {
     var model: Host?;
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        
-        // Do any additional setup after loading the view.
+        super.viewDidLoad();
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,8 +29,7 @@ class ClipboardViewController: ViewControllerBase {
     }
 
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        super.didReceiveMemoryWarning();
     }
     
     @IBAction func didPasteFromClipboard(_ sender: UIButton) {
@@ -46,12 +42,7 @@ class ClipboardViewController: ViewControllerBase {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as! ConfigureViewController).model = model;
         model!.baseVC = segue.destination as! ConfigureViewController;
-        
-        if let dest = segue.destination as? ConfigureViewController {
-            if let urlText = urlLabel.text {
-                dest.videoURL = urlText
-            }
-        }
+        model!.sendYouTubeAddress(urlLabel.text!);
     }
 
 }

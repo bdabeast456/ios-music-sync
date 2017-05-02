@@ -28,6 +28,11 @@ class WaitingViewController: ViewControllerBase {
         performSegue(withIdentifier: "WaitingToGuestVideoSegue", sender: nil)
     }
 
+    //Called by the model upon receivng the final TimePlaying object.
+    func advance () -> Void {
+        performSegue(withIdentifier: "WaitingToGuestVideoSegue", sender: nil);
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as! GuestVideoViewController).model = model;
         model!.baseVC = segue.destination as! GuestVideoViewController;

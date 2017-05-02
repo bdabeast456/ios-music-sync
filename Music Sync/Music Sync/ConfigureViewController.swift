@@ -6,9 +6,10 @@
 //  Copyright © 2017 Brandon Pearl. All rights reserved.
 //
 
-import UIKit
-import youtube_ios_player_helper
-import Foundation
+import UIKit;
+import youtube_ios_player_helper;
+import Foundation;
+import MultipeerConnectivity;
 
 class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var youtubeWindow: YTPlayerView!
@@ -28,7 +29,6 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
         youtubeWindow.delegate = self
         configTable.delegate = self
         configTable.dataSource = self
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +49,6 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {
@@ -79,16 +78,23 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
         self.navigationController?.popViewController(animated: true)
     }
     
+    //Gets number of rows in the Table.
     func tableView(_ tableView: UITableView, numberOfRowsInSection: Int) -> Int {
-        //return model.getNumberOfGuests()
-        return 0
+        return model!.finalGuests.count;
     }
     
+    //Gets cell at the specific row in the Table.
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellToReturn: ConfigTableViewCell = guestConfigTable.dequeueReusableCell(withIdentifier: "ConfigGuestID", for: indexPath) as! ConfigTableViewCell
-        //cellToReturn.model = model
-        //cellToReturn.guestName.text = model.getNameForIndex(indexPath.row)
-        return cellToReturn
+        let currentPeer: MCPeerID = model!.finalGuests[indexPath.row];
+        let customDelay: TimeInterval = model!.cDelays[indexPath.row];
+        let cellToReturn: ConfigTableViewCell = guestConfigTable.dequeueReusableCell(withIdentifier: "ConfigGuestID", for: indexPath) as! ConfigTableViewCell;
+        cellToReturn.assign(model!, currentPeer, customDelay);
+        return cellToReturn;
+    }
+    
+    //Called by model when invited guests drop from the session.
+    func dropEvent () -> Void {
+        configTable.reloadData();
     }
     
     @IBAction func playAndSendConfigs(_ sender: UIButton) {

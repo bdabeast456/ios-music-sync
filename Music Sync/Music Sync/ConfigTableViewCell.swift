@@ -6,23 +6,26 @@
 //  Copyright © 2017 Brandon Pearl. All rights reserved.
 //
 
-import UIKit
+import UIKit;
+import MultipeerConnectivity;
 
 class ConfigTableViewCell: UITableViewCell {
-    //var model:Model!
-    @IBOutlet weak var guestName: UILabel!
     
+    @IBOutlet weak var guestName: UILabel!
+    var model: Host?
+    var peer: MCPeerID?;
+    var cDelay: TimeInterval?;
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    func assign(_ model: Host, _ peer: MCPeerID, _ cDelay: TimeInterval) {
+        self.model = model; self.peer = peer; self.cDelay = cDelay;
     }
 
     @IBAction func setGuestDelay(_ sender: UISlider) {

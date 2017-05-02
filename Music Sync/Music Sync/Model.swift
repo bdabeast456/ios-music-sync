@@ -72,6 +72,9 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     var youTubeLink : String? = nil;
     var youTubePlayTime : NSDate? = nil;
     
+    var cDelays: Array<TimeInterval> = [];
+    
+    
     init (displayName : String, baseVC: ViewControllerBase) {
         super.init(displayName, ["ID":"HOST"], baseVC);
         serviceAdvertiser.delegate = self;
@@ -122,7 +125,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     /* Invite Guests */
     func sendInvitations (toGuests guests: Array<MCPeerID>) {
         for peer in guests {
-            serviceBrowser.invitePeer(peer, to: baseSession, withContext: nil, timeout: 10);
+            serviceBrowser.invitePeer(peer, to: baseSession, withContext: nil, timeout: 300);
         }
     }
     //MCSessionDelegate Methods
@@ -131,6 +134,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                  didChange state: MCSessionState) {
         if state == MCSessionState.connected {
             finalGuests.append(peerID);
+            cDelays.append(0);
             if baseVC is HostConnectionViewController {
                 (baseVC as! HostConnectionViewController).tableUpdated();
             }
@@ -139,8 +143,12 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
             for i in 0..<finalGuests.count {
                 if finalGuests[i].isEqual(peerID) {
                     finalGuests.remove(at: i);
+                    cDelays.remove(at: i);
                     if baseVC is HostConnectionViewController {
                         (baseVC as! HostConnectionViewController).tableUpdated();
+                    }
+                    else if baseVC is ConfigureViewController {
+                        (baseVC as! ConfigureViewController).dropEvent();
                     }
                     if calibrationPointer > i {
                         calibrationQueries.remove(at: i);
@@ -208,6 +216,10 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     func getTimeDelays () {
         calibrationPointer = 0;
         calibrationFinalized = false;
+        calibrationQueries = [];
+        calibrationContent = [];
+        calibrationResponses = [];
+        calibrationDeltas = [];
         do {
             let toSend: NSDate = NSDate();
             calibrationQueries.append(toSend);
@@ -228,6 +240,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
      */
     func sendYouTubeAddress (_ toSend: String) {
         do {
+            youTubeLink = toSend;
             try baseSession.send(YouTubeLink(toSend).export() as Data, toPeers: finalGuests, with: MCSessionSendDataMode.reliable);
         }
         catch is NSError {
@@ -246,15 +259,28 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
         return sum;
     }
     /**
+     * Sets the time delay for a given MCPeer object appearing in finalGuests.
+     */
+    func setCDelay (_ peer: MCPeerID, _ newValue: TimeInterval) {
+        var found : Int? = nil;
+        for i in 0..<finalGuests.count {
+            if finalGuests[i].isEqual(peer) {
+                found = i; break;
+            }
+        }
+        if (found == nil) { throwError("Setting time delay for guest not in session"); }
+        else { cDelays[found!] = newValue; }
+    }
+    /**
      * Sends corrected play times to each guest.
      * Through this method, guests receive the time at which to play the YouTube Video.
      * Guests are then expected to play the YouTube video at the specified time.
      */
-    func sendPlayTimes (_ globalDelay: TimeInterval, _ individualDelays: Array<TimeInterval>) {
+    func sendPlayTimes (_ globalDelay: TimeInterval) {
         let globalDelay = getMinDelay();
         for i in 0..<finalGuests.count {
             do {
-                try baseSession.send(TimePlaying(NSDate().addingTimeInterval(calibrationDeltas[i]+globalDelay+individualDelays[i])).export() as Data, toPeers: [finalGuests[i]], with: MCSessionSendDataMode.reliable);
+                try baseSession.send(TimePlaying(NSDate().addingTimeInterval(calibrationDeltas[i]+globalDelay+cDelays[i])).export() as Data, toPeers: [finalGuests[i]], with: MCSessionSendDataMode.reliable);
             }
             catch is NSError {
                 throwError("Error Sending Play Times");
@@ -414,6 +440,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
             //YouTube Play Time received
             do {
                 youTubePlayTime = try TimePlaying(data as NSData).date;
+                (baseVC as! WaitingViewController).advance();
             }
             catch is NSError {
                 throwError("Guest cannot parse YouTube Play Time.");
