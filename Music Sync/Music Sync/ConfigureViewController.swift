@@ -121,6 +121,7 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
     }
     
     func playVideoNow() {
+        NSLog("\n\nPlay Video Called\n\n");
         youtubeWindow.playVideo()
     }
 }
