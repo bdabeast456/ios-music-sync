@@ -22,7 +22,6 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
     var isPlaying = false
     var videoURL:String?
     
-    var videoTimer:Timer?
     var model: Host?;
     
     
@@ -112,7 +111,6 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
                 NSLog("\n\nStarting YouTube Video\n\n");
                 self.playVideoNow()
             })
-            //RunLoop.main.add(videoTimer, forMode: RunLoopMode.commonModes);
         }
     }
 
