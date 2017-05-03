@@ -24,9 +24,6 @@ class WaitingViewController: ViewControllerBase {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func tempButton(_ sender: UIButton) {
-        performSegue(withIdentifier: "WaitingToGuestVideoSegue", sender: nil)
-    }
 
     //Called by the model upon receivng the final TimePlaying object.
     func advance () -> Void {

@@ -18,6 +18,14 @@ class GuestConnectionViewController: ViewControllerBase, UITableViewDelegate, UI
         super.viewDidLoad()
         availableHostTable.delegate = self
         availableHostTable.dataSource = self
+        
+        let button:UIBarButtonItem = UIBarButtonItem(title: "To Role Selection", style: .plain, target: self, action: #selector(cleanupAndAbort))
+        self.navigationItem.leftBarButtonItem = button
+    }
+    
+    func cleanupAndAbort() {
+        self.model?.cleanup()
+        self.abort()
     }
 
     override func didReceiveMemoryWarning() {

@@ -16,6 +16,9 @@ class ViewControllerBase: ViewControllerUIBase, CBPeripheralManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let button:UIBarButtonItem = UIBarButtonItem(title: "To Role Selection", style: .plain, target: self, action: #selector(abort))
+        self.navigationItem.leftBarButtonItem = button
+        
         bluetoothManager = CBPeripheralManager(delegate: self, queue: nil, options: nil)
         
         // Do any additional setup after loading the view.

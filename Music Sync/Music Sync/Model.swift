@@ -41,6 +41,12 @@ class Networker : NSObject {
         baseSession.disconnect();
     }
     
+    func cleanup () -> Void {
+        serviceAdvertiser.stopAdvertisingPeer();
+        serviceBrowser.stopBrowsingForPeers();
+        baseSession.disconnect();
+    }
+    
     func startDiscovery () -> Void {
         serviceAdvertiser.startAdvertisingPeer();
         serviceBrowser.startBrowsingForPeers();

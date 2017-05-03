@@ -18,6 +18,14 @@ class HostConnectionViewController: ViewControllerBase, UITableViewDelegate, UIT
         super.viewDidLoad()
         availableGuestTable.delegate = self
         availableGuestTable.dataSource = self
+        
+        let button:UIBarButtonItem = UIBarButtonItem(title: "To Role Selection", style: .plain, target: self, action: #selector(cleanupAndAbort))
+        self.navigationItem.leftBarButtonItem = button
+    }
+    
+    func cleanupAndAbort() {
+        self.model?.cleanup()
+        self.abort()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +64,13 @@ class HostConnectionViewController: ViewControllerBase, UITableViewDelegate, UIT
     //Called by model when guests are found / lost.
     func tableUpdated () -> Void {
         availableGuestTable.reloadData();
+    }
+    
+    
+    @IBAction func moveToClipboard(_ sender: UIButton) {
+        if model!.finalGuests.count > 0 {
+            performSegue(withIdentifier: "ConnectionToClipboardSeque", sender: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

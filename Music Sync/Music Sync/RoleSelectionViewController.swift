@@ -12,6 +12,8 @@ class RoleSelectionViewController: ViewControllerBase {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.leftBarButtonItem = nil
     }
 
     override func didReceiveMemoryWarning() {
