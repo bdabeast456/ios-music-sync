@@ -242,7 +242,9 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     private func finalizeDeltas () {
         for i in 0..<finalGuests.count {
             let ping: TimeInterval = calibrationResponses[i].timeIntervalSince(calibrationQueries[i] as Date)/2;
+            //Should be a negative??? .timeIntervalSince
             calibrationDeltas.append(calibrationContent[i].timeIntervalSince(calibrationQueries[i] as Date) - ping);
+            NSLog("\n\nTimeDelta: \(i): \(calibrationDeltas[i]) && PING: \(ping)\n\n");
         }
     }
     /**

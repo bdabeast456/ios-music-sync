@@ -62,13 +62,15 @@ class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
     }
 
     func scheduleVideoAt(_ timeToStart: Date) {
-        NSLog("\n\nSchedule Video Called\n\n");
-        let timeToStart2 = TimeString.FORMATTER.date(from: "2017:05:02:17:00:00:00000000")!;
-        videoTimer = Timer(fireAt: timeToStart2, interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false)
+        NSLog("\n\nSchedule Video Called:\n");
+        NSLog("\n\n\(TimeString.FORMATTER.string(from:timeToStart)) vs. NOW: \(TimeString.FORMATTER.string(from:(NSDate() as Date)))\n\n");
+        //let timeToStart2 = TimeString.FORMATTER.date(from: "2017:05:02:17:04:30:00000000")!;
+        videoTimer = Timer(fireAt: timeToStart, interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false)
         //RunLoop.main.add(videoTimer!, forMode: RunLoopMode.commonModes)
     }
     
     func playVideoNow() {
+        NSLog("\n\nPlay Video Called\n\n");
         youtubeWindow.playVideo()
     }
 
