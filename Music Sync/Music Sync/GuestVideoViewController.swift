@@ -51,6 +51,10 @@ class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
         }
     }
     
+    func stopVideoNow() {
+        youtubeWindow.stopVideo()
+    }
+    
     func goBackTwoControllers() {
         let viewControllerList:[UIViewController] = (self.navigationController?.viewControllers)!
         self.navigationController?.popToViewController(viewControllerList[viewControllerList.count - 3], animated: true)
