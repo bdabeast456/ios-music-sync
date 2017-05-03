@@ -65,8 +65,7 @@ class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
         NSLog("\n\nSchedule Video Called:\n");
         NSLog("\n\nSENT: \(TimeString.FORMATTER.string(from:timeToStart))\nNOW:  \(TimeString.FORMATTER.string(from:(NSDate() as Date)))\n\n");
         //let timeToStart2 = TimeString.FORMATTER.date(from: "2017:05:02:17:04:30:00000000")!;
-        
-        let when = DispatchTime.now() + Double(NSDate().timeIntervalSince(timeToStart))
+        let when = DispatchTime.now() + timeToStart.timeIntervalSinceNow;
         DispatchQueue.main.asyncAfter(deadline: when, execute: {
             NSLog("\n\nStarting YouTube Video\n\n");
             self.playVideoNow()
