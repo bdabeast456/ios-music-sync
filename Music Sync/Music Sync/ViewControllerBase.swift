@@ -9,13 +9,12 @@
 import UIKit
 import CoreBluetooth
 
-class ViewControllerBase: UIViewController, CBPeripheralManagerDelegate {
+class ViewControllerBase: ViewControllerUIBase, CBPeripheralManagerDelegate {
     
     var bluetoothManager: CBPeripheralManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.lightGray
 
         bluetoothManager = CBPeripheralManager(delegate: self, queue: nil, options: nil)
         
