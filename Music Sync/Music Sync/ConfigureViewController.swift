@@ -50,6 +50,12 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
             }
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        youtubeWindow.stopVideo()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

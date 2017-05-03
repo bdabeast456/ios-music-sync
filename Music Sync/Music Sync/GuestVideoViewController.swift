@@ -36,6 +36,12 @@ class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        stopVideoNow()
+    }
+    
     func playerView(_ playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
         switch(state) {
         case YTPlayerState.queued:
