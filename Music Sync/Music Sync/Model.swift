@@ -68,6 +68,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     private var calibrationResponses: Array<NSDate> = [];       //Time at which we received guest response.
     private var calibrationContent: Array<NSDate> = [];         //Guest's clock response.
     private var calibrationDeltas: Array<TimeInterval> = [];    //Final calculated guest clock deltas.
+    private var calibrationPings: Array<TimeInterval> = [];
     private var calibrationFinalized: Bool = false;
     
     var youTubeLink : String? = nil;
@@ -160,6 +161,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
                         calibrationResponses.remove(at: i);
                         calibrationContent.remove(at: i);
                         calibrationDeltas.remove(at: i);
+                        calibrationPings.remove(at: i);
                         calibrationPointer -= 1;
                     }
                 }
@@ -230,6 +232,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
         calibrationContent = [];
         calibrationResponses = [];
         calibrationDeltas = [];
+        calibrationPings = [];
         do {
             let toSend: NSDate = NSDate();
             calibrationQueries.append(toSend);
@@ -242,7 +245,9 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     private func finalizeDeltas () {
         for i in 0..<finalGuests.count {
             let ping: TimeInterval = calibrationResponses[i].timeIntervalSince(calibrationQueries[i] as Date)/2;
-            //Should be a negative??? .timeIntervalSince
+            calibrationPings.append(ping);
+            NSLog("\n\nHost: \(TimeString.FORMATTER.string(from:calibrationQueries[i] as Date))\nGuest: \(TimeString.FORMATTER.string(from:calibrationContent[i] as Date))\n\n");
+            NSLog("\n\nDifference: \(calibrationContent[i].timeIntervalSince(calibrationQueries[i] as Date))\n\n");
             calibrationDeltas.append(calibrationContent[i].timeIntervalSince(calibrationQueries[i] as Date) - ping);
             NSLog("\n\nTimeDelta: \(i): \(calibrationDeltas[i]) && PING: \(ping)\n\n");
         }
@@ -266,7 +271,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     func getMinDelay () -> TimeInterval {
         var sum: Double = 0;
         for i in 0..<finalGuests.count {
-            sum += calibrationDeltas[i]*1.2*2;
+            sum += abs(calibrationPings[i]*2*10);
         }
         return sum;
     }
@@ -289,10 +294,13 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
      * Guests are then expected to play the YouTube video at the specified time.
      */
     func sendPlayTimes (_ globalDelay: TimeInterval) {
-        let globalDelay = getMinDelay();
         for i in 0..<finalGuests.count {
             do {
-                try baseSession.send(TimePlaying(NSDate().addingTimeInterval(calibrationDeltas[i]+globalDelay+cDelays[i])).export() as Data, toPeers: [finalGuests[i]], with: MCSessionSendDataMode.reliable);
+                NSLog("\n\nSending Play Times: \(calibrationDeltas[i]+globalDelay+getMinDelay()+cDelays[i])\n\n");
+                
+                let toSend: NSDate = NSDate().addingTimeInterval(calibrationDeltas[i]+globalDelay+getMinDelay()+cDelays[i]);
+                
+                try baseSession.send(TimePlaying(toSend).export() as Data, toPeers: [finalGuests[i]], with: MCSessionSendDataMode.reliable);
             }
             catch is NSError {
                 baseVC.throwError("Error Sending Play Times");

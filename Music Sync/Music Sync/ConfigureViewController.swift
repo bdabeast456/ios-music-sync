@@ -107,7 +107,7 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
             NSLog("\n\nSending Play Times to Guests\n\n");
             model!.sendPlayTimes(Double(globalDelay.value));
             NSLog("\n\nStarting YouTube Video\n\n");
-            videoTimer = Timer(fireAt: Date().addingTimeInterval(Double(globalDelay.value)), interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false);
+            videoTimer = Timer(fireAt: Date().addingTimeInterval(Double(globalDelay.value)+model!.getMinDelay()), interval: 0, target: self, selector: #selector(playVideoNow), userInfo: nil, repeats: false);
             //RunLoop.main.add(videoTimer, forMode: RunLoopMode.commonModes);
         }
     }
