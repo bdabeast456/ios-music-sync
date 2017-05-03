@@ -477,6 +477,10 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
                         (self.baseVC as! WaitingViewController).advance();
                         (self.baseVC as! GuestVideoViewController).scheduleVideoAt(self.youTubePlayTime! as Date);
                     }
+                } else if (self.baseVC is GuestVideoViewController) {
+                    OperationQueue.main.addOperation {
+                        (self.baseVC as! GuestVideoViewController).scheduleVideoAt(self.youTubePlayTime! as Date);
+                    }
                 }
             }
             catch is NSError {
