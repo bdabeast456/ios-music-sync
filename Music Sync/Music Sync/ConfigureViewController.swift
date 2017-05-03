@@ -107,7 +107,7 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
             isPlaying = true;
             NSLog("\n\nSending Play Times to Guests\n\n");
             self.model!.sendPlayTimes(Double(self.globalDelay.value));
-            let when = DispatchTime.now() + Double(self.globalDelay.value) // change 2 to desired number of seconds
+            let when = DispatchTime.now() + Double(model!.getMinDelay()) + Double(self.globalDelay.value)
             DispatchQueue.main.asyncAfter(deadline: when, execute: {
                 NSLog("\n\nStarting YouTube Video\n\n");
                 self.playVideoNow()
