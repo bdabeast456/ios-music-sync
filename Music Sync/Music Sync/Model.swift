@@ -190,24 +190,26 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
         }
         else if data.first! == MessageClass.timeCalibration.rawValue {
             //Time string received from guest in response to getTimeDelays() initial call.
+            OperationQueue.main.addOperation {
             do {
                 let received: TimeCalibration = try TimeCalibration(data as NSData);
-                calibrationResponses.append(NSDate());
-                calibrationContent.append(received.date);
-                if calibrationPointer < finalGuests.count - 1 {
-                    calibrationPointer += 1;
+                self.calibrationResponses.append(NSDate());
+                self.calibrationContent.append(received.date);
+                if self.calibrationPointer < self.finalGuests.count - 1 {
+                    self.calibrationPointer += 1;
                     let toSend: NSDate = NSDate();
-                    calibrationQueries.append(toSend);
-                    try baseSession.send(TimeCalibration(toSend).export() as Data, toPeers: [finalGuests[calibrationPointer]], with: MCSessionSendDataMode.reliable);
+                    self.calibrationQueries.append(toSend);
+                    try self.baseSession.send(TimeCalibration(toSend).export() as Data, toPeers: [self.finalGuests[self.calibrationPointer]], with: MCSessionSendDataMode.reliable);
                 }
                 else {
-                    calibrationPointer += 1;
-                    calibrationFinalized = true;
-                    finalizeDeltas();
+                    self.calibrationPointer += 1;
+                    self.calibrationFinalized = true;
+                    self.finalizeDeltas();
                 }
             }
             catch is NSError {
-                baseVC.throwError("Error Decoding TimeCalibration Data Packet");
+                self.baseVC.throwError("Error Decoding TimeCalibration Data Packet");
+            }
             }
         }
         else if data.first! == MessageClass.youtubeLink.rawValue {
@@ -232,20 +234,22 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
      *      are eventually contacted and their ping times recorded.
      */
     func getTimeDelays () {
-        calibrationPointer = 0;
-        calibrationFinalized = false;
-        calibrationQueries = [];
-        calibrationContent = [];
-        calibrationResponses = [];
-        calibrationDeltas = [];
-        calibrationPings = [];
+        OperationQueue.main.addOperation {
+        self.calibrationPointer = 0;
+        self.calibrationFinalized = false;
+        self.calibrationQueries = [];
+        self.calibrationContent = [];
+        self.calibrationResponses = [];
+        self.calibrationDeltas = [];
+        self.calibrationPings = [];
         do {
             let toSend: NSDate = NSDate();
-            calibrationQueries.append(toSend);
-            try baseSession.send(TimeCalibration(toSend).export() as Data, toPeers: [finalGuests[0]], with: MCSessionSendDataMode.reliable);
+            self.calibrationQueries.append(toSend);
+            try self.baseSession.send(TimeCalibration(toSend).export() as Data, toPeers: [self.finalGuests[0]], with: MCSessionSendDataMode.reliable);
         }
         catch is NSError {
-            baseVC.throwError("Error Sending Time Calibrations.");
+            self.baseVC.throwError("Error Sending Time Calibrations.");
+        }
         }
     }
     private func finalizeDeltas () {
@@ -300,17 +304,19 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
      * Guests are then expected to play the YouTube video at the specified time.
      */
     func sendPlayTimes (_ globalDelay: TimeInterval) {
-        for i in 0..<finalGuests.count {
+        OperationQueue.main.addOperation {
+        for i in 0..<self.finalGuests.count {
             do {
-                NSLog("\n\nSending Play Times: \(calibrationDeltas[i]+globalDelay+getMinDelay()+cDelays[i])\n\n");
+                NSLog("\n\nSending Play Times: \(self.calibrationDeltas[i]+globalDelay+self.getMinDelay()+self.cDelays[i])\n\n");
                 
-                let toSend: NSDate = NSDate().addingTimeInterval(calibrationDeltas[i]+globalDelay+getMinDelay()+cDelays[i]);
+                let toSend: NSDate = NSDate().addingTimeInterval(self.calibrationDeltas[i]+globalDelay+self.getMinDelay()+self.cDelays[i]);
                 
-                try baseSession.send(TimePlaying(toSend).export() as Data, toPeers: [finalGuests[i]], with: MCSessionSendDataMode.reliable);
+                try self.baseSession.send(TimePlaying(toSend).export() as Data, toPeers: [self.finalGuests[i]], with: MCSessionSendDataMode.reliable);
             }
             catch is NSError {
-                baseVC.throwError("Error Sending Play Times");
+                self.baseVC.throwError("Error Sending Play Times");
             }
+        }
         }
     }
     /**
