@@ -21,6 +21,7 @@
 		7724450E1EA9805700D9D68E /* ConfigureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7724450D1EA9805700D9D68E /* ConfigureViewController.swift */; };
 		772445101EA981A600D9D68E /* NameSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7724450F1EA981A600D9D68E /* NameSelectionViewController.swift */; };
 		776882771EB5702E007FD8F4 /* ConfigTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776882761EB5702E007FD8F4 /* ConfigTableViewCell.swift */; };
+		77A33FD21EB95A41005A0EC2 /* ViewControllerUIBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77A33FD11EB95A41005A0EC2 /* ViewControllerUIBase.swift */; };
 		77AE56481EA83DD400D50089 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AE56471EA83DD400D50089 /* AppDelegate.swift */; };
 		77AE564A1EA83DD400D50089 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77AE56491EA83DD400D50089 /* ViewController.swift */; };
 		77AE564D1EA83DD400D50089 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77AE564B1EA83DD400D50089 /* Main.storyboard */; };
@@ -69,6 +70,7 @@
 		7724450D1EA9805700D9D68E /* ConfigureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigureViewController.swift; sourceTree = "<group>"; };
 		7724450F1EA981A600D9D68E /* NameSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameSelectionViewController.swift; sourceTree = "<group>"; };
 		776882761EB5702E007FD8F4 /* ConfigTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigTableViewCell.swift; sourceTree = "<group>"; };
+		77A33FD11EB95A41005A0EC2 /* ViewControllerUIBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerUIBase.swift; sourceTree = "<group>"; };
 		77AE56441EA83DD400D50089 /* Music Sync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music Sync.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		77AE56471EA83DD400D50089 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77AE56491EA83DD400D50089 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 		772444F71EA9733000D9D68E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				77A33FD11EB95A41005A0EC2 /* ViewControllerUIBase.swift */,
 				772444F91EA9736200D9D68E /* ViewControllerBase.swift */,
 				772444FB1EA973EA00D9D68E /* StartViewController.swift */,
 				772444FD1EA9745B00D9D68E /* RoleSelectionViewController.swift */,
@@ -306,7 +309,7 @@
 				TargetAttributes = {
 					77AE56431EA83DD400D50089 = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = UL857BW346;
+						DevelopmentTeam = 749K3A62M6;
 						ProvisioningStyle = Automatic;
 					};
 					77AE56571EA83DD400D50089 = {
@@ -513,6 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A33FD21EB95A41005A0EC2 /* ViewControllerUIBase.swift in Sources */,
 				772445081EA97FAB00D9D68E /* GuestConnectionViewController.swift in Sources */,
 				7724450C1EA9801300D9D68E /* ClipboardViewController.swift in Sources */,
 				772444FA1EA9736200D9D68E /* ViewControllerBase.swift in Sources */,
@@ -685,11 +689,11 @@
 			baseConfigurationReference = 4789E4C5A49B5CDD3D7261E6 /* Pods-Music Sync.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = UL857BW346;
+				DEVELOPMENT_TEAM = 749K3A62M6;
 				INFOPLIST_FILE = "Music Sync/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "brandon-david-davidBuild.Music-Sync";
+				PRODUCT_BUNDLE_IDENTIFIER = "brandon-david-david.Music-Sync";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -700,11 +704,11 @@
 			baseConfigurationReference = 543ED86D8C3B7CFA01282161 /* Pods-Music Sync.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = UL857BW346;
+				DEVELOPMENT_TEAM = 749K3A62M6;
 				INFOPLIST_FILE = "Music Sync/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "brandon-david-davidBuild.Music-Sync";
+				PRODUCT_BUNDLE_IDENTIFIER = "brandon-david-david.Music-Sync";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
