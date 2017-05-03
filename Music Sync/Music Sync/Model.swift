@@ -271,9 +271,9 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     func getMinDelay () -> TimeInterval {
         var sum: Double = 0;
         for i in 0..<finalGuests.count {
-            sum += max(abs(calibrationPings[i]*2*10),2);
+            sum += abs(calibrationPings[i]*2*10);
         }
-        return sum;
+        return min(sum,10);
     }
     /**
      * Sets the time delay for a given MCPeer object appearing in finalGuests.
