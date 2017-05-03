@@ -10,6 +10,7 @@ import UIKit;
 import youtube_ios_player_helper;
 import Foundation;
 import MultipeerConnectivity;
+import Dispatch
 
 class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var youtubeWindow: YTPlayerView!
@@ -105,11 +106,12 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
         if !isPlaying {
             isPlaying = true;
             NSLog("\n\nSending Play Times to Guests\n\n");
-            OperationQueue.main.addOperation {
-                self.model!.sendPlayTimes(Double(self.globalDelay.value));
+            self.model!.sendPlayTimes(Double(self.globalDelay.value));
+            let when = DispatchTime.now() + Double(self.globalDelay.value) // change 2 to desired number of seconds
+            DispatchQueue.main.asyncAfter(deadline: when, execute: {
                 NSLog("\n\nStarting YouTube Video\n\n");
-                self.videoTimer = Timer(fireAt: Date().addingTimeInterval(Double(self.globalDelay.value)), interval: 0, target: self, selector: #selector(self.playVideoNow), userInfo: nil, repeats: false);
-            }
+                self.playVideoNow()
+            })
             //RunLoop.main.add(videoTimer, forMode: RunLoopMode.commonModes);
         }
     }
