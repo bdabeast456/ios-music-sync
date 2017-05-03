@@ -480,7 +480,7 @@ class Guest : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrows
         else if data.first! == MessageClass.stopMessage.rawValue {
             //Guest stops playing immediately.
             OperationQueue.main.addOperation {
-                (baseVC as! GuestVideoViewController).stopVideoNow();
+                (self.baseVC as! GuestVideoViewController).stopVideoNow();
             }
         }
     }
