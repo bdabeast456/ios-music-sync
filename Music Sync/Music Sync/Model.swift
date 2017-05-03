@@ -273,7 +273,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
         for i in 0..<finalGuests.count {
             sum += abs(calibrationPings[i]*2*10);
         }
-        return min(sum,10);
+        return max(sum,10);
     }
     /**
      * Sets the time delay for a given MCPeer object appearing in finalGuests.
