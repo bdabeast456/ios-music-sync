@@ -271,7 +271,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
     func getMinDelay () -> TimeInterval {
         var sum: Double = 0;
         for i in 0..<finalGuests.count {
-            sum += abs(calibrationPings[i]*2*10);
+            sum += max(abs(calibrationPings[i]*2*10),2);
         }
         return sum;
     }
