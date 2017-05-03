@@ -22,10 +22,6 @@ class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
         super.viewDidLoad()
         
         youtubeWindow.delegate = self
-        //self.navigationItem.leftBarButtonItem?.target = "goBackTwoControllers"
-        
-        let button:UIBarButtonItem = UIBarButtonItem(title: "To Host Selection", style: .plain, target: self, action: #selector(goBackTwoControllers))
-        self.navigationItem.leftBarButtonItem = button
 
         // Do any additional setup after loading the view.
     }
@@ -53,11 +49,6 @@ class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
     
     func stopVideoNow() {
         youtubeWindow.stopVideo()
-    }
-    
-    func goBackTwoControllers() {
-        let viewControllerList:[UIViewController] = (self.navigationController?.viewControllers)!
-        self.navigationController?.popToViewController(viewControllerList[viewControllerList.count - 3], animated: true)
     }
     
     override func didReceiveMemoryWarning() {

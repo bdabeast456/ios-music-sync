@@ -31,7 +31,9 @@ class ViewControllerBase: ViewControllerUIBase {
         NSLog(message);
     }
     func abort () -> Void {
-        navigationController!.popToRootViewController(animated: true);
+        if let navCon = navigationController {
+            navCon.popToRootViewController(animated: true);
+        }
     }
     func throwError (_ message: String) -> Void {
         noteError(message);
