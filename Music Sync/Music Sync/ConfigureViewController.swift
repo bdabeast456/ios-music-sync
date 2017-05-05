@@ -49,6 +49,7 @@ class ConfigureViewController: ViewControllerBase, YTPlayerViewDelegate, UITable
                 youtubeWindow.setPlaybackQuality(.small)
             }
         }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

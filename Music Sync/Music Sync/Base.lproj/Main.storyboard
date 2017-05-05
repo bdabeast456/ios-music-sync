@@ -24,34 +24,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Touch Anywhere To Begin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMr-I5-WMv">
+                                <rect key="frame" x="36" y="297.5" width="303" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birch_m" translatesAutoresizingMaskIntoConstraints="NO" id="gbi-b8-EbU">
+                                <rect key="frame" x="36" y="40" width="303" height="257.5"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ5-9A-kiD">
-                                <rect key="frame" x="36" y="308.5" width="303" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="ApM-bR-vW4"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="20" width="343" height="647"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                <state key="normal" title="Touch to Begin">
+                                <state key="normal">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="ohc-VY-lgS" kind="show" identifier="StartToRoleSelectionSegue" id="VN2-KO-ERX"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birch_m" translatesAutoresizingMaskIntoConstraints="NO" id="gbi-b8-EbU">
-                                <rect key="frame" x="36" y="40" width="303" height="193.5"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ZQ5-9A-kiD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="6kM-MR-7ED"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ZQ5-9A-kiD" secondAttribute="trailing" constant="20" id="99o-iq-d0Z"/>
-                            <constraint firstItem="ZQ5-9A-kiD" firstAttribute="top" secondItem="gbi-b8-EbU" secondAttribute="bottom" constant="75" id="9Vq-Ao-xas"/>
-                            <constraint firstItem="ZQ5-9A-kiD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="CSp-ie-mSL"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gbi-b8-EbU" secondAttribute="trailing" constant="20" id="Kc0-FL-caE"/>
-                            <constraint firstItem="ZQ5-9A-kiD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="WV7-5j-8k9"/>
-                            <constraint firstItem="gbi-b8-EbU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="bAm-qw-fp9"/>
-                            <constraint firstItem="gbi-b8-EbU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="gKO-AJ-GyO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gbi-b8-EbU" secondAttribute="trailing" constant="20" id="0ff-pg-obh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZQ5-9A-kiD" secondAttribute="trailing" id="99o-iq-d0Z"/>
+                            <constraint firstItem="rMr-I5-WMv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="AJ2-3o-PmV"/>
+                            <constraint firstItem="rMr-I5-WMv" firstAttribute="top" secondItem="gbi-b8-EbU" secondAttribute="bottom" id="CCK-SI-QPr"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZQ5-9A-kiD" secondAttribute="bottom" id="DFe-2Q-Oom"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rMr-I5-WMv" secondAttribute="trailing" constant="20" id="HrT-yg-nCN"/>
+                            <constraint firstItem="ZQ5-9A-kiD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="WV7-5j-8k9"/>
+                            <constraint firstItem="gbi-b8-EbU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="g89-VV-5fd"/>
+                            <constraint firstItem="gbi-b8-EbU" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="k42-KK-cfn"/>
+                            <constraint firstItem="rMr-I5-WMv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pSB-xA-Faj"/>
+                            <constraint firstItem="ZQ5-9A-kiD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="yQq-TN-2u8"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -265,6 +271,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOO-S3-6fn">
                                 <rect key="frame" x="35" y="333.5" width="304" height="0.0"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -610,6 +617,6 @@
         <image name="partyordie" width="1170" height="815"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LuJ-QA-dlF"/>
+        <segue reference="8AC-Vo-yjT"/>
     </inferredMetricsTieBreakers>
 </document>

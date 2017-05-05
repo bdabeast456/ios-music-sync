@@ -309,7 +309,7 @@ class Host : Networker, MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowse
             do {
                 NSLog("\n\nSending Play Times: \(self.calibrationDeltas[i]+globalDelay+self.getMinDelay()+self.cDelays[i])\n\n");
                 
-                let toSend: NSDate = NSDate().addingTimeInterval(self.calibrationDeltas[i]+globalDelay+self.getMinDelay()+self.cDelays[i]);
+                let toSend: NSDate = NSDate().addingTimeInterval(self.calibrationDeltas[i]+globalDelay+self.getMinDelay()+self.cDelays[i]+self.calibrationPings[i]);
                 
                 try self.baseSession.send(TimePlaying(toSend).export() as Data, toPeers: [self.finalGuests[i]], with: MCSessionSendDataMode.reliable);
             }
