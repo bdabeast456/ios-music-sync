@@ -76,5 +76,9 @@ class GuestVideoViewController: ViewControllerBase, YTPlayerViewDelegate {
         NSLog("\n\nPlay Video Called\n\n");
         youtubeWindow.playVideo()
     }
-
+    
+    override func abort() {
+        youtubeWindow.stopVideo()
+        super.abort()
+    }
 }
